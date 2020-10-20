@@ -6,7 +6,11 @@
 </template>
 
 <script>
+import BlogCard from '@/components/list/BlogCard.vue'
 export default {
+  components: {
+    BlogCard,
+  },
   props: {
     blogs: {
       type: Array
