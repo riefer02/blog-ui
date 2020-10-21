@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import BlogCard from '@/components/list/BlogCard.vue'
+import BlogCard from '@/components/list/BlogCard.vue';
 export default {
   components: {
-    BlogCard,
+    BlogCard
   },
   props: {
     blogs: {

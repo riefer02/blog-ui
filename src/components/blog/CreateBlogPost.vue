@@ -8,10 +8,12 @@
       <BaseTextArea label="Summary" v-model="blog.summary" />
       <button>Submit</button>
     </form>
-    <p v-if="postSuccess">
-      Your blog post has been saved to database successfully
-      <button @click="clearMessage" class="clear-btn">Close</button>
-    </p>
+    <transition name="fade">
+      <p v-if="ifMessage">
+        {{ messageContent }}
+        <button @click="clearMessage" class="clear-btn">Close</button>
+      </p>
+    </transition>
     <BlogList :blogs="blogs" />
   </div>
 </template>
@@ -34,24 +36,27 @@ export default {
     this.$store.dispatch('retrieveBlogs');
   },
   data: () => ({
-    postSuccess: false,
+    ifMessage: false,
+    messageContent: '',
     categories: ['music', 'web development'],
     blog: {
       title: '',
       summary: '',
       topic: ''
-    },
+    }
   }),
   methods: {
     clearMessage: function() {
-      this.postSuccess = !this.postSuccess;
+      this.ifMessage = !this.ifMessage;
+      this.messageContent = '';
     },
     formSubmit: async function() {
       try {
         let self = this;
         let { title, summary, topic } = self.blog;
         if (!title || !summary || !topic) {
-          return console.log('form validation failure');
+          this.messageContent = 'Validation Error';
+          return (this.ifMessage = true);
         }
         const newBlog = {
           title,
@@ -66,7 +71,10 @@ export default {
         self.blog.title = '';
         self.blog.summary = '';
         self.blog.topic = '';
-        self.postSuccess = true;
+        self.message = true;
+        self.messageContent =
+          'Your blog post has been saved to database successfully';
+        this.$store.dispatch('retrieveBlogs');
       } catch (error) {
         console.error(error);
       }
@@ -77,7 +85,7 @@ export default {
       return this.$store.state.user.name;
     },
     blogs() {
-      return this.$store.state.blogs
+      return this.$store.state.blogs;
     }
   }
 };
@@ -100,5 +108,15 @@ textarea {
 .clear-btn {
   border-radius: 10px;
   background-color: orangered;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-leave-to,
+.fade-enter {
+  opacity: 0;
 }
 </style>
