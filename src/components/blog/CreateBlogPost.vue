@@ -109,14 +109,4 @@ textarea {
   border-radius: 10px;
   background-color: orangered;
 }
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-leave-to,
-.fade-enter {
-  opacity: 0;
-}
 </style>
