@@ -6,7 +6,7 @@
       <BaseSelect :options="categories" label="Topic" v-model="blog.topic" />
       <BaseInput label="Blog Title" type="text" v-model="blog.title" />
       <BaseTextArea label="Summary" v-model="blog.summary" />
-      <button>Submit</button>
+      <button class="submit-btn">Submit</button>
     </form>
     <transition name="fade">
       <p v-if="ifMessage">
@@ -71,7 +71,7 @@ export default {
         self.blog.title = '';
         self.blog.summary = '';
         self.blog.topic = '';
-        self.message = true;
+        self.ifMessage = true;
         self.messageContent =
           'Your blog post has been saved to database successfully';
         this.$store.dispatch('retrieveBlogs');
@@ -108,5 +108,73 @@ textarea {
 .clear-btn {
   border-radius: 10px;
   background-color: orangered;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+form {
+  margin: 0 auto;
+  width: 400px;
+  height: auto;
+  overflow: hidden;
+  background: white;
+  border-radius: 10px;
+}
+
+label,
+input {
+  float: left;
+  clear: both;
+}
+
+input,
+textarea,
+select {
+  margin: 15px 0;
+  padding: 15px 10px;
+  width: 100%;
+  outline: none;
+  border: 1px solid #bbb;
+  border-radius: 20px;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+.submit-btn {
+  padding: 15px 50px;
+  width: auto;
+  background: #1abc9c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  clear: right;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  border-radius: 10px 0 10px 0;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.submit-btn:hover {
+  transform: scale(1.02);
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  opacity: 0.4;
 }
 </style>

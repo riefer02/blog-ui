@@ -1,0 +1,192 @@
+<template>
+  <!-- <div>
+    <div :style="{ height, width: computedWidth }" class="skeleton-loader" />
+  </div> -->
+  <div class="card-skeleton">
+    <div class="animated-background">
+      <div class="card-skeleton-img"></div>
+      <div class="skel-mask-container">
+        <div class="skel-mask skel-mask-1"></div>
+        <div class="skel-mask skel-mask-2"></div>
+        <div class="skel-mask skel-mask-3"></div>
+        <div class="skel-mask skel-mask-4"></div>
+        <div class="skel-mask skel-mask-5"></div>
+        <div class="skel-mask skel-mask-6"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'SkeletonLoader',
+  props: {
+    maxWidth: {
+      default: 100,
+      type: Number
+    },
+    minWidth: {
+      default: 80,
+      type: Number
+    },
+    height: {
+      default: '1em',
+      type: String
+    },
+    width: {
+      default: null,
+      type: String
+    }
+  },
+  computed: {
+    computedWidth() {
+      return (
+        this.width ||
+        `${Math.floor(
+          Math.random() * (this.maxWidth - this.minWidth) + this.minWidth
+        )}%`
+      );
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.skeleton-loader {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  background-color: #dddbdd;
+  border-radius: 5px;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      rgba(#fff, 0) 0,
+      rgba(#fff, 0.2) 20%,
+      rgba(#fff, 0.5) 60%,
+      rgba(#fff, 0)
+    );
+    animation: shimmer 1s infinite;
+    content: '';
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+.card-skeleton {
+  width: 270px;
+  height: 300px;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  background: #fff;
+  z-index: 10;
+  padding: 15px;
+  opacity: 1;
+  vertical-align: middle;
+}
+.card-skeleton.hidden {
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  height: 0;
+  padding: 0;
+}
+
+.card-skeleton-img {
+  width: 100%;
+  height: 120px;
+  display: block;
+  background: transparent;
+}
+
+.animated-background {
+  will-change: transform;
+  animation: placeHolderShimmer 1s linear infinite forwards;
+  -webkit-backface-visibility: hidden;
+  background: #e6e6e6;
+  background: linear-gradient(90deg, #eee 8%, #ddd 18%, #eee 33%);
+  background-size: 800px 104px;
+  height: 100%;
+  position: relative;
+}
+
+.skel-mask-container {
+  position: relative;
+}
+
+.skel-mask {
+  background: #fff;
+  position: absolute;
+  z-index: 200;
+}
+
+.skel-mask-1 {
+  width: 100%;
+  height: 15px;
+  top: 0;
+  left: 0;
+}
+
+.skel-mask-2 {
+  width: 25%;
+  height: 10px;
+  top: 15px;
+  right: 0;
+}
+
+.skel-mask-3 {
+  top: 25px;
+}
+
+.skel-mask-3,
+.skel-mask-4 {
+  width: 100%;
+  height: 15px;
+  right: 0;
+}
+
+.skel-mask-4 {
+  top: 50px;
+}
+
+.skel-mask-5 {
+  width: 10%;
+  height: 30px;
+  top: 65px;
+  right: 30%;
+}
+
+.skel-mask-6 {
+  width: 100%;
+  height: 15px;
+  top: 95px;
+  right: 0;
+}
+@keyframes placeHolderShimmer {
+  0% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    background-position: -468px 0;
+  }
+  to {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    background-position: 468px 0;
+  }
+}
+</style>

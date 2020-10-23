@@ -1,7 +1,9 @@
 <template>
   <div>
     <h2>Blog List</h2>
-    <BlogCard v-for="blog in blogs" :key="blog.title" :blog="blog"></BlogCard>
+    <div class="d-flex justify-center">
+      <BlogCard v-for="blog in blogs" :key="blog.title" :blog="blog"></BlogCard>
+    </div>
   </div>
 </template>
 

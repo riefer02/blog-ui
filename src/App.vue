@@ -35,6 +35,17 @@
   color: #42b983;
 }
 
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
 /*** Transitions ***/
 .fade-enter-active,
 .fade-leave-active {
@@ -52,8 +63,21 @@
   transform: translateX(10px);
 }
 
+.slide-fade-enter-from {
+  opacity: 0;
+}
+
 .slide-fade-leave-to {
   opacity: 0;
   transform: translateX(-10px);
+}
+
+.slide-up-enter {
+  transform: translateY(10px); /* start 10px down*/
+  opacity: 0;
+}
+
+.slide-up-enter-active {
+  transition: all 0.2s ease;
 }
 </style>
