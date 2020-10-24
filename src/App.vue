@@ -1,10 +1,29 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+
+    <router-view v-slot="{ Component }">
+      <transition name="slide-fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+    <Snackbar />
   </div>
-  <router-view />
 </template>
+
+<script>
+import Snackbar from '@/components/utility/Snackbar.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Snackbar
+  }
+};
+</script>
 
 <style>
 #app {
@@ -26,5 +45,51 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+/*** Transitions ***/
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-enter {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.slide-fade-enter-from {
+  opacity: 0;
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.slide-up-enter {
+  transform: translateY(10px); /* start 10px down*/
+  opacity: 0;
+}
+
+.slide-up-enter-active {
+  transition: all 0.2s ease;
 }
 </style>

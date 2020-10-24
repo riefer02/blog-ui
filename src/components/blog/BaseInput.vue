@@ -33,5 +33,10 @@ div {
 }
 label {
   margin-right: 1rem;
+  font-size:14px;
+
+	cursor:pointer;
 }
+
+
 </style>

@@ -6,14 +6,14 @@
       <BaseSelect :options="categories" label="Topic" v-model="blog.topic" />
       <BaseInput label="Blog Title" type="text" v-model="blog.title" />
       <BaseTextArea label="Summary" v-model="blog.summary" />
-      <button>Submit</button>
+      <button class="submit-btn">Submit</button>
     </form>
-    <transition name="fade">
+    <!-- <transition name="fade">
       <p v-if="ifMessage">
         {{ messageContent }}
         <button @click="clearMessage" class="clear-btn">Close</button>
       </p>
-    </transition>
+    </transition> -->
     <BlogList :blogs="blogs" />
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
     this.$store.dispatch('retrieveBlogs');
   },
   data: () => ({
-    ifMessage: false,
+    // ifMessage: false,
     messageContent: '',
     categories: ['music', 'web development'],
     blog: {
@@ -49,13 +49,16 @@ export default {
     clearMessage: function() {
       this.ifMessage = !this.ifMessage;
       this.messageContent = '';
+      this.$store.commit('SET_SNACK', this.messageContent);
     },
     formSubmit: async function() {
       try {
         let self = this;
         let { title, summary, topic } = self.blog;
         if (!title || !summary || !topic) {
-          this.messageContent = 'Validation Error';
+          self.messageContent = 'Validation Error';
+          console.log(self.messageContent);
+          this.$store.commit('SET_SNACK', self.messageContent);
           return (this.ifMessage = true);
         }
         const newBlog = {
@@ -71,9 +74,10 @@ export default {
         self.blog.title = '';
         self.blog.summary = '';
         self.blog.topic = '';
-        self.message = true;
+        self.ifMessage = true;
         self.messageContent =
           'Your blog post has been saved to database successfully';
+        self.$store.commit('SET_SNACK', self.messageContent);
         this.$store.dispatch('retrieveBlogs');
       } catch (error) {
         console.error(error);
@@ -108,15 +112,73 @@ textarea {
 .clear-btn {
   border-radius: 10px;
   background-color: orangered;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
+form {
+  margin: 0 auto;
+  width: 400px;
+  height: auto;
+  overflow: hidden;
+  background: white;
+  border-radius: 10px;
 }
 
-.fade-leave-to,
-.fade-enter {
-  opacity: 0;
+label,
+input {
+  float: left;
+  clear: both;
+}
+
+input,
+textarea,
+select {
+  margin: 15px 0;
+  padding: 15px 10px;
+  width: 100%;
+  outline: none;
+  border: 1px solid #bbb;
+  border-radius: 20px;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+.submit-btn {
+  padding: 15px 50px;
+  width: auto;
+  background: #1abc9c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  clear: right;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  border-radius: 10px 0 10px 0;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.submit-btn:hover {
+  transform: scale(1.02);
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  opacity: 0.4;
 }
 </style>
