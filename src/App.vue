@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Navigation />
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -16,11 +17,13 @@
 
 <script>
 import Snackbar from '@/components/utility/Snackbar.vue';
+import Navigation from '@/components/navigation/Nav.vue';
 
 export default {
   name: 'App',
   components: {
-    Snackbar
+    Snackbar,
+    Navigation
   }
 };
 </script>
