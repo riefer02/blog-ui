@@ -10,7 +10,7 @@
           </router-link>
           <div class="card-btns">
             <button class="delete-btn" @click.prevent="deleteBlog">
-              Delete
+              <FontAwesomeIcon class="trash-icon" icon="trash" />
             </button>
           </div>
         </div>
@@ -20,14 +20,20 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 export default {
+  components: {
+    FontAwesomeIcon
+  },
   props: {
     blog: {
       type: Object
     }
   },
   methods: {
-    deleteBlog() {}
+    deleteBlog() {
+      console.log('Blog deletion process has begun...');
+    }
   }
 };
 </script>
@@ -68,7 +74,6 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 .card-title {
@@ -101,5 +106,18 @@ a {
 
 .card-btns {
   align-self: flex-end;
+}
+
+.delete-btn {
+  background-color: #1abc9c;
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  border: none;
+  padding: 0.3rem 0.8rem;
+}
+
+.trash-icon {
+  color: white;
+  position: relative;
+  right: 1px;
 }
 </style>

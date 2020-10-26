@@ -5,25 +5,31 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-
     <router-view v-slot="{ Component }">
       <transition name="slide-fade" mode="out-in">
         <component :is="Component" />
       </transition>
     </router-view>
+      <transition name="fade" mode="out-in">
     <Snackbar />
+      </transition>
   </div>
 </template>
 
 <script>
 import Snackbar from '@/components/utility/Snackbar.vue';
 import Navigation from '@/components/navigation/Nav.vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSpinner, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+library.add(faSpinner, faTrash);
 
 export default {
   name: 'App',
   components: {
     Snackbar,
-    Navigation
+    Navigation,
+    FontAwesomeIcon
   }
 };
 </script>

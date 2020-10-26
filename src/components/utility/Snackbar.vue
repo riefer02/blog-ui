@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 .ui-snackbar-container {
-  position: absolute;
+  position: fixed;
   overflow: hidden;
 
   bottom: 0;
