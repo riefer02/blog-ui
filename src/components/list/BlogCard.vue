@@ -1,16 +1,21 @@
 <template>
   <div class="card-body">
-    <router-link :to="'/blog/' + blog._id">
-      <div class="cards-item">
-        <div class="card">
-          <div class="card-content">
+    <div class="cards-item">
+      <div class="card">
+        <div class="card-content">
+          <router-link :to="'/blog/' + blog._id">
             <h3 class="card-title">{{ blog.title }}</h3>
             <h4>{{ blog.topic }}</h4>
             <p class="card-text">{{ blog.summary }}</p>
+          </router-link>
+          <div class="card-btns">
+            <button class="delete-btn" @click.prevent="deleteBlog">
+              Delete
+            </button>
           </div>
         </div>
       </div>
-    </router-link>
+    </div>
   </div>
 </template>
 
@@ -20,6 +25,9 @@ export default {
     blog: {
       type: Object
     }
+  },
+  methods: {
+    deleteBlog() {}
   }
 };
 </script>
@@ -30,9 +38,9 @@ a {
   color: #2c3e50;
 }
 .card-body {
-  width:33.3%;
+  width: 33.3%;
   margin: 5px;
-  transition: all 0.3s ease, 
+  transition: all 0.3s ease;
 }
 
 .card-body:hover {
@@ -57,6 +65,10 @@ a {
   padding: 1rem;
   background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
   min-height: 175px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 }
 
 .card-title {
@@ -77,19 +89,17 @@ a {
 }
 @media only screen and (max-width: 600px) {
   .card-body {
-   width: 100%;
+    width: 100%;
   }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 760px) {
   .card-body {
-   width: 90%;
+    width: 90%;
   }
 }
 
-// @media (min-width: 56rem) {
-//   .cards_item {
-//     width: 33.3333%;
-//   }
-// }
+.card-btns {
+  align-self: flex-end;
+}
 </style>
