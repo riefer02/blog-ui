@@ -10,9 +10,9 @@
         <component :is="Component" />
       </transition>
     </router-view>
-      <transition name="fade" mode="out-in">
-    <Snackbar />
-      </transition>
+    <transition name="fade" mode="out-in">
+      <Snackbar />
+    </transition>
   </div>
 </template>
 

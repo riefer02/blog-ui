@@ -7,12 +7,6 @@ import VueAxios from 'vue-axios';
 // import upperFirst from 'lodash/upperFirst';
 // import camelCase from 'lodash/camelCase';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(faSpinner);
-
-
 // const requireComponent = require.context(
 //   './components',
 //   false,
@@ -33,8 +27,5 @@ const app = createApp(App)
 
 //   app.component(componentName, componentConfig.default || componentConfig);
 // });
-
-app.component('font-awesome-icon', FontAwesomeIcon);
-
 
 app.mount('#app');
