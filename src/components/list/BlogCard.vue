@@ -113,7 +113,16 @@ a {
   clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
   border: none;
   padding: 0.3rem 0.8rem;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease-in;
 }
+.delete-btn:active,
+.delete-btn:hover {
+   background-color: red;
+  transform: scale(1.1);
+}
+
 
 .trash-icon {
   color: white;
