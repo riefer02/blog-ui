@@ -9,7 +9,7 @@
             <p class="card-text">{{ blog.summary }}</p>
           </router-link>
           <div class="card-btns">
-            <button class="delete-btn" @click.prevent="deleteBlog">
+            <button class="delete-btn" @click.prevent="deleteBlog(blog._id)">
               <FontAwesomeIcon class="trash-icon" icon="trash" />
             </button>
           </div>
@@ -20,7 +20,10 @@
 </template>
 
 <script>
+// import BlogService from '../../../services/BlogService';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+
 export default {
   components: {
     FontAwesomeIcon
@@ -28,13 +31,11 @@ export default {
   props: {
     blog: {
       type: Object
-    }
+    },
+    deleteBlog: {
+      type: Function
+    },
   },
-  methods: {
-    deleteBlog() {
-      console.log('Blog deletion process has begun...');
-    }
-  }
 };
 </script>
 

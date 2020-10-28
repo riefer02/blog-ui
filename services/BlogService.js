@@ -15,5 +15,8 @@ export default {
   },
   getBlog(id) {
     return apiClient.get('/blog/' + id)
+  },
+  deleteBlog(id) {
+    return apiClient.delete('/blog/delete/' + id)
   }
 }

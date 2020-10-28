@@ -22,7 +22,7 @@ export default {
     initThree() {
       this.scene = new THREE.Scene();
       this.camera = new THREE.PerspectiveCamera(
-        75,
+        45,
         window.innerWidth / window.innerHeight,
         0.1,
         1000
@@ -30,10 +30,10 @@ export default {
       this.renderer = new THREE.WebGLRenderer({ antialias: true });
       this.renderer.setSize(window.innerWidth, window.innerHeight);
       this.renderer.setClearColor('#e5e5e5');
-
       this.$refs.threeJS.appendChild(this.renderer.domElement);
       let geometry = new THREE.BoxGeometry();
-      let material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      let material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+      material.wireframe = true;  
       this.cube = new THREE.Mesh(geometry, material);
       this.scene.add(this.cube);
       this.camera.position.z = 5;
@@ -41,8 +41,8 @@ export default {
     },
     animate() {
       requestAnimationFrame(this.animate);
-      this.cube.rotation.x += 0.01;
-      this.cube.rotation.y += 0.01;
+      this.cube.rotation.x += 0.02;
+      this.cube.rotation.y += 0.02;
       this.renderer.render(this.scene, this.camera);
     },
     handleResize() {
