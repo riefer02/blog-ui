@@ -9,6 +9,9 @@
             <p class="card-text">{{ blog.summary }}</p>
           </router-link>
           <div class="card-btns">
+            <button class="edit-btn">
+              <FontAwesomeIcon class="edit-icon" icon="wrench" />
+            </button>
             <button class="delete-btn" @click.prevent="deleteBlog(blog._id)">
               <FontAwesomeIcon class="trash-icon" icon="trash" />
             </button>
@@ -23,7 +26,6 @@
 // import BlogService from '../../../services/BlogService';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-
 export default {
   components: {
     FontAwesomeIcon
@@ -34,8 +36,8 @@ export default {
     },
     deleteBlog: {
       type: Function
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -65,7 +67,6 @@ a {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  // width: 33.3%;
 }
 
 .card-content {
@@ -109,7 +110,8 @@ a {
   align-self: flex-end;
 }
 
-.delete-btn {
+.delete-btn,
+.edit-btn {
   background-color: #1abc9c;
   clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
   border: none;
@@ -119,13 +121,15 @@ a {
   transition: all 0.2s ease-in;
 }
 .delete-btn:active,
-.delete-btn:hover {
-   background-color: red;
+.delete-btn:hover,
+.edit-btn:active,
+.edit-btn:hover {
+  background-color: #F25F5C;
   transform: scale(1.1);
 }
 
-
-.trash-icon {
+.trash-icon,
+.edit-icon {
   color: white;
   position: relative;
   right: 1px;
