@@ -13,18 +13,27 @@
     <transition name="fade" mode="out-in">
       <Snackbar />
     </transition>
-    <Modal :showModal="showModal" @handleModal="handleModal(modalState)" />
+    <Modal
+      :showModal="showModal"
+      :modalConfig="modalConfig"
+      @handleModal="handleModal(modalState)"
+    />
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Modal from '@/components/utility/Modal.vue';
 import Snackbar from '@/components/utility/Snackbar.vue';
 import Navigation from '@/components/navigation/Nav.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faWrench, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faWrench,
+  faTrash,
+  faWindowClose
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(faWrench, faTrash);
+library.add(faWrench, faTrash, faWindowClose);
 
 export default {
   name: 'App',
@@ -35,13 +44,16 @@ export default {
     Modal
   },
   data: () => ({
-    showModal: true,
+    showModal: true
   }),
   methods: {
     handleModal(state) {
-      return this.showModal = state;
+      return (this.showModal = state);
     }
-  }
+  },
+  computed: mapState({
+    modalConfig: state => state.modalConfig
+  })
 };
 </script>
 

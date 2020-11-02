@@ -5,9 +5,17 @@ export default createStore({
   state: {
     user: { name: 'Andrew Riefenstahl', age: 32 },
     blogs: [],
-    snack: ''
+    snack: '',
+    modalConfig: {
+      modalType: 'disabled',
+      modalActive: true,
+      modalData: {}
+    }
   },
   mutations: {
+    SET_MODAL(state, config) {
+      state.modalConfig = config;
+    },
     SET_BLOGS(state, blogs) {
       state.blogs = blogs;
     },

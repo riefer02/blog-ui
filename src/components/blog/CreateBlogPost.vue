@@ -96,12 +96,7 @@ export default {
 </script>
 
 <style lang="scss">
-button,
-label,
-input,
-optgroup,
-select,
-textarea {
+button {
   display: inline-flex;
   font-family: 'Open sans', sans-serif;
   font-size: 100%;
@@ -121,34 +116,8 @@ form {
   width: 400px;
   height: auto;
   overflow: hidden;
-  background: white;
+  background: inherit;
   border-radius: 10px;
-}
-
-label,
-input {
-  float: left;
-  clear: both;
-}
-
-input,
-textarea,
-select {
-  margin: 15px 0;
-  padding: 15px 10px;
-  width: 100%;
-  outline: none;
-  border: 1px solid #bbb;
-  border-radius: 20px;
-  display: inline-block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -ms-transition: 0.2s ease all;
-  -o-transition: 0.2s ease all;
-  transition: 0.2s ease all;
 }
 
 .submit-btn {
