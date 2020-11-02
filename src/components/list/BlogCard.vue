@@ -9,7 +9,7 @@
             <p class="card-text">{{ blog.summary }}</p>
           </router-link>
           <div class="card-btns">
-            <button class="edit-btn">
+            <button class="edit-btn" @click="editBlog(this.blog)">
               <FontAwesomeIcon class="edit-icon" icon="wrench" />
             </button>
             <button class="delete-btn" @click.prevent="deleteBlog(blog._id)">
@@ -36,6 +36,16 @@ export default {
     },
     deleteBlog: {
       type: Function
+    }
+  },
+  methods: {
+    editBlog(blog) {
+      let newModalConfig = {
+        modalActive: true,
+        modalData: blog,
+        modalType: 'editBlog'
+      };
+      this.$store.commit('SET_MODAL', newModalConfig);
     }
   }
 };
@@ -124,7 +134,7 @@ a {
 .delete-btn:hover,
 .edit-btn:active,
 .edit-btn:hover {
-  background-color: #F25F5C;
+  background-color: #f25f5c;
   transform: scale(1.1);
 }
 
