@@ -28,7 +28,9 @@ export default {
     deleteBlog(id) {
       console.log('Blog deletion process has begun...');
       BlogService.deleteBlog(id).then(() => {
-        console.log('Blog was successfully deleted from database. Filtering and rerendering blog list...');
+        console.log(
+          'Blog was successfully deleted from database. Filtering and rerendering blog list...'
+        );
         let newBlogList = this.$store.state.blogs;
         newBlogList = newBlogList.filter(blogs => blogs._id != id);
         this.$store.commit('SET_BLOGS', newBlogList);

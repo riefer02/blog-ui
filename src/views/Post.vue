@@ -43,7 +43,7 @@ export default {
   height: 300px;
   margin: 0 auto;
   transition: all 0.3s ease-in-out;
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   padding: 15px;
   vertical-align: middle;
   padding: 1rem;

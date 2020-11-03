@@ -23,12 +23,9 @@ export default {
       type: [String, Number],
       default: ''
     },
-    newValue: {
-      type: String
-    },
     placeholder: {
       type: String
-    },
+    }
   }
 };
 </script>
