@@ -39,11 +39,6 @@ export default {
     }
   }),
   methods: {
-    clearMessage: function() {
-      this.ifMessage = !this.ifMessage;
-      this.messageContent = '';
-      this.$store.commit('SET_SNACK', this.messageContent);
-    },
     formSubmit: async function() {
       try {
         let self = this;
@@ -52,7 +47,7 @@ export default {
           self.messageContent = 'Validation Error';
           console.log(self.messageContent);
           this.$store.commit('SET_SNACK', self.messageContent);
-          return (this.ifMessage = true);
+          return;
         }
         const newBlog = {
           title,
@@ -67,7 +62,6 @@ export default {
         self.blog.title = '';
         self.blog.summary = '';
         self.blog.topic = '';
-        self.ifMessage = true;
         self.messageContent =
           'Your blog post has been saved to database successfully';
         self.$store.commit('SET_SNACK', self.messageContent);

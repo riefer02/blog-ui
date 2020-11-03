@@ -20,7 +20,6 @@
             />
           </button>
           <form @submit.prevent="formSubmit">
-            <!-- <div>{{ modalConfig.modalData }}</div> -->
             <BaseInput
               label="Blog Title"
               type="text"
@@ -38,7 +37,9 @@
               :placeholder="summaryPlaceholder"
               v-model="blog.summary"
             />
-            <button class="submit-btn">Submit</button>
+            <button class="submit-btn" @click.prevent="submitForm(this.blogID)">
+              Submit
+            </button>
           </form>
         </div>
         <div v-else-if="modalMode === 'disabled'">
@@ -51,6 +52,7 @@
 </template>
 
 <script>
+import BlogService from '../../../services/BlogService';
 import { mapState } from 'vuex';
 import BaseInput from '@/components/blog/BaseInput.vue';
 import BaseSelect from '@/components/blog/BaseSelect.vue';
@@ -76,7 +78,8 @@ export default {
       title: '',
       summary: '',
       topic: ''
-    }
+    },
+    messageContent: ''
   }),
   methods: {
     resetModal() {
@@ -86,11 +89,39 @@ export default {
         modalData: {}
       };
       this.$store.commit('SET_MODAL', resetConfig);
+      this.blog.title = '';
+      this.blog.summary = '';
+      this.blog.topic = '';
     },
     populateFields() {
       this.blog.title = this.blogData.title;
       this.blog.topic = this.blogData.topic;
       this.blog.summary = this.blogData.summary;
+    },
+    async submitForm(blogID) {
+      try {
+        let { title, summary, topic } = this.blog;
+        if (!title || !summary || !topic) {
+          this.messageContent = 'Validation Error';
+          this.$store.commit('SET_SNACK', this.messageContent);
+          return (this.ifMessage = true);
+        }
+        const updatedBlog = {
+          title,
+          summary,
+          topic
+        };
+        BlogService.updateBlog(blogID, updatedBlog);
+        this.blog.title = '';
+        this.blog.summary = '';
+        this.blog.topic = '';
+        this.messageContent = 'Your blog post has been updated successfully';
+        this.$store.commit('SET_SNACK', this.messageContent);
+        this.resetModal();
+        this.$store.dispatch('retrieveBlogs');
+      } catch (error) {
+        console.log(error);
+      }
     }
   },
   computed: {
@@ -105,6 +136,9 @@ export default {
     },
     summaryPlaceholder() {
       return this.modalConfig.modalData.summary;
+    },
+    blogID() {
+      return this.modalConfig.modalData._id;
     },
     blogData() {
       return this.modalConfig.modalData;

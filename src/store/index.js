@@ -27,8 +27,6 @@ export default createStore({
       state.blogs = blogs;
     },
     SET_SNACK(state, snack) {
-      console.log(state.snack);
-      console.log(snack);
       state.snack = snack;
     }
   },

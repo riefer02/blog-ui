@@ -37,7 +37,7 @@ export default {
 .ui-snackbar-container {
   position: fixed;
   overflow: hidden;
-
+  z-index: 10000;
   bottom: 0;
   left: 8px;
 }
