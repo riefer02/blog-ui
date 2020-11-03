@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
 import BaseInput from '@/components/blog/BaseInput.vue';
 import BaseSelect from '@/components/blog/BaseSelect.vue';
 import BaseTextArea from '@/components/blog/BaseTextArea.vue';

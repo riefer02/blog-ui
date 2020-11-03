@@ -73,5 +73,6 @@ textarea {
   transition: 0.2s ease all;
   max-width: 100%;
   min-width: 100%;
+  min-height: fit-content;
 }
 </style>

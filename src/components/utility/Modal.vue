@@ -9,13 +9,23 @@
           />
         </button>
         <div v-if="modalMode === 'editBlog'">
-          <form>
-            <h3>Blog Editor Mode</h3>
+          <h3>Blog Editor Mode</h3>
+          <p class="pop-field-opt-txt">
+            Populate Fields
+          </p>
+          <button class="pop-fields-btn" @click.prevent="populateFields()">
+            <font-awesome-icon
+              :icon="['fas', 'feather-alt']"
+              class="pop-field-icon"
+            />
+          </button>
+          <form @submit.prevent="formSubmit">
             <!-- <div>{{ modalConfig.modalData }}</div> -->
             <BaseInput
               label="Blog Title"
               type="text"
-              v-model="this.blog.title"
+              v-model="blog.title"
+              :placeholder="titlePlaceholder"
             />
             <BaseSelect
               :options="categories"
@@ -28,6 +38,7 @@
               :placeholder="summaryPlaceholder"
               v-model="blog.summary"
             />
+            <button class="submit-btn">Submit</button>
           </form>
         </div>
         <div v-else-if="modalMode === 'disabled'">
@@ -75,6 +86,11 @@ export default {
         modalData: {}
       };
       this.$store.commit('SET_MODAL', resetConfig);
+    },
+    populateFields() {
+      this.blog.title = this.blogData.title;
+      this.blog.topic = this.blogData.topic;
+      this.blog.summary = this.blogData.summary;
     }
   },
   computed: {
@@ -90,12 +106,12 @@ export default {
     summaryPlaceholder() {
       return this.modalConfig.modalData.summary;
     },
+    blogData() {
+      return this.modalConfig.modalData;
+    },
     ...mapState({
       categories: state => state.blogTopics
     })
-  },
-  created() {
-    this.blog.title = this.titlePlaceholder;
   }
 };
 </script>
@@ -145,7 +161,9 @@ export default {
 }
 
 .close-btn:active,
-.close-btn:hover {
+.close-btn:hover,
+.pop-fields-btn:active,
+.pop-fields-btn:hover {
   background-color: #f25f5c;
   transform: scale(1.1);
 }
@@ -153,5 +171,31 @@ export default {
 .modal-disabled-text {
   padding: 1rem;
   color: white;
+}
+
+.pop-fields-btn {
+  background-color: #1abc9c;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  border: none;
+  padding: 0.3rem 0.8rem;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease-in;
+  padding: 0.7rem;
+  margin-left: 6px;
+}
+
+.pop-field-icon {
+  color: white;
+  position: relative;
+  right: 1px;
+}
+
+.pop-field-opt-txt {
+  position: relative;
+  display: inline-block;
+  top: -3px;
+
+  font-size: 0.8rem;
 }
 </style>

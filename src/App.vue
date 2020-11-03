@@ -30,10 +30,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faWrench,
   faTrash,
-  faWindowClose
+  faWindowClose,
+  faFeatherAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(faWrench, faTrash, faWindowClose);
+library.add(faWrench, faTrash, faWindowClose, faFeatherAlt);
 
 export default {
   name: 'App',

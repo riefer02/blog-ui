@@ -52,7 +52,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .card-skeleton {
   width: 270px;
   height: 300px;
