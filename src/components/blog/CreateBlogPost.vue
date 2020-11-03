@@ -8,17 +8,12 @@
       <BaseTextArea label="Summary" v-model="blog.summary" />
       <button class="submit-btn">Submit</button>
     </form>
-    <!-- <transition name="fade">
-      <p v-if="ifMessage">
-        {{ messageContent }}
-        <button @click="clearMessage" class="clear-btn">Close</button>
-      </p>
-    </transition> -->
     <BlogList :blogs="blogs" />
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import BaseInput from '@/components/blog/BaseInput.vue';
 import BaseSelect from '@/components/blog/BaseSelect.vue';
 import BaseTextArea from '@/components/blog/BaseTextArea.vue';
@@ -36,9 +31,7 @@ export default {
     this.$store.dispatch('retrieveBlogs');
   },
   data: () => ({
-    // ifMessage: false,
     messageContent: '',
-    categories: ['music', 'web development'],
     blog: {
       title: '',
       summary: '',
@@ -90,7 +83,10 @@ export default {
     },
     blogs() {
       return this.$store.state.blogs;
-    }
+    },
+    ...mapState({
+      categories: state => state.blogTopics
+    })
   }
 };
 </script>

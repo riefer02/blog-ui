@@ -4,6 +4,7 @@ import blogService from '../../services/BlogService.js';
 export default createStore({
   state: {
     user: { name: 'Andrew Riefenstahl', age: 32 },
+    blogTopics: ['music', 'web development', 'lifestyle', 'politics', 'science'],
     blogs: [],
     snack: '',
     modalConfig: {

@@ -11,18 +11,23 @@
         <div v-if="modalMode === 'editBlog'">
           <form>
             <h3>Blog Editor Mode</h3>
-            <div>{{ modalConfig.modalData }}</div>
+            <!-- <div>{{ modalConfig.modalData }}</div> -->
             <BaseInput
               label="Blog Title"
               type="text"
-              :placeholder="titlePlaceholder"
+              v-model="this.blog.title"
             />
             <BaseSelect
               :options="categories"
               label="Topic"
               :placeholder="topicPlaceholder"
+              v-model="blog.topic"
             />
-            <BaseTextArea label="Summary" :placeholder="summaryPlaceholder" />
+            <BaseTextArea
+              label="Summary"
+              :placeholder="summaryPlaceholder"
+              v-model="blog.summary"
+            />
           </form>
         </div>
         <div v-else-if="modalMode === 'disabled'">
@@ -35,6 +40,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import BaseInput from '@/components/blog/BaseInput.vue';
 import BaseSelect from '@/components/blog/BaseSelect.vue';
 import BaseTextArea from '@/components/blog/BaseTextArea.vue';
@@ -54,12 +60,14 @@ export default {
     FontAwesomeIcon
   },
   data: () => ({
-    editBlogMode: false
+    editBlogMode: false,
+    blog: {
+      title: '',
+      summary: '',
+      topic: ''
+    }
   }),
   methods: {
-    // changeModal() {
-    //   this.$emit('handle-modal', this.modalSwitch);
-    // },
     resetModal() {
       let resetConfig = {
         modalType: 'disabled',
@@ -70,10 +78,6 @@ export default {
     }
   },
   computed: {
-    // modalSwitch() {
-    //   let changedModalState = !this.showModal;
-    //   return changedModalState;
-    // },
     modalMode() {
       return this.modalConfig.modalType;
     },
@@ -85,7 +89,13 @@ export default {
     },
     summaryPlaceholder() {
       return this.modalConfig.modalData.summary;
-    }
+    },
+    ...mapState({
+      categories: state => state.blogTopics
+    })
+  },
+  created() {
+    this.blog.title = this.titlePlaceholder;
   }
 };
 </script>

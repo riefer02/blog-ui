@@ -52,38 +52,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .skeleton-loader {
-//   display: inline-block;
-//   position: relative;
-//   overflow: hidden;
-//   vertical-align: middle;
-//   background-color: #dddbdd;
-//   border-radius: 5px;
-
-//   &::after {
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     left: 0;
-//     transform: translateX(-100%);
-//     background-image: linear-gradient(
-//       90deg,
-//       rgba(#fff, 0) 0,
-//       rgba(#fff, 0.2) 20%,
-//       rgba(#fff, 0.5) 60%,
-//       rgba(#fff, 0)
-//     );
-//     animation: shimmer 1s infinite;
-//     content: '';
-//   }
-
-//   @keyframes shimmer {
-//     100% {
-//       transform: translateX(100%);
-//     }
-//   }
-// }
 
 .card-skeleton {
   width: 270px;
@@ -93,7 +61,7 @@ export default {
   top: 0;
   left: 0;
   transition: all 0.3s ease-in-out;
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   background: #fff;
   z-index: 10;
   padding: 15px;
@@ -117,7 +85,7 @@ export default {
 .animated-background {
   will-change: transform;
   animation: placeHolderShimmer 1s linear infinite forwards;
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   background: #e6e6e6;
   background: linear-gradient(90deg, #eee 8%, #ddd 18%, #eee 33%);
   background-size: 800px 104px;
