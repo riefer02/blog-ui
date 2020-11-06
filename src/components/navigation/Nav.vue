@@ -12,9 +12,10 @@
           <router-link to="/" class="nav-link">Home</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/three" class="nav-link"
-            >Three</router-link
-          >
+          <router-link to="/blogs" class="nav-link">Blog</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/three" class="nav-link">Three</router-link>
         </li>
       </ul>
     </nav>

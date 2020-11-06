@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-      <ImageTextLogo width="500" />
-    <CreateBlogPost/>
+    <ImageTextLogo width="500" />
+    <CreateBlogPost />
   </div>
 </template>
 
@@ -13,12 +13,12 @@ export default {
   name: 'Home',
   components: {
     CreateBlogPost,
-     ImageTextLogo
-  },
+    ImageTextLogo
+  }
   // computed: {
   //   screenWidth() {
   //     return window.innerWidth;
   //   }
   // }
-}
+};
 </script>

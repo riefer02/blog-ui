@@ -8,7 +8,7 @@
       <BaseTextArea label="Summary" v-model="blog.summary" />
       <button class="submit-btn">Submit</button>
     </form>
-    <BlogList :blogs="blogs" />
+  
   </div>
 </template>
 
@@ -17,7 +17,7 @@ import { mapState } from 'vuex';
 import BaseInput from '@/components/blog/BaseInput.vue';
 import BaseSelect from '@/components/blog/BaseSelect.vue';
 import BaseTextArea from '@/components/blog/BaseTextArea.vue';
-import BlogList from '@/components/list/BlogList.vue';
+
 
 export default {
   name: 'BlogForm',
@@ -25,7 +25,7 @@ export default {
     BaseInput,
     BaseSelect,
     BaseTextArea,
-    BlogList
+ 
   },
   mounted() {
     this.$store.dispatch('retrieveBlogs');
@@ -75,9 +75,7 @@ export default {
     userName() {
       return this.$store.state.user.name;
     },
-    blogs() {
-      return this.$store.state.blogs;
-    },
+   
     ...mapState({
       categories: state => state.blogTopics
     })
@@ -107,7 +105,6 @@ form {
   height: auto;
   overflow: hidden;
   background: inherit;
- 
 }
 
 .submit-btn {
