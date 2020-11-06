@@ -107,7 +107,7 @@ form {
   height: auto;
   overflow: hidden;
   background: inherit;
-  border-radius: 10px;
+ 
 }
 
 .submit-btn {

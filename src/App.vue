@@ -1,10 +1,11 @@
 <template>
   <div>
     <Navigation />
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/three">Three</router-link>
-    </div>
+    </div> -->
+  
     <router-view v-slot="{ Component }">
       <transition name="slide-fade" mode="out-in">
         <component :is="Component" />
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+
 import { mapState } from 'vuex';
 import Modal from '@/components/utility/Modal.vue';
 import Snackbar from '@/components/utility/Snackbar.vue';
@@ -42,7 +44,8 @@ export default {
     Snackbar,
     Navigation,
     FontAwesomeIcon,
-    Modal
+    Modal,
+   
   },
   data: () => ({
     showModal: true
