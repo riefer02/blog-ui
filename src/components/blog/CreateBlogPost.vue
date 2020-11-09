@@ -58,7 +58,6 @@ export default {
           'http://localhost:6969/blog/create',
           newBlog
         );
-        console.log(response);
         self.blog.title = '';
         self.blog.summary = '';
         self.blog.topic = '';

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <CreateBlogPost/>
+    <CreateBlogPost />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import CreateBlogPost from '@/components/blog/CreateBlogPost.vue';
 export default {
   name: 'Home',
   components: {
-    CreateBlogPost,
+    CreateBlogPost
   }
-}
+};
 </script>
