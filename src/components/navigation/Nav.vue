@@ -45,8 +45,8 @@ export default {
     height: 6rem;
     width: 6rem;
     position: fixed;
-    top: 6rem;
-    left: 6rem;
+    top: 1.8rem;
+    left: 2.3rem;
     border-radius: 50%;
     z-index: 2000;
     box-shadow: 0 1rem 3rem rgba(#000, 0.1);
@@ -59,8 +59,8 @@ export default {
     width: 5rem;
     border-radius: 50%;
     position: fixed;
-    top: 6.5rem;
-    left: 6.5rem;
+    top: 2.3rem;
+    left: 2.8rem;
     background-image: radial-gradient(#ef8d9c, #ffc39e);
     z-index: 1000;
     transition: transform 0.8s cubic-bezier(0.47, 0.15, 0.2, 1.19);
@@ -82,7 +82,7 @@ export default {
   &-list {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 45%;
     transform: translate(-50%, -50%);
     list-style: none;
     text-align: center;

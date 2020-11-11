@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="svg-container">
     <svg
       id="riefer.io_Image"
       data-name="riefer.io_Image"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="{{this.viewBox}}"
-      :width="width"
-      :height="width"
+      viewBox="3 0 495.89 523.04"
+      preserveAspectRatio="none"
+      class="svg-content"
     >
       <path
         class="cls-1"
@@ -584,20 +584,32 @@
 <script>
 export default {
   name: 'Logo',
-  props: {
-    width: {
-      type: Number
-    }
-  },
-  computed: {
-    viewBox() {
-      return `0 0 ${this.width} ${this.width}`
-    }
-  }
 };
 </script>
 
 <style lang="scss" scoped>
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-width: 595px;
+  // display:flex;
+  // justify-content: center;
+
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.svg-content {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin: auto;
+  top: 0px;
+  left: 0px;
+  max-height: 630px;
+}
+
 .cls-1 {
   fill: #fff;
 }

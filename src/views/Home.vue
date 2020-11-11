@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <ImageTextLogo width="480"/>
-   
+    <ImageTextLogo />
+    <HomeMain />
   </div>
 </template>
 
 <script>
 import ImageTextLogo from '@/components/logo/ImageTextLogo.vue';
+import HomeMain from '@/components/layout/HomeMain.vue';
 
 export default {
   name: 'Home',
   components: {
-    ImageTextLogo
+    ImageTextLogo,
+    HomeMain
   }
   // computed: {
   //   screenWidth() {
