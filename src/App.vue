@@ -1,11 +1,7 @@
 <template>
   <div>
     <Navigation />
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/three">Three</router-link>
-    </div> -->
-  
+    <SocialMedia />
     <router-view v-slot="{ Component }">
       <transition name="slide-fade" mode="out-in">
         <component :is="Component" />
@@ -23,12 +19,18 @@
 </template>
 
 <script>
-
 import { mapState } from 'vuex';
 import Modal from '@/components/utility/Modal.vue';
 import Snackbar from '@/components/utility/Snackbar.vue';
 import Navigation from '@/components/navigation/Nav.vue';
+import SocialMedia from '@/components/socialmedia/SocialMedia.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faGithub,
+  faInstagram,
+  faWhatsapp,
+  faYoutube
+} from '@fortawesome/free-brands-svg-icons';
 import {
   faWrench,
   faTrash,
@@ -36,7 +38,16 @@ import {
   faFeatherAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(faWrench, faTrash, faWindowClose, faFeatherAlt);
+library.add(
+  faWrench,
+  faTrash,
+  faWindowClose,
+  faFeatherAlt,
+  faGithub,
+  faInstagram,
+  faWhatsapp,
+  faYoutube
+);
 
 export default {
   name: 'App',
@@ -45,7 +56,7 @@ export default {
     Navigation,
     FontAwesomeIcon,
     Modal,
-   
+    SocialMedia
   },
   data: () => ({
     showModal: true
