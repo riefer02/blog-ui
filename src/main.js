@@ -13,6 +13,7 @@ import VueAxios from 'vue-axios';
 //   /Base[A-Z]\w+\.(vue|js)$/
 // );
 
+
 const app = createApp(App)
   .use(store)
   .use(router)

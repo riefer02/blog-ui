@@ -1,27 +1,24 @@
 <template>
   <div class="home">
-    <CreateBlogPost />
-
-    <ImageTextLogo width="480" />
+    <ImageTextLogo />
+    <HomeMain />
   </div>
 </template>
 
 <script>
 import ImageTextLogo from '@/components/logo/ImageTextLogo.vue';
+import HomeMain from '@/components/layout/HomeMain.vue';
 
 export default {
   name: 'Home',
   components: {
-    CreateBlogPost
-  }
-
-    ImageTextLogo
+    ImageTextLogo,
+    HomeMain
   }
   // computed: {
   //   screenWidth() {
   //     return window.innerWidth;
   //   }
   // }
-
 };
 </script>
