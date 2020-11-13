@@ -7,8 +7,10 @@
         <component :is="Component" />
       </transition>
     </router-view>
-    <transition name="fade" mode="out-in">
+    <transition appear name="slide-fade" mode="out-in">
+      <div>
       <Snackbar />
+      </div>
     </transition>
     <Modal
       :showModal="showModal"

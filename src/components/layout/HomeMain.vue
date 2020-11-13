@@ -8,8 +8,8 @@
       younger, and serve my community as a career educator. I began exploring
       computer science a few years back and discovered a passion I never knew
       existed. I'm creative, love to learn, a team player, and enjoy solving
-      puzzles. I do a lot more than just web development though, and if you want
-      to learn more please "stay awhile and listen".
+      puzzles. I have many other hobbies too, so if you want
+      to learn more please, "stay awhile and listen".
     </p>
 
     <img
@@ -48,7 +48,7 @@ export default {};
 }
 
 .header-text-primary {
-    margin-top: 0;
+  margin-top: 0;
   filter: drop-shadow(0 0 1px #ef8d9c);
 }
 

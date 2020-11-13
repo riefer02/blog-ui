@@ -583,7 +583,7 @@
 
 <script>
 export default {
-  name: 'Logo',
+  name: 'Logo'
 };
 </script>
 
@@ -593,11 +593,9 @@ export default {
   position: relative;
   width: 100%;
   max-width: 595px;
-  // display:flex;
-  // justify-content: center;
-
   vertical-align: middle;
   overflow: hidden;
+  z-index:-1;
 }
 
 .svg-content {
@@ -612,6 +610,7 @@ export default {
 
 .cls-1 {
   fill: #fff;
+
 }
 .cls-2 {
   fill: #ffc39e;

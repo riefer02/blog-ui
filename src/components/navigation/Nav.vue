@@ -183,4 +183,64 @@ export default {
     box-shadow: 0px 0px 50px rgba(#fff, 0.5);
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .nav {
+    &-btn {
+      height: 3rem;
+      width: 3rem;
+      position: fixed;
+      top: 1rem;
+      left: 1.2rem;
+    }
+    &-bg {
+      height: 2rem;
+      width: 2rem;
+      border-radius: 50%;
+      position: fixed;
+      top: 1.5rem;
+      left: 2.1rem;
+    }
+    &-icon {
+      position: relative;
+      margin: auto;
+      margin-top: 1.4rem;
+      &,
+      &::before,
+      &::after {
+        width: 2rem;
+        height: 1px;
+        background-color: white;
+        display: inline-block;
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        transition: all 0.2s;
+      }
+
+      &::before {
+        top: -0.6rem;
+      }
+      &::after {
+        top: 0.6rem;
+      }
+    }
+    &-list {
+      left: 47%;
+    }
+    &-btn:hover &-icon::before {
+      top: -0.7rem;
+    }
+    &-btn:hover &-icon::after {
+      top: 0.7rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 760px) {
+}
 </style>
