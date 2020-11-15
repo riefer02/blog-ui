@@ -69,7 +69,7 @@ export default {
     text-decoration: none;
     box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
       -6px -6px 10px -1px rgba(239, 141, 156, 0.7);
-    transition: transform 0.5s;
+    transition: transform 0.2s;
     box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   }
 

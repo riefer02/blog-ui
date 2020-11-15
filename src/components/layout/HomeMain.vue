@@ -74,6 +74,8 @@ export default {
   grid-column: 1 / -1;
   width: 100%;
   position: relative;
+  margin-top: 3rem;
+  margin-bottom: 3.6rem;
 }
 
 .giraffe-banner {

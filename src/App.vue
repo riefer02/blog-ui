@@ -37,7 +37,8 @@ import {
   faWrench,
   faTrash,
   faWindowClose,
-  faFeatherAlt
+  faFeatherAlt,
+  faLayerGroup
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 library.add(
@@ -48,7 +49,8 @@ library.add(
   faGithub,
   faInstagram,
   faWhatsapp,
-  faYoutube
+  faYoutube,
+  faLayerGroup
 );
 
 export default {
