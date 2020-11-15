@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blog-list-container">
     <h2>Blog List</h2>
     <div class="d-flex justify-center">
       <BlogCard
@@ -40,4 +40,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.blog-list-container {
+  margin-bottom: 5rem;
+}
+</style>

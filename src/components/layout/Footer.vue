@@ -2,7 +2,7 @@
   <footer class="site-footer">
     <div class="footer-row-1">
       <div class="footer-about">
-        <h6>About</h6>
+        <h6>Nice to meet you</h6>
         <p class="footer-about-text">
           Need help building a web application, producing an album, or anything
           inbetween? Please don't hesitate to reach out.
@@ -12,15 +12,11 @@
       <div class="footer-links-group">
         <h6>Fast Travel</h6>
         <ul class="footer-links">
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Three</a></li>
-          <li>
-            <a href="#">Store</a>
-          </li>
-          <li>
-            <a href="#">Resume</a>
-          </li>
-          <li><a href="#">Giraffe</a></li>
+          <li class="footer-link"><a href="#">Blog</a></li>
+          <li class="footer-link"><a href="#">Three</a></li>
+          <li class="footer-link"><a href="#">Store</a></li>
+          <li class="footer-link"><a href="#">Resume</a></li>
+          <li class="footer-link"><a href="#">Giraffe</a></li>
         </ul>
       </div>
     </div>
@@ -29,7 +25,7 @@
     <div class="footer-row-2">
       <div class="copyright">
         <p class="copyright-text">
-          Copyright &copy; {{ currentYear }} <a href="#">Rief Productions</a>.
+          Copyright &copy; {{ currentYear }} <a href="#">Rief Productions</a>
         </p>
       </div>
 
@@ -85,7 +81,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  padding: 0 rem;
 }
 .footer-row-1 {
   align-items: flex-start;
@@ -103,28 +98,37 @@ export default {
   width: 33.3%;
 }
 .footer-about-text {
-  color: #2c3e51;
-  filter: drop-shadow(0 0 1px#ffffff);
-  font-size: 1.5rem;
+  color: #212d3a;
+  font-size: 1.3rem;
   line-height: 2rem;
 }
 .footer-about {
   align-items: flex-end;
+  text-align: right;
 }
 
 .footer-links-group {
-  width: 25%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: left;
 }
 .footer-links {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-self: start;
+}
+
+.footer-link li {
+  text-align: left;
 }
 .site-footer {
-  background-color: #1abc9c;
+  background: rgb(35, 162, 137);
+  background: linear-gradient(
+    145deg,
+    rgb(54, 201, 171) 0%,
+    rgba(26, 188, 156, 1) 100%
+  );
   padding: 45px 0 20px;
   font-size: 15px;
   line-height: 24px;
@@ -132,7 +136,7 @@ export default {
 }
 .site-footer hr {
   border-top-color: #2c3e51;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .site-footer h6 {
@@ -148,34 +152,17 @@ export default {
   color: #737373;
 }
 .site-footer a:hover {
-  color: #3366cc;
+  color: #fff;
   text-decoration: none;
 }
 .footer-links {
   padding-left: 0;
   list-style: none;
   color: #2c3e51;
-  filter: drop-shadow(0 0 1px#ffffff);
+
   font-size: 1.7rem;
 }
-@media only screen and (max-width: 600px) {
-  .footer-row-1 {
-    display: flex;
-    flex-direction: column;
-  }
-  .footer-about {
-    width: 100%;
-    order: 2;
-  }
-  .footer-about-text {
-    padding: 0 1.7rem;
-  }
-  .footer-links-group {
-    width: 100%;
-    order: 1;
-    margin-bottom: 1.1rem;
-  }
-}
+
 .footer-links li {
   margin-bottom: 0.9rem;
 }
@@ -183,33 +170,29 @@ export default {
   text-decoration: none;
   font-size: 1.5rem;
   color: #2c3e51;
+  text-align: left;
 }
 .footer-links a:active,
 .footer-links a:focus,
 .footer-links a:hover {
-  color: #3366cc;
+  color: #ffffff;
   text-decoration: none;
 }
 
 .copyright-text {
   margin: 0;
   color: #2c3e51;
-  filter: drop-shadow(0 0 1px#ffffff);
-  font-size: 1.2rem;
+
+  font-size: 1.3rem;
   padding-bottom: 1rem;
+  text-align: right;
 }
 .copyright-text a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (max-width: 767px) {
-  .site-footer {
-    padding-bottom: 0;
-  }
-  .site-footer .copyright-text {
-    text-align: center;
-  }
+  filter: drop-shadow(0 0 1px#ffffff);
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .social-media {
@@ -217,14 +200,14 @@ export default {
     right: 15px;
     top: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   &-icon {
     font-size: 35px;
-    // color: rgba(26, 188, 156, 1);
-    color: rgba(44, 62, 81, 1);
-    transition: all 0.5s;
+    // color: rgba(33, 45, 58, 0.87);
+    color: #fff;
+    transition: all 0.2s;
   }
   &-link:hover &-icon {
     color: #fff;
@@ -240,7 +223,7 @@ export default {
     );
     height: 38px;
     width: 38px;
-    margin: 0 8px;
+    margin: 0 9px 0px 0px;
     padding: 6px;
     border-radius: 8px;
     align-items: center;
@@ -263,6 +246,15 @@ export default {
   }
 }
 
+@media (max-width: 767px) {
+  .site-footer {
+    padding-bottom: 0;
+  }
+  .site-footer .copyright-text {
+    text-align: center;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .social-media {
     &-bar {
@@ -278,6 +270,21 @@ export default {
 }
 
 @media only screen and (min-width: 600px) and (max-width: 768px) {
+  .footer-about {
+    text-align: center;
+    width: 100%;
+    order: 2;
+  }
+  .footer-links-group {
+    width: 100%;
+    order: 1;
+    margin-bottom: 1.1rem;
+    text-align: center;
+  }
+  .footer-row-1 {
+    display: flex;
+    flex-direction: column;
+  }
   .social-media {
     &-link {
       margin-bottom: 5px;
@@ -289,6 +296,29 @@ export default {
 }
 
 @media only screen and (max-width: 600px) {
+  .footer-about {
+    text-align: center;
+    width: 100%;
+    order: 2;
+  }
+  .footer-links-group {
+    width: 100%;
+    order: 1;
+    margin-bottom: 1.1rem;
+    text-align: center;
+  }
+  .footer-row-1 {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-about-text {
+    padding: 0 1.7rem;
+  }
+
+  .footer-links a {
+    text-align: center;
+  }
+
   .social-media {
     &-bar {
       z-index: 500;
