@@ -66,10 +66,6 @@ a {
   transform: scale(1.03);
 }
 
-.cards_item {
-  display: flex;
-  padding: 1rem;
-}
 .card {
   background-color: white;
   border-radius: 0.25rem;

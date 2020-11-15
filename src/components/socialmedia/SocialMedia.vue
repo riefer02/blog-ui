@@ -1,12 +1,21 @@
 <template>
   <div class="social-media-bar">
-    <a href="https://github.com/riefer02" target="_blank" class="social-media-link"
+    <a
+      href="https://github.com/riefer02"
+      target="_blank"
+      class="social-media-link"
       ><FontAwesomeIcon class="social-media-icon" :icon="['fab', 'github']"
     /></a>
-    <a href="https://wa.me/18178974599?text=I'm%20found%20your%20portfolio%20site%20and%20just%20wanted%20to%20say%20hello!" target="_blank" class="social-media-link"
+    <a
+      href="https://wa.me/18178974599?text=I'm%20found%20your%20portfolio%20site%20and%20just%20wanted%20to%20say%20hello!"
+      target="_blank"
+      class="social-media-link"
       ><FontAwesomeIcon class="social-media-icon" :icon="['fab', 'whatsapp']"
     /></a>
-    <a href="https://www.instagram.com/riefer02/" target="_blank" class="social-media-link"
+    <a
+      href="https://www.instagram.com/riefer02/"
+      target="_blank"
+      class="social-media-link"
       ><FontAwesomeIcon class="social-media-icon" :icon="['fab', 'instagram']"
     /></a>
     <a href="#" class="social-media-link"
