@@ -15,10 +15,5 @@ export default {
     ImageTextLogo,
     HomeMain
   }
-  // computed: {
-  //   screenWidth() {
-  //     return window.innerWidth;
-  //   }
-  // }
 };
 </script>

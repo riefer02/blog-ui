@@ -8,15 +8,14 @@
       </transition>
     </router-view>
     <transition appear name="slide-fade" mode="out-in">
-      <div>
       <Snackbar />
-      </div>
     </transition>
     <Modal
       :showModal="showModal"
       :modalConfig="modalConfig"
       @handleModal="handleModal(modalState)"
     />
+    <Footer />
   </div>
 </template>
 
@@ -26,6 +25,7 @@ import Modal from '@/components/utility/Modal.vue';
 import Snackbar from '@/components/utility/Snackbar.vue';
 import Navigation from '@/components/navigation/Nav.vue';
 import SocialMedia from '@/components/socialmedia/SocialMedia.vue';
+import Footer from '@/components/layout/Footer.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faGithub,
@@ -58,7 +58,8 @@ export default {
     Navigation,
     FontAwesomeIcon,
     Modal,
-    SocialMedia
+    SocialMedia,
+    Footer
   },
   data: () => ({
     showModal: true
@@ -98,6 +99,12 @@ export default {
 
 body {
   margin: 0 auto;
+}
+
+/* Utility Classes */
+
+.pt-5 {
+  padding-top: 5px;
 }
 
 .d-flex {

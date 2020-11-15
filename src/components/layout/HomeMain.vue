@@ -1,27 +1,63 @@
 <template>
-  <main class="wrapper">
-    <h1 class="header-text-primary">Full Stack Developer</h1>
-    <!-- <h3 class="header-test-secondary"></h3> -->
-    <p class="main-text">
-      Hi, and welcome to my portfolio website. My name is Andrew Riefenstahl and
-      I am a self-taught full stack developer. I studied anthropology when I was
-      younger, and serve my community as a career educator. I began exploring
-      computer science a few years back and discovered a passion I never knew
-      existed. I'm creative, love to learn, a team player, and enjoy solving
-      puzzles. I have many other hobbies too, so if you want
-      to learn more please, "stay awhile and listen".
-    </p>
-
-    <img
-      class="full-bleed giraffe-banner"
-      alt="A Herd of Giraffe"
-      :src="require('../../assets/images/giraffeHerd.jpg')"
-    />
-  </main>
+  <div>
+    <main class="wrapper">
+      <h1 class="header-text-primary">Full Stack Developer</h1>
+      <!-- <h3 class="header-test-secondary"></h3> -->
+      <p class="main-text">
+        Hi, and welcome to my portfolio website. My name is Andrew Riefenstahl
+        and I am a self-taught full stack developer. I studied anthropology when
+        I was younger, and serve my community as a career educator. I began
+        exploring computer science a few years back and discovered a passion I
+        never knew existed. I'm creative, love to learn, a team player, and
+        enjoy solving puzzles. I have many other hobbies too, so if you want to
+        learn more please, "stay awhile and listen".
+      </p>
+      <img
+        class="full-bleed giraffe-banner"
+        alt="A Herd of Giraffe"
+        :src="require('../../assets/images/giraffeHerd.jpg')"
+      />
+      <p class="main-text pt-5">
+        I study many knowledge fields related to the human experience, because I
+        genuinely want to grow everyday. I know that it is the little things
+        that add up to a great life and we are only given just one to live. So I
+        try to make the best by exploring new aspects with every turning page.
+      </p>
+    </main>
+    <ResponsiveCardList :items="hobbies" />
+  </div>
 </template>
 
 <script>
-export default {};
+import ResponsiveCardList from '@/components/list/ResponsiveCardList.vue';
+export default {
+  components: {
+    ResponsiveCardList
+  },
+  data: () => ({
+    hobbies: [
+      {
+        id: 1,
+        name: 'Developer',
+        summary:
+          'I am a proficient full-stack developer. My favorite front-end framework is Vue.js and my backend is comprised of Express.js, MongoDB, and Node.js. I am also versed in several other stacks and technologies.',
+        image: ''
+      },
+      {
+        id: 2,
+        name: 'Music Producer',
+        summary:
+          ' For the past 10 years I have study audio engineering and music production. I have developed audio for commercials, video games, and musicians.'
+      },
+      {
+        id: 3,
+        name: 'Writer',
+        summary:
+          "I just finished writing a science fiction novel and it's currently being edited. I can't wait to share it with the world."
+      }
+    ]
+  })
+};
 </script>
 
 <style lang="css" scoped>
