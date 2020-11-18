@@ -84,6 +84,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e51;
+  box-sizing: border-box;
 }
 
 #nav {
@@ -107,6 +108,11 @@ body {
 
 .pt-5 {
   padding-top: 5px;
+}
+
+.my-5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .d-flex {

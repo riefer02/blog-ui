@@ -1,5 +1,4 @@
 <template>
-
   <div class="ui-snackbar-container">
     <div class="ui-snackbar" v-show="show" transition="ui-snackbar-toggle">
       <div class="ui-snackbar-text">{{ snack }}</div>

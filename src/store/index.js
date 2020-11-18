@@ -14,7 +14,7 @@ export default createStore({
     blogs: [],
     snack: '',
     modalConfig: {
-      modalType: 'disabled',
+      modalType: 'login',
       modalActive: true,
       modalData: {}
     }

@@ -595,7 +595,7 @@ export default {
   max-width: 595px;
   vertical-align: middle;
   overflow: hidden;
-  z-index:-1;
+  z-index: -1;
 }
 
 .svg-content {
@@ -610,7 +610,6 @@ export default {
 
 .cls-1 {
   fill: #fff;
-
 }
 .cls-2 {
   fill: #ffc39e;

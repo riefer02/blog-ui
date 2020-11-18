@@ -73,6 +73,17 @@ textarea {
   transition: 0.2s ease all;
   max-width: 100%;
   min-width: 100%;
+  height: 15rem;
   min-height: fit-content;
+}
+@media screen and (min-width: 900px) {
+  textarea {
+    height: 8rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  textarea {
+    height: 13.5rem;
+  }
 }
 </style>

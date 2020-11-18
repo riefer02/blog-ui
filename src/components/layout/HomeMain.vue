@@ -90,15 +90,31 @@ export default {
   filter: drop-shadow(0 0 1px #ef8d9c);
 }
 
-@media only screen and (max-width: 600px) {
-  .giraffe-banner {
-    object-position: -60px -50px;
-  }
-}
-
 .main-text {
   font-size: 1.2rem;
   line-height: 1.7rem;
   padding-bottom: 1.5rem;
+}
+@media only screen and (max-width: 600px) {
+  .giraffe-banner {
+    object-position: -60px -50px;
+  }
+
+  .full-bleed {
+    grid-column: 1 / -1;
+    width: 100%;
+    position: relative;
+    margin: 0;
+  }
+  .main-text {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1400px) {
+  .full-bleed {
+    margin-top: 1.3rem;
+    margin-bottom: 1.9rem;
+  }
 }
 </style>

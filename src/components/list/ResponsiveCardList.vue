@@ -28,9 +28,7 @@ export default {
   &-container {
     width: 85%;
     margin: 3rem auto;
-
     display: grid;
-    // grid-template-columns: repeat(3, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
     grid-template-rows: auto auto;
     grid-gap: 4rem;
@@ -38,9 +36,6 @@ export default {
   }
 
   &-item {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
     display: grid;
     grid-template-columns: min-content 1fr;
     grid-template-rows: auto auto;
@@ -62,6 +57,32 @@ export default {
     font-size: 1.1rem;
     justify-self: start;
     text-align: left;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+  &-container {
+    grid-template-columns: 1fr;
+}
+
+    &-icon {
+      right: 0px;
+      grid-column: 1;
+      grid-row: 1;
+      justify-self: flex-end;
+    }
+
+    &-header {
+      grid-column: 2;
+      justify-self: flex-end;
+    }
+
+    &-text {
+      grid-row: 2;
+      grid-column: 1/-1;
+      text-align: center;
+    }
   }
 }
 </style>

@@ -72,7 +72,6 @@ export default {
     userName() {
       return this.$store.state.user.name;
     },
-
     ...mapState({
       categories: state => state.blogTopics
     })
@@ -133,5 +132,12 @@ button:hover {
 
 button:active {
   opacity: 0.4;
+}
+
+@media screen and (max-width: 600px) {
+  form {
+    width: auto;
+    padding: 0 1rem;
+  }
 }
 </style>

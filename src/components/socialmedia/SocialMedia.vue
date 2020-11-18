@@ -118,8 +118,8 @@ export default {
 @media only screen and (max-width: 600px) {
   .social-media {
     &-bar {
-      right: 0px;
-      top: 5px;
+      right: 3px;
+      top: 4.6rem;
       z-index: 500;
     }
 

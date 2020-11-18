@@ -52,7 +52,6 @@ div {
 label {
   margin-right: 1rem;
   font-size: 14px;
-
   cursor: pointer;
 }
 
@@ -80,6 +79,7 @@ select {
   outline: none;
   border: 1px solid #bbb;
   border-radius: 20px;
+  background-color: #fff;
   display: inline-block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

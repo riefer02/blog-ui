@@ -8,6 +8,29 @@
             class="close-icon"
           />
         </button>
+        <!-- Welcome Message Mode -->
+        <div v-if="modalMode === 'login'">
+          <h2>Welcome to</h2>
+          <TextLogo />
+          <h3>Login</h3>
+          <BaseInput
+            type="text"
+            v-model="loginCredentials.username"
+            placeholder="Username"
+          />
+          <BaseInput
+            type="password"
+            v-model="loginCredentials.password"
+            placeholder="Password"
+          />
+          <button class="login-btn">Login</button>
+          <div class="my-5">or</div>
+          <button class="guest-login-btn">Guest</button>
+          <hr />
+          <p class="sign-up-text">Need an account?&nbsp;</p>
+          <p class="sign-up-link">Sign Up</p>
+        </div>
+        <!-- Editor Mode -->
         <div v-if="modalMode === 'editBlog'">
           <h3>Blog Editor Mode</h3>
           <p class="pop-field-opt-txt">
@@ -42,6 +65,7 @@
             </button>
           </form>
         </div>
+        <!-- Disabled Mode -->
         <div v-else-if="modalMode === 'disabled'">
           <h3 class="modal-disabled-text">Modal Disabled</h3>
           <p>This is the default state of the modal</p>
@@ -52,6 +76,7 @@
 </template>
 
 <script>
+import TextLogo from '@/components/logo/TextLogo.vue';
 import BlogService from '../../../services/BlogService';
 import { mapState } from 'vuex';
 import BaseInput from '@/components/blog/BaseInput.vue';
@@ -70,7 +95,8 @@ export default {
     BaseInput,
     BaseSelect,
     BaseTextArea,
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    TextLogo
   },
   data: () => ({
     editBlogMode: false,
@@ -78,6 +104,10 @@ export default {
       title: '',
       summary: '',
       topic: ''
+    },
+    loginCredentials: {
+      username: '',
+      password: ''
     },
     messageContent: ''
   }),
@@ -151,6 +181,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// Universal Modal Styles
 .overlay {
   position: fixed;
   z-index: 9998;
@@ -202,11 +233,13 @@ export default {
   transform: scale(1.1);
 }
 
+// Disabled Mode Styles
 .modal-disabled-text {
   padding: 1rem;
   color: white;
 }
 
+// Editor Mode Styles
 .pop-fields-btn {
   background-color: #1abc9c;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
@@ -229,7 +262,62 @@ export default {
   position: relative;
   display: inline-block;
   top: -3px;
-
   font-size: 0.8rem;
+}
+
+@media screen and (min-width: 900px) {
+  .modal {
+    height: 90%;
+    min-width: 400px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    height: 100vh;
+    width: 100vw;
+    padding: 2px;
+  }
+}
+
+// Login Mode Styles
+.sign-up-text,
+.sign-up-link {
+  display: inline-block;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, #ef8d9c, #e4536a, #ef8d9c);
+}
+
+.login-btn,
+.guest-login-btn {
+  padding: 15px 50px;
+  width: auto;
+  background: #1abc9c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  clear: right;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  border-radius: 10px 0 10px 0;
+  outline: none !important;
+  box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
+}
+
+.login-btn:hover,
+.guest-login-btn:hover {
+  transform: scale(1.02);
+}
+
+h3 {
+  margin: 0px;
 }
 </style>

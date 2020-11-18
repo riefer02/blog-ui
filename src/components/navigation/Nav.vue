@@ -231,6 +231,8 @@ export default {
     }
     &-list {
       left: 47%;
+      margin: 0;
+      padding: 0;
     }
     &-btn:hover &-icon::before {
       top: -0.7rem;

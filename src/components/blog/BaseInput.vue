@@ -68,4 +68,11 @@ input {
   -o-transition: 0.2s ease all;
   transition: 0.2s ease all;
 }
+
+@media screen and (min-width: 600px) {
+
+  .field input {
+    width: 100%;
+  }
+}
 </style>
