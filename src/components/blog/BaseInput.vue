@@ -57,7 +57,7 @@ input {
   outline: none;
   border: 1px solid #bbb;
   border-radius: 20px;
-  display: inline-block;
+  display: block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

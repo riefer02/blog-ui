@@ -11,10 +11,10 @@
         <!-- Welcome Message Mode -->
         <transition-group
           tag="div"
-          v-bind:css="false"
-          v-on:before-enter="beforeEnter"
-          v-on:enter="enter"
-          v-on:leave="leave"
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @leave="leave"
+          :css="false"
         >
           <div v-if="modalMode === 'login'" key="1">
             <h2>Welcome to</h2>
@@ -216,28 +216,20 @@ export default {
         console.log(error);
       }
     },
-    beforeEnter: function(el) {
+    beforeEnter(el) {
       el.style.opacity = 0;
       el.style.height = 0;
     },
-    enter: function(el, done) {
+    enter(el, done) {
       // var delay = el.dataset.index * 150;
       setTimeout(function() {
-        Velocity(
-          el,
-          { opacity: 1, transform: 'translateX(10px)' },
-          { complete: done }
-        );
+        Velocity(el, { opacity: 1 }, { complete: done });
       }, 500);
     },
-    leave: function(el, done) {
+    leave(el, done) {
       // var delay = el.dataset.index * 150;
       setTimeout(function() {
-        Velocity(
-          el,
-          { opacity: 0, height: 0, transform: 'translateX(-10px)' },
-          { complete: done }
-        );
+        Velocity(el, { opacity: 0, height: 0 }, { complete: done });
       }, 0);
     }
   },
@@ -352,14 +344,22 @@ export default {
   font-size: 0.8rem;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 900px) { // Anything bigger than 900 px
   .modal {
     height: 90%;
     min-width: 400px;
   }
 }
+@media screen and (max-width: 768px){ // Anything 768 and smaller
+  .modal {
+    height: auto;
+    min-width: 400px;
+    width: 80%;
+    padding: 3rem;
+  }
+}
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) { // Anything 600 and smaller
   .modal {
     height: 100vh;
     width: 100vw;

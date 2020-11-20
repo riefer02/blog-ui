@@ -161,6 +161,4 @@ body {
 .slide-up-enter-active {
   transition: all 0.2s ease;
 }
-
-
 </style>
