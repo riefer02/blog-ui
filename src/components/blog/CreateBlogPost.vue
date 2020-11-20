@@ -52,7 +52,7 @@ export default {
           topic
         };
         const response = await self.axios.post(
-          'http://localhost:6969/blog/create',
+          'http://localhost:6969/api/v1/blog/create',
           newBlog
         );
         console.log(response);

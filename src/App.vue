@@ -127,6 +127,7 @@ body {
 }
 
 /*** Transitions ***/
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -160,4 +161,6 @@ body {
 .slide-up-enter-active {
   transition: all 0.2s ease;
 }
+
+
 </style>

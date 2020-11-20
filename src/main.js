@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import Velocity from 'velocity-animate';
 // import upperFirst from 'lodash/upperFirst';
 // import camelCase from 'lodash/camelCase';
 
@@ -13,11 +14,11 @@ import VueAxios from 'vue-axios';
 //   /Base[A-Z]\w+\.(vue|js)$/
 // );
 
-
 const app = createApp(App)
   .use(store)
   .use(router)
-  .use(VueAxios, axios);
+  .use(VueAxios, axios)
+  .use(Velocity);
 
 // requireComponent.keys().forEach(fileName => {
 //   const componentConfig = requireComponent(fileName);

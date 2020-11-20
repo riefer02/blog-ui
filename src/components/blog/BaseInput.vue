@@ -17,7 +17,6 @@ export default {
   props: {
     label: {
       type: String,
-      required: true
     },
     modelValue: {
       type: [String, Number],

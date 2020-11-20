@@ -9,73 +9,115 @@
           />
         </button>
         <!-- Welcome Message Mode -->
-        <div v-if="modalMode === 'login'">
-          <h2>Welcome to</h2>
-          <TextLogo />
-          <h3>Login</h3>
-          <BaseInput
-            type="text"
-            v-model="loginCredentials.username"
-            placeholder="Username"
-          />
-          <BaseInput
-            type="password"
-            v-model="loginCredentials.password"
-            placeholder="Password"
-          />
-          <button class="login-btn">Login</button>
-          <div class="my-5">or</div>
-          <button class="guest-login-btn">Guest</button>
-          <hr />
-          <p class="sign-up-text">Need an account?&nbsp;</p>
-          <p class="sign-up-link">Sign Up</p>
-        </div>
-        <!-- Editor Mode -->
-        <div v-if="modalMode === 'editBlog'">
-          <h3>Blog Editor Mode</h3>
-          <p class="pop-field-opt-txt">
-            Populate Fields
-          </p>
-          <button class="pop-fields-btn" @click.prevent="populateFields()">
-            <font-awesome-icon
-              :icon="['fas', 'feather-alt']"
-              class="pop-field-icon"
-            />
-          </button>
-          <form @submit.prevent="formSubmit">
+        <transition-group
+          tag="div"
+          v-bind:css="false"
+          v-on:before-enter="beforeEnter"
+          v-on:enter="enter"
+          v-on:leave="leave"
+        >
+          <div v-if="modalMode === 'login'" key="1">
+            <h2>Welcome to</h2>
+            <TextLogo />
+            <h3>Login</h3>
             <BaseInput
-              label="Blog Title"
               type="text"
-              v-model="blog.title"
-              :placeholder="titlePlaceholder"
+              v-model="loginCredentials.username"
+              placeholder="Username"
             />
-            <BaseSelect
-              :options="categories"
-              label="Topic"
-              :placeholder="topicPlaceholder"
-              v-model="blog.topic"
+            <BaseInput
+              type="password"
+              v-model="loginCredentials.password"
+              placeholder="Password"
             />
-            <BaseTextArea
-              label="Summary"
-              :placeholder="summaryPlaceholder"
-              v-model="blog.summary"
+            <button class="login-btn">Login</button>
+            <div class="my-5">or</div>
+            <button class="guest-login-btn">Guest</button>
+            <hr />
+            <p class="sign-up-text">Need an account?&nbsp;</p>
+            <p class="sign-up-link" @click="activateRegistrationModal">
+              Sign Up
+            </p>
+          </div>
+
+          <!-- Register New User -->
+
+          <div v-else-if="modalMode === 'registration'" key="2">
+            <h2>Welcome to</h2>
+            <TextLogo />
+            <h3>Register</h3>
+            <BaseInput
+              type="text"
+              v-model="registration.username"
+              placeholder="Username"
             />
-            <button class="submit-btn" @click.prevent="submitForm(this.blogID)">
-              Submit
+            <BaseInput
+              type="email"
+              v-model="registration.email"
+              placeholder="Email"
+            />
+            <BaseInput
+              type="password"
+              v-model="registration.password"
+              placeholder="Password"
+            />
+            <button class="login-btn">Register</button>
+            <hr />
+            <p class="sign-up-text">Have an Account?&nbsp;</p>
+            <p class="sign-up-link" @click="activateLoginModal">Log In</p>
+          </div>
+
+          <!-- Editor Mode -->
+          <div v-else-if="modalMode === 'editBlog'" key="3">
+            <h3>Blog Editor Mode</h3>
+            <p class="pop-field-opt-txt">
+              Populate Fields
+            </p>
+            <button class="pop-fields-btn" @click.prevent="populateFields()">
+              <font-awesome-icon
+                :icon="['fas', 'feather-alt']"
+                class="pop-field-icon"
+              />
             </button>
-          </form>
-        </div>
-        <!-- Disabled Mode -->
-        <div v-else-if="modalMode === 'disabled'">
-          <h3 class="modal-disabled-text">Modal Disabled</h3>
-          <p>This is the default state of the modal</p>
-        </div>
+            <form @submit.prevent="formSubmit">
+              <BaseInput
+                label="Blog Title"
+                type="text"
+                v-model="blog.title"
+                :placeholder="titlePlaceholder"
+              />
+              <BaseSelect
+                :options="categories"
+                label="Topic"
+                :placeholder="topicPlaceholder"
+                v-model="blog.topic"
+              />
+              <BaseTextArea
+                label="Summary"
+                :placeholder="summaryPlaceholder"
+                v-model="blog.summary"
+              />
+              <button
+                class="submit-btn"
+                @click.prevent="submitForm(this.blogID)"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+          <!-- Disabled Mode -->
+          <div v-else-if="modalMode === 'disabled'" key="4">
+            <h3 class="modal-disabled-text">Modal Disabled</h3>
+            <p>This is the default state of the modal</p>
+          </div>
+        </transition-group>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Velocity from 'velocity-animate';
 import TextLogo from '@/components/logo/TextLogo.vue';
 import BlogService from '../../../services/BlogService';
 import { mapState } from 'vuex';
@@ -109,9 +151,30 @@ export default {
       username: '',
       password: ''
     },
+    registration: {
+      username: '',
+      email: '',
+      password: ''
+    },
     messageContent: ''
   }),
   methods: {
+    activateLoginModal() {
+      let modalConfig = {
+        modalType: 'login',
+        modalActive: true,
+        modalData: {}
+      };
+      this.$store.commit('SET_MODAL', modalConfig);
+    },
+    activateRegistrationModal() {
+      let modalConfig = {
+        modalType: 'registration',
+        modalActive: true,
+        modalData: {}
+      };
+      this.$store.commit('SET_MODAL', modalConfig);
+    },
     resetModal() {
       let resetConfig = {
         modalType: 'disabled',
@@ -152,6 +215,30 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    beforeEnter: function(el) {
+      el.style.opacity = 0;
+      el.style.height = 0;
+    },
+    enter: function(el, done) {
+      // var delay = el.dataset.index * 150;
+      setTimeout(function() {
+        Velocity(
+          el,
+          { opacity: 1, transform: 'translateX(10px)' },
+          { complete: done }
+        );
+      }, 500);
+    },
+    leave: function(el, done) {
+      // var delay = el.dataset.index * 150;
+      setTimeout(function() {
+        Velocity(
+          el,
+          { opacity: 0, height: 0, transform: 'translateX(-10px)' },
+          { complete: done }
+        );
+      }, 0);
     }
   },
   computed: {
@@ -284,6 +371,14 @@ export default {
 .sign-up-text,
 .sign-up-link {
   display: inline-block;
+}
+
+.sign-up-link {
+  cursor: pointer;
+}
+
+.sign-up-link:hover {
+  color: #fff;
 }
 
 hr {
