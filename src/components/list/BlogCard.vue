@@ -23,7 +23,6 @@
 </template>
 
 <script>
-// import BlogService from '../../../services/BlogService';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
@@ -43,7 +42,7 @@ export default {
       let newModalConfig = {
         modalActive: true,
         modalData: blog,
-        modalType: 'editBlog'
+        modalType: 'editor'
       };
       this.$store.commit('SET_MODAL', newModalConfig);
     }

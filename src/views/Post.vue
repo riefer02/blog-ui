@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BlogService from '../../services/BlogService';
+import BlogService from '../services/BlogService';
 import BlogSkeletonLoader from '@/components/utility/BlogSkeletonLoader.vue';
 
 export default {
