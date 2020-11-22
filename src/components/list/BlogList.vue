@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import BlogService from '../../../services/BlogService';
+import BlogService from '../../services/BlogService';
 import BlogCard from '@/components/list/BlogCard.vue';
 export default {
   components: {

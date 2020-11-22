@@ -21,7 +21,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import Modal from '@/components/utility/Modal.vue';
+import Modal from '@/components/modal/appModal.vue';
 import Snackbar from '@/components/utility/Snackbar.vue';
 import Navigation from '@/components/navigation/Nav.vue';
 import SocialMedia from '@/components/socialmedia/SocialMedia.vue';
@@ -120,6 +120,10 @@ body {
   flex-wrap: wrap;
   align-items: stretch;
   align-content: stretch;
+}
+
+.flex-column {
+  flex-direction: column;
 }
 
 .justify-center {

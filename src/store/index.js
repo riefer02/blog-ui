@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import blogService from '../../services/BlogService.js';
+import blogService from '../services/BlogService.js';
 
 export default createStore({
   state: {
