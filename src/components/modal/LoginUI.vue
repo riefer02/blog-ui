@@ -84,7 +84,51 @@ export default {
   transform: scale(1.02);
 }
 
+.sign-up-text,
+.sign-up-link {
+  display: inline-block;
+}
+
+.sign-up-link {
+  cursor: pointer;
+}
+
+.sign-up-link:hover {
+  color: #fff;
+}
+
+.login-btn,
+.guest-login-btn {
+  padding: 15px 50px;
+  width: auto;
+  background: #1abc9c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  clear: right;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  border-radius: 10px 0 10px 0;
+  outline: none !important;
+  box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
+}
+
+.login-btn:hover,
+.guest-login-btn:hover {
+  transform: scale(1.02);
+}
+
 h3 {
-  margin: 0px;
+  margin-top: 0px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, #ef8d9c, #e4536a, #ef8d9c);
 }
 </style>

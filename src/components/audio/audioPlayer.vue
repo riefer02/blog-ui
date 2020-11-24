@@ -20,18 +20,25 @@
               type="range"
               id="volume"
               class="volume-control"
+              list="gain-vals"
               min="0"
               max="2"
-              value="1"
-              list="gain-vals"
               step="0.01"
-              data-action="volume"
+              value="1"
+              @input="updateVolume($event.target.value)"
             />
             <datalist id="gain-vals">
               <option value="0" label="min"> </option>
               <option value="2" label="max"> </option>
             </datalist>
             <label for="volume">Volume</label>
+          </div>
+          <!-- Compression Controller -->
+          <div class="controller-compressor">
+            <button class="compressor-button" @click="toggleCompressor()">
+              <span>On/Off</span>
+            </button>
+            <label>Compressor</label>
           </div>
           <!-- Panning Controller -->
           <div class="controller-panner">
@@ -42,9 +49,9 @@
               list="pan-vals"
               min="-1"
               max="1"
-              value="0"
               step="0.01"
-              data-action="panner"
+              value="0"
+              @input="updatePanning($event.target.value)"
             />
             <datalist id="pan-vals">
               <option value="-1" label="left"> </option>
@@ -62,8 +69,8 @@
             >
               <span>On/Off</span>
             </button>
-            <!-- Play Button -->
           </div>
+          <!-- Play Button -->
           <div class="controller-play">
             <button class="play-button" role="switch" @click="playButton()">
               <span>Play/Pause</span>
@@ -79,55 +86,53 @@
 export default {
   name: 'AudioPlayer',
   data: () => ({
-    AudioContext: window.AudioContext || window.webkitAudioContext,
+    audio: require('../../assets/audio/tlc-intro.wav'),
+    AudioContext: undefined,
+    audioBuffer: undefined,
     audioCtx: undefined,
-    track: undefined,
     audioPlaying: false,
-    audio: require('../../assets/audio/tlc-intro.wav')
+    compressorOn: false,
+    compressor: undefined,
+    panner: undefined,
+    gainNode: undefined,
+    audioSource: undefined
   }),
-  computed: {
-    audioElement() {
-      return this.$refs.audio;
-    }
+  mounted: function() {
+    // create audio environment
+    this.AudioContext = window.AudioContext || window.webkitAudioContext;
+    this.audioCtx = new this.AudioContext();
+    // initialize plugins
+    this.compressor = this.audioCtx.createDynamicsCompressor();
+    this.compressor.threshold.value = -50;
+    this.compressor.knee.value = 40;
+    this.compressor.ratio.value = 12;
+    this.compressor.attack.value = 0;
+    this.compressor.release.value = 0.25;
+    this.compressorOn = true;
+    const pannerOptions = { pan: 0 };
+    this.panner = new StereoPannerNode(this.audioCtx, pannerOptions);
+    this.gainNode = this.audioCtx.createGain();
+    // audio source
+    this.audioSource = this.$refs.audio;
+    this.track = this.audioCtx.createMediaElementSource(this.audioSource);
+
+    // connect our graph
+    this.track
+      .connect(this.gainNode)
+      .connect(this.compressor)
+      .connect(this.panner)
+      .connect(this.audioCtx.destination);
   },
   methods: {
+    updateVolume(value) {
+      this.gainNode.gain.value = value;
+    },
+    updatePanning(value) {
+      this.panner.pan.value = value;
+    },
     endAudio() {
       console.log('ending audio...');
       this.audioPlaying = false;
-    },
-    init() {
-      this.audioCtx = new AudioContext();
-      this.track = this.audioCtx.createMediaElementSource(this.audioElement);
-
-      // volume
-      const gainNode = this.audioCtx.createGain();
-
-      const volumeControl = document.querySelector('[data-action="volume"]');
-      volumeControl.addEventListener(
-        'input',
-        function() {
-          gainNode.gain.value = this.value;
-        },
-        false
-      );
-      // panning
-      const pannerOptions = { pan: 0 };
-      const panner = new StereoPannerNode(this.audioCtx, pannerOptions);
-
-      const pannerControl = document.querySelector('[data-action="panner"]');
-      pannerControl.addEventListener(
-        'input',
-        function() {
-          panner.pan.value = this.value;
-        },
-        false
-      );
-
-      // connect our graph
-      this.track
-        .connect(gainNode)
-        .connect(panner)
-        .connect(this.audioCtx.destination);
     },
     playButton() {
       if (!this.audioCtx) {
@@ -139,18 +144,33 @@ export default {
       }
 
       if (this.audioPlaying === false) {
-        this.audioElement.play().catch(err => {
+        this.audioSource.play().catch(err => {
           console.log(err);
         });
         this.audioPlaying = true;
 
         // if track is playing pause it
       } else if (this.audioPlaying === true) {
-        this.audioElement.pause();
+        this.audioSource.pause();
         this.audioPlaying = false;
       }
       //   let state = this.audioPlaying === true ? true : false;
       //   this.audioPlaying = state ? false : true;
+    },
+    toggleCompressor() {
+      if (this.compressorOn === false) {
+        console.log('activating compression');
+        this.gainNode.disconnect(this.panner);
+        this.gainNode.connect(this.compressor);
+        this.compressor.connect(this.panner);
+        this.compressorOn = true;
+      } else if (this.compressorOn === true) {
+        console.log('deactivating compression');
+        this.gainNode.disconnect(this.compressor);
+        this.compressor.disconnect(this.panner);
+        this.gainNode.connect(this.panner);
+        this.compressorOn = false;
+      }
     }
   }
 };
@@ -163,14 +183,17 @@ export default {
     background: linear-gradient(
       0deg,
       rgba(209, 217, 230, 1) 0%,
-      rgba(192, 205, 237, 1) 50%,
-      rgba(204, 210, 237, 0) 100%
+      rgba(192, 205, 235, 1) 50%,
+      rgba(209, 217, 235, 1) 100%
     );
     display: inline-block;
     padding: 2rem;
     margin: 1rem;
     border: 2px solid rgba(21, 35, 39, 0.3);
+    border-radius: 1px;
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
     color: rgb(33, 60, 133);
+    text-shadow: 0 0 2px white;
   }
   &-signature {
     position: relative;

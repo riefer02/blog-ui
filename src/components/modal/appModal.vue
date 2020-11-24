@@ -8,13 +8,14 @@
             class="close-icon"
           />
         </button>
-        <transition-group
-          tag="div"
-          @before-enter="beforeEnter"
-          @enter="enter"
-          @leave="leave"
-          :css="false"
-        >
+        <div class="modal-content">
+          <!-- <transition-group
+            tag="div"
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @leave="leave"
+            :css="false"
+          > -->
           <LoginUI v-if="modalMode === 'login'" key="1" />
           <!-- Register New User -->
           <SignUpUI v-else-if="modalMode === 'register'" key="2" />
@@ -29,7 +30,8 @@
             <h3 class="modal-disabled-text">Modal Disabled</h3>
             <p>This is the default state of the modal</p>
           </div>
-        </transition-group>
+          <!-- </transition-group> -->
+        </div>
       </div>
     </div>
   </div>
@@ -39,7 +41,7 @@
 import LoginUI from '@/components/modal/LoginUI.vue';
 import SignUpUI from '@/components/modal/SignUpUI.vue';
 import EditorUI from '@/components/modal/EditorUI.vue';
-import Velocity from 'velocity-animate';
+// import Velocity from 'velocity-animate';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
@@ -67,27 +69,23 @@ export default {
         modalData: {}
       };
       this.$store.commit('SET_MODAL', resetConfig);
-      this.blog.title = '';
-      this.blog.summary = '';
-      this.blog.topic = '';
-    },
-
-    beforeEnter(el) {
-      el.style.opacity = 0;
-      el.style.height = 0;
-    },
-    enter(el, done) {
-      // var delay = el.dataset.index * 150;
-      setTimeout(function() {
-        Velocity(el, { opacity: 1 }, { complete: done });
-      }, 500);
-    },
-    leave(el, done) {
-      // var delay = el.dataset.index * 150;
-      setTimeout(function() {
-        Velocity(el, { opacity: 0, height: 0 }, { complete: done });
-      }, 0);
     }
+    // beforeEnter(el) {
+    //   el.style.opacity = 0;
+    //   el.style.height = 0;
+    // },
+    // enter(el, done) {
+    //   // var delay = el.dataset.index * 150;
+    //   setTimeout(function() {
+    //     Velocity(el, { opacity: 1 }, { complete: done });
+    //   }, 500);
+    // },
+    // leave(el, done) {
+    //   // var delay = el.dataset.index * 150;
+    //   setTimeout(function() {
+    //     Velocity(el, { opacity: 0, height: 0 }, { complete: done });
+    //   }, 0);
+    // }
   },
   computed: {
     modalMode() {
@@ -104,13 +102,32 @@ export default {
   z-index: 9998;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
+  overflow: auto;
   background-color: rgba(107, 45, 92, 0.5);
-  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.modal {
+  position: relative;
+  z-index: 9999;
+  height: auto;
+  max-height: 100%;
+  width: 70%;
+  max-width: 800px;
+  padding: 25px;
+  margin: 70px auto;
+  border-radius: 0.25rem;
+  background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+
+  &-content {
+    overflow: auto;
+  }
 }
 
 .close-btn {
@@ -145,40 +162,28 @@ export default {
   color: white;
 }
 
-.modal {
-  position: relative;
-  width: auto;
-  height: auto;
-  z-index: 9999;
-  margin: 0 auto;
-  padding: 20px 30px;
-  background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-}
-
 @media screen and (min-width: 900px) {
-  // Anything bigger than 900 px
-  .modal {
-    height: 80%;
-    min-width: 400px;
-  }
+  // // Anything bigger than 900 px
+  // .modal {
+  //   height: 80%;
+  //   min-width: 400px;
+  // }
 }
 @media screen and (max-width: 768px) {
   // Anything 768 and smaller
-  .modal {
-    height: auto;
-    width: 80%;
-    padding: 3rem;
-  }
+  // .modal {
+  //   height: auto;
+  //   width: 80%;
+  //   padding: 3rem;
+  // }
 }
 
 @media screen and (max-width: 600px) {
   // Anything 600 and smaller
-  .modal {
-    height: 100vh;
-    width: 100vw;
-    padding: 2px;
-  }
+  // .modal {
+  //   height: 100vh;
+  //   width: 100vw;
+  //   padding: 2px;
+  // }
 }
 </style>
