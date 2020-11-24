@@ -20,10 +20,11 @@
         placeholder="Password"
       />
       <button class="login-btn">Register</button>
+
+      <hr />
+      <p class="sign-up-text">Have an Account?&nbsp;</p>
+      <p class="sign-up-link" @click="activateLoginModal">Log In</p>
     </form>
-    <hr />
-    <p class="sign-up-text">Have an Account?&nbsp;</p>
-    <p class="sign-up-link" @click="activateLoginModal">Log In</p>
   </div>
 </template>
 
@@ -75,11 +76,6 @@ export default {
   color: #fff;
 }
 
-hr {
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, #ef8d9c, #e4536a, #ef8d9c);
-}
 .login-btn,
 .guest-login-btn {
   padding: 15px 50px;
@@ -106,6 +102,11 @@ hr {
 }
 
 h3 {
-  margin: 0px;
+  margin-top: 0px;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, #ef8d9c, #e4536a, #ef8d9c);
 }
 </style>
