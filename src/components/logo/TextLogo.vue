@@ -78,9 +78,13 @@ export default {};
   max-height: 630px;
 }
 
+@media screen and (min-width: 900px) {
+ .svg-content {
+   width:70%;
+ }
+}
+
 @media screen and (max-width: 497px) {
-  .svg-logo {
-  }
   .svg-content {
     width: 260px;
   }

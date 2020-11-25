@@ -119,11 +119,12 @@ export default {
   max-height: 100%;
   width: 70%;
   max-width: 800px;
-  padding: 25px;
+  padding: 0px 25px;
   margin: 70px auto;
   border-radius: 0.25rem;
   background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    overflow: auto;
 
   &-content {
     overflow: auto;
@@ -165,8 +166,8 @@ export default {
 @media screen and (min-width: 900px) {
   // // Anything bigger than 900 px
   // .modal {
-  //   height: 80%;
-  //   min-width: 400px;
+  // width: auto;
+  // height: 70%;
   // }
 }
 @media screen and (max-width: 768px) {

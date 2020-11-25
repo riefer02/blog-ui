@@ -31,7 +31,14 @@
               <option value="0" label="min"> </option>
               <option value="2" label="max"> </option>
             </datalist>
-            <label for="volume">Volume</label>
+            <label for="volume">Input Gain</label>
+          </div>
+          <!-- High Pass Filter Controller -->
+          <div class="controller-hpf">
+            <button class="hpf-button" @click="toggleHighPassFilter()">
+              <span>On/Off</span>
+            </button>
+            <label>Highpass Filter</label>
           </div>
           <!-- Compression Controller -->
           <div class="controller-compressor">
@@ -40,6 +47,7 @@
             </button>
             <label>Compressor</label>
           </div>
+
           <!-- Panning Controller -->
           <div class="controller-panner">
             <input
@@ -94,7 +102,9 @@ export default {
     compressorOn: false,
     compressor: undefined,
     panner: undefined,
-    gainNode: undefined,
+    inputGainNode: undefined,
+    highPassFilter: undefined,
+    highPassFilterOn: false,
     audioSource: undefined
   }),
   mounted: function() {
@@ -102,6 +112,7 @@ export default {
     this.AudioContext = window.AudioContext || window.webkitAudioContext;
     this.audioCtx = new this.AudioContext();
     // initialize plugins
+    // compressor
     this.compressor = this.audioCtx.createDynamicsCompressor();
     this.compressor.threshold.value = -50;
     this.compressor.knee.value = 40;
@@ -109,23 +120,31 @@ export default {
     this.compressor.attack.value = 0;
     this.compressor.release.value = 0.25;
     this.compressorOn = true;
+    // panner
     const pannerOptions = { pan: 0 };
     this.panner = new StereoPannerNode(this.audioCtx, pannerOptions);
-    this.gainNode = this.audioCtx.createGain();
+    // volume
+    this.inputGainNode = this.audioCtx.createGain();
+    // high pass filter @500Hz
+    this.highPassFilter = new BiquadFilterNode(this.audioCtx);
+    this.highPassFilter.type = 'highpass';
+    this.highPassFilter.frequency.value = 500;
+    this.highPassFilterOn = true;
     // audio source
     this.audioSource = this.$refs.audio;
     this.track = this.audioCtx.createMediaElementSource(this.audioSource);
 
     // connect our graph
     this.track
-      .connect(this.gainNode)
+      .connect(this.inputGainNode)
+      .connect(this.highPassFilter)
       .connect(this.compressor)
       .connect(this.panner)
       .connect(this.audioCtx.destination);
   },
   methods: {
     updateVolume(value) {
-      this.gainNode.gain.value = value;
+      this.inputGainNode.gain.value = value;
     },
     updatePanning(value) {
       this.panner.pan.value = value;
@@ -157,18 +176,33 @@ export default {
       //   let state = this.audioPlaying === true ? true : false;
       //   this.audioPlaying = state ? false : true;
     },
+    toggleHighPassFilter() {
+      if (this.highPassFilterOn === false) {
+        console.log('activating highpass filter');
+        this.inputGainNode.disconnect(this.compressor);
+        this.highPassFilter.connect(this.compressor);
+        this.inputGainNode.connect(this.highPassFilter);
+        this.highPassFilterOn = true;
+      } else if (this.highPassFilterOn === true) {
+        console.log('deactivating highpass filter');
+        this.highPassFilter.disconnect(this.compressor);
+        this.inputGainNode.connect(this.compressor);
+        this.inputGainNode.disconnect(this.highPassFilter);
+        this.highPassFilterOn = false;
+      }
+    },
     toggleCompressor() {
       if (this.compressorOn === false) {
         console.log('activating compression');
-        this.gainNode.disconnect(this.panner);
-        this.gainNode.connect(this.compressor);
+        this.highPassFilter.disconnect(this.panner);
+        this.highPassFilter.connect(this.compressor);
         this.compressor.connect(this.panner);
         this.compressorOn = true;
       } else if (this.compressorOn === true) {
         console.log('deactivating compression');
-        this.gainNode.disconnect(this.compressor);
+        this.highPassFilter.disconnect(this.compressor);
         this.compressor.disconnect(this.panner);
-        this.gainNode.connect(this.panner);
+        this.highPassFilter.connect(this.panner);
         this.compressorOn = false;
       }
     }

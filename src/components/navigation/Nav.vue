@@ -67,8 +67,6 @@ export default {
     background-image: radial-gradient(#ef8d9c, #ffc39e);
     z-index: 1000;
     transition: transform 0.8s cubic-bezier(0.47, 0.15, 0.2, 1.19);
-
-    // transform: scale(50);
   }
 
   &-nav {

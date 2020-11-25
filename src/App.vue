@@ -10,11 +10,7 @@
     <transition appear name="slide-fade" mode="out-in">
       <Snackbar />
     </transition>
-    <Modal
-      :showModal="showModal"
-      :modalConfig="modalConfig"
-      @handleModal="handleModal(modalState)"
-    />
+    <Modal :modalConfig="modalConfig" @handleModal="handleModal(modalState)" />
     <Footer />
   </div>
 </template>
@@ -63,14 +59,8 @@ export default {
     SocialMedia,
     Footer
   },
-  data: () => ({
-    showModal: true
-  }),
-  methods: {
-    handleModal(state) {
-      return (this.showModal = state);
-    }
-  },
+  data: () => ({}),
+  methods: {},
   computed: mapState({
     modalConfig: state => state.modalConfig
   })
