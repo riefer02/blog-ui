@@ -105,12 +105,23 @@ export default {
     inputGainNode: undefined,
     highPassFilter: undefined,
     highPassFilterOn: false,
-    audioSource: undefined
+    audioSource: undefined,
+    pluginController: {
+      inputGainNode: true, // true = plugin on
+      highPassFilter: true,
+      compressor: true,
+      panner: true,
+      masterOut: true
+    },
+    signalFlow: undefined
   }),
   mounted: function() {
     // create audio environment
     this.AudioContext = window.AudioContext || window.webkitAudioContext;
-    this.audioCtx = new this.AudioContext();
+    this.audioCtx = new this.AudioContext({
+      sampleRate: 44100
+    });
+  console.log('base latency: '+ this.audioCtx.baseLatency)
     // initialize plugins
     // compressor
     this.compressor = this.audioCtx.createDynamicsCompressor();
@@ -134,15 +145,37 @@ export default {
     this.audioSource = this.$refs.audio;
     this.track = this.audioCtx.createMediaElementSource(this.audioSource);
 
+    this.pluginSwitch(this.pluginController);
     // connect our graph
-    this.track
-      .connect(this.inputGainNode)
-      .connect(this.highPassFilter)
-      .connect(this.compressor)
-      .connect(this.panner)
-      .connect(this.audioCtx.destination);
+    // this.track
+    //   .connect(this.inputGainNode)
+    //   .connect(this.highPassFilter)
+    //   .connect(this.compressor)
+    //   .connect(this.panner)
+    //   .connect(this.audioCtx.destination);
   },
   methods: {
+    resetPluginNodes() {
+      this.inputGainNode.disconnect();
+      this.highPassFilter.disconnect();
+      this.compressor.disconnect();
+      this.panner.disconnect();
+    },
+    pluginSwitch(controllerObj) {
+      this.resetPluginNodes();
+      let pluginChain = [];
+      let keys = Object.keys(controllerObj);
+      let filterByOn = keys.filter(k => controllerObj[k]);
+      filterByOn.forEach(el => {
+        let curPlugin = `.connect(this.${el})`;
+        pluginChain.push(curPlugin);
+      });
+      pluginChain = pluginChain.join().replace(/,/g, '');
+      pluginChain = pluginChain.replace('masterOut', 'audioCtx.destination');
+      const myTrackStr = 'this.track';
+      pluginChain = myTrackStr.concat(pluginChain);
+      return eval(pluginChain);
+    },
     updateVolume(value) {
       this.inputGainNode.gain.value = value;
     },
@@ -173,38 +206,41 @@ export default {
         this.audioSource.pause();
         this.audioPlaying = false;
       }
-      //   let state = this.audioPlaying === true ? true : false;
-      //   this.audioPlaying = state ? false : true;
     },
     toggleHighPassFilter() {
-      if (this.highPassFilterOn === false) {
-        console.log('activating highpass filter');
-        this.inputGainNode.disconnect(this.compressor);
-        this.highPassFilter.connect(this.compressor);
-        this.inputGainNode.connect(this.highPassFilter);
-        this.highPassFilterOn = true;
-      } else if (this.highPassFilterOn === true) {
-        console.log('deactivating highpass filter');
-        this.highPassFilter.disconnect(this.compressor);
-        this.inputGainNode.connect(this.compressor);
-        this.inputGainNode.disconnect(this.highPassFilter);
-        this.highPassFilterOn = false;
-      }
+      // if (this.highPassFilterOn === false) {
+      //   console.log('activating highpass filter');
+      //   this.inputGainNode.disconnect(this.compressor);
+      //   this.highPassFilter.connect(this.compressor);
+      //   this.inputGainNode.connect(this.highPassFilter);
+      //   this.highPassFilterOn = true;
+      // } else if (this.highPassFilterOn === true) {
+      //   console.log('deactivating highpass filter');
+      //   this.highPassFilter.disconnect(this.compressor);
+      //   this.inputGainNode.connect(this.compressor);
+      //   this.inputGainNode.disconnect(this.highPassFilter);
+      //   this.highPassFilterOn = false;
+      // }
+      this.pluginController.highPassFilter = !this.pluginController
+        .highPassFilter;
+      this.pluginSwitch(this.pluginController);
     },
     toggleCompressor() {
-      if (this.compressorOn === false) {
-        console.log('activating compression');
-        this.highPassFilter.disconnect(this.panner);
-        this.highPassFilter.connect(this.compressor);
-        this.compressor.connect(this.panner);
-        this.compressorOn = true;
-      } else if (this.compressorOn === true) {
-        console.log('deactivating compression');
-        this.highPassFilter.disconnect(this.compressor);
-        this.compressor.disconnect(this.panner);
-        this.highPassFilter.connect(this.panner);
-        this.compressorOn = false;
-      }
+      // if (this.compressorOn === false) {
+      //   console.log('activating compression');
+      //   this.highPassFilter.disconnect(this.panner);
+      //   this.highPassFilter.connect(this.compressor);
+      //   this.compressor.connect(this.panner);
+      //   this.compressorOn = true;
+      // } else if (this.compressorOn === true) {
+      //   console.log('deactivating compression');
+      //   this.highPassFilter.disconnect(this.compressor);
+      //   this.compressor.disconnect(this.panner);
+      //   this.highPassFilter.connect(this.panner);
+      //   this.compressorOn = false;
+      // }
+      this.pluginController.compressor = !this.pluginController.compressor;
+      this.pluginSwitch(this.pluginController);
     }
   }
 };
