@@ -1,7 +1,7 @@
 <template>
   <div class="create-blog-form">
     <h1>Create New Blog</h1>
-    <p>Author: {{ userName }}</p>
+    <p v-if="userName">Author: {{ userName }}</p>
     <form @submit.prevent="formSubmit">
       <BaseSelect :options="categories" label="Topic" v-model="blog.topic" />
       <BaseInput label="Blog Title" type="text" v-model="blog.title" />
@@ -69,9 +69,9 @@ export default {
     }
   },
   computed: {
-    userName() {
-      return this.$store.state.user.name;
-    },
+    // userName() {
+    //   return this.$store.state.user.name;
+    // },
     ...mapState({
       categories: state => state.blogTopics
     })

@@ -47,7 +47,13 @@
             </button>
             <label>Compressor</label>
           </div>
-
+          <!-- Reverb -->
+          <div class="controller-reverb">
+            <button class="reverb-button disabled" @click="toggleReverb()">
+              <span>On/Off</span>
+            </button>
+            <label>Reverb</label>
+          </div>
           <!-- Panning Controller -->
           <div class="controller-panner">
             <input
@@ -99,17 +105,17 @@ export default {
     audioBuffer: undefined,
     audioCtx: undefined,
     audioPlaying: false,
-    compressorOn: false,
     compressor: undefined,
     panner: undefined,
     inputGainNode: undefined,
     highPassFilter: undefined,
-    highPassFilterOn: false,
+    reverb: undefined,
     audioSource: undefined,
     pluginController: {
       inputGainNode: true, // true = plugin on
       highPassFilter: true,
       compressor: true,
+      reverb: false,
       panner: true,
       masterOut: true
     },
@@ -121,7 +127,7 @@ export default {
     this.audioCtx = new this.AudioContext({
       sampleRate: 44100
     });
-  console.log('base latency: '+ this.audioCtx.baseLatency)
+    console.log('base latency: ' + this.audioCtx.baseLatency);
     // initialize plugins
     // compressor
     this.compressor = this.audioCtx.createDynamicsCompressor();
@@ -141,24 +147,19 @@ export default {
     this.highPassFilter.type = 'highpass';
     this.highPassFilter.frequency.value = 500;
     this.highPassFilterOn = true;
+    // reverb
+    this.reverb = this.audioCtx.createConvolver();
     // audio source
     this.audioSource = this.$refs.audio;
     this.track = this.audioCtx.createMediaElementSource(this.audioSource);
-
     this.pluginSwitch(this.pluginController);
-    // connect our graph
-    // this.track
-    //   .connect(this.inputGainNode)
-    //   .connect(this.highPassFilter)
-    //   .connect(this.compressor)
-    //   .connect(this.panner)
-    //   .connect(this.audioCtx.destination);
   },
   methods: {
     resetPluginNodes() {
       this.inputGainNode.disconnect();
       this.highPassFilter.disconnect();
       this.compressor.disconnect();
+      this.reverb.disconnect();
       this.panner.disconnect();
     },
     pluginSwitch(controllerObj) {
@@ -207,38 +208,17 @@ export default {
         this.audioPlaying = false;
       }
     },
+    toggleReverb() {
+      console.log('reverb plugin in development');
+      // this.pluginController.reverb = !this.pluginController.reverb;
+      // this.pluginSwitch(this.pluginController);
+    },
     toggleHighPassFilter() {
-      // if (this.highPassFilterOn === false) {
-      //   console.log('activating highpass filter');
-      //   this.inputGainNode.disconnect(this.compressor);
-      //   this.highPassFilter.connect(this.compressor);
-      //   this.inputGainNode.connect(this.highPassFilter);
-      //   this.highPassFilterOn = true;
-      // } else if (this.highPassFilterOn === true) {
-      //   console.log('deactivating highpass filter');
-      //   this.highPassFilter.disconnect(this.compressor);
-      //   this.inputGainNode.connect(this.compressor);
-      //   this.inputGainNode.disconnect(this.highPassFilter);
-      //   this.highPassFilterOn = false;
-      // }
       this.pluginController.highPassFilter = !this.pluginController
         .highPassFilter;
       this.pluginSwitch(this.pluginController);
     },
     toggleCompressor() {
-      // if (this.compressorOn === false) {
-      //   console.log('activating compression');
-      //   this.highPassFilter.disconnect(this.panner);
-      //   this.highPassFilter.connect(this.compressor);
-      //   this.compressor.connect(this.panner);
-      //   this.compressorOn = true;
-      // } else if (this.compressorOn === true) {
-      //   console.log('deactivating compression');
-      //   this.highPassFilter.disconnect(this.compressor);
-      //   this.compressor.disconnect(this.panner);
-      //   this.highPassFilter.connect(this.panner);
-      //   this.compressorOn = false;
-      // }
       this.pluginController.compressor = !this.pluginController.compressor;
       this.pluginSwitch(this.pluginController);
     }
@@ -281,5 +261,10 @@ export default {
   flex-direction: column;
   justify-content: center;
   margin-bottom: 1.5rem;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: none;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Welcome to</h2>
-    <TextLogo />
+    <TextLogo :altColor="true" />
     <h3>Register</h3>
     <form @submit.prevent="formSubmit">
       <BaseInput
@@ -19,7 +19,9 @@
         v-model="registration.password"
         placeholder="Password"
       />
-      <button class="login-btn">Register</button>
+      <button class="login-btn" @click.prevent="registerNewUser()">
+        Register
+      </button>
 
       <hr />
       <p class="sign-up-text">Have an Account?&nbsp;</p>
@@ -56,6 +58,36 @@ export default {
         modalData: {}
       };
       this.$store.commit('SET_MODAL', modalConfig);
+    },
+    registerNewUser() {
+      // if (
+      //   this.registration.username ||
+      //   this.registration.password === ''
+      // ) {
+      //   this.$store.commit('SET_SNACK', 'Please enter a username and password');
+      //   return;
+      // }
+      this.$store
+        .dispatch('registerNewUser', {
+          username: this.registration.username,
+          password: this.registration.password,
+          email: this.registration.email
+        })
+        .then(() => {
+          let modalConfig = {
+            modalType: 'disabled',
+            modalActive: false,
+            modalData: {}
+          };
+          this.$store.commit('SET_MODAL', modalConfig);
+          let message = `Welcome to riefer.io ${this.registration.username}!`;
+          this.$store.commit('SET_SNACK', message);
+        })
+        .catch(err => {
+          let message = `I'm sorry we had an error during registration`;
+          console.log(err);
+          this.$store.commit('SET_SNACK', message);
+        });
     }
   }
 };

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Welcome to</h2>
-    <TextLogo />
+    <TextLogo :altColor="true" />
     <h3>Login</h3>
     <form @submit.prevent="formSubmit">
       <BaseInput
@@ -14,7 +14,7 @@
         v-model="loginCredentials.password"
         placeholder="Password"
       />
-      <button class="login-btn">Login</button>
+      <button class="login-btn" @click.prevent="loginUser()">Login</button>
       <div class="my-5">or</div>
       <button class="guest-login-btn">Guest</button>
       <hr />
@@ -53,6 +53,35 @@ export default {
         modalData: {}
       };
       this.$store.commit('SET_MODAL', modalConfig);
+    },
+    loginUser() {
+      // if (
+      //   this.loginCredentials.username ||
+      //   this.loginCredentials.password === ''
+      // ) {
+      //   this.$store.commit('SET_SNACK', 'Please enter username and password');
+      //   return;
+      // }
+      this.$store
+        .dispatch('loginUser', {
+          username: this.loginCredentials.username,
+          password: this.loginCredentials.password
+        })
+        .then(() => {
+          let modalConfig = {
+            modalType: 'disabled',
+            modalActive: false,
+            modalData: {}
+          };
+          this.$store.commit('SET_MODAL', modalConfig);
+          let message = `Welcome back ${this.loginCredentials.username}!`;
+          this.$store.commit('SET_SNACK', message);
+        })
+        .catch(err => {
+          let message = `I'm sorry username and password are incorrect`;
+          console.log(err);
+          this.$store.commit('SET_SNACK', message);
+        });
     }
   }
 };
