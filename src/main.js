@@ -19,7 +19,6 @@ const app = createApp(App)
   .use(router)
   .use(VueAxios, axios);
 // .use(Velocity);
-
 // requireComponent.keys().forEach(fileName => {
 //   const componentConfig = requireComponent(fileName);
 

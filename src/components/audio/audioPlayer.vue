@@ -74,7 +74,7 @@
             <label for="panner">Panning</label>
           </div>
           <!-- Power Button -->
-          <div class="controller-power">
+          <!-- <div class="controller-power">
             <button
               class="power-control"
               role="switch"
@@ -83,7 +83,7 @@
             >
               <span>On/Off</span>
             </button>
-          </div>
+          </div> -->
           <!-- Play Button -->
           <div class="controller-play">
             <button class="play-button" role="switch" @click="playButton()">

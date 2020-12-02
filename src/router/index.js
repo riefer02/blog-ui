@@ -33,7 +33,8 @@ const routes = [
   {
     path: '/music',
     name: 'Music',
-    component: Music
+    component: Music,
+    meta: { requiresAuth: true }
   }
 ];
 
@@ -42,4 +43,12 @@ const router = createRouter({
   routes
 });
 
+// Check to see if route contains meta attribute to determine access...
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem('user');
+  if (to.matched.some(record => record.meta.requiresAuth && !loggedIn)) {
+    next('/');
+  }
+  next();
+});
 export default router;

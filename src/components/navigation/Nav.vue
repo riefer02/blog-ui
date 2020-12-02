@@ -20,18 +20,54 @@
         <li class="nav-item">
           <router-link to="/music" class="nav-link">Music</router-link>
         </li>
+        <li class="nav-item">
+          <router-link
+            v-if="loggedIn"
+            to="/"
+            class="nav-link"
+            @click.prevent="logout()"
+            >Logout</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link
+            v-if="!loggedIn"
+            to="/"
+            @click.prevent="activateLoginModal()"
+            class="nav-link"
+          >
+            Login
+          </router-link>
+        </li>
       </ul>
     </nav>
   </div>
 </template>
 
 <script>
+import { authComputed } from '@/store/helper.js';
 export default {
   name: 'Nav',
   watch: {
     $route(to, from) {
       console.log(to, from);
       document.getElementById('nav-toggle').checked = false;
+    }
+  },
+  computed: {
+    ...authComputed
+  },
+  methods: {
+    activateLoginModal() {
+      let modalConfig = {
+        modalType: 'login',
+        modalActive: true,
+        modalData: {}
+      };
+      this.$store.commit('SET_MODAL', modalConfig);
+    },
+    logout() {
+      this.$store.dispatch('logout');
     }
   }
 };

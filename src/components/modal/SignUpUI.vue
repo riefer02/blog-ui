@@ -59,7 +59,7 @@ export default {
       };
       this.$store.commit('SET_MODAL', modalConfig);
     },
-    registerNewUser() {
+    async registerNewUser() {
       // if (
       //   this.registration.username ||
       //   this.registration.password === ''
@@ -67,7 +67,7 @@ export default {
       //   this.$store.commit('SET_SNACK', 'Please enter a username and password');
       //   return;
       // }
-      this.$store
+      await this.$store
         .dispatch('registerNewUser', {
           username: this.registration.username,
           password: this.registration.password,

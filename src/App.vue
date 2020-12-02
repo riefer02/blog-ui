@@ -63,7 +63,23 @@ export default {
   methods: {},
   computed: mapState({
     modalConfig: state => state.modalConfig
-  })
+  }),
+  created() {
+    console.log('User Data')
+    const userString = localStorage.getItem('user');
+    if (userString) {
+      const userData = JSON.parse(userString);
+      this.$store.commit('SET_USER_DATA', userData);
+    }
+    if(this.$store.state.user) {
+       let modalConfig = {
+        modalType: 'disabled',
+        modalActive: false,
+        modalData: {}
+      };
+      this.$store.commit('SET_MODAL', modalConfig);
+    }
+  }
 };
 </script>
 

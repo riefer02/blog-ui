@@ -38,6 +38,10 @@ export default createStore({
       Axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${userData.token}`;
+    },
+    CLEAR_USER_DATA() {
+      localStorage.removeItem('user');
+      location.reload();
     }
   },
   actions: {
@@ -46,17 +50,31 @@ export default createStore({
         commit('SET_BLOGS', response.data.blogs);
       });
     },
-    registerNewUser({ commit }, credentials) {
-      userService.registerNewUser(credentials).then(response => {
-        console.log('registration response', response);
-        commit('SET_USER_DATA', response);
-      });
+    async registerNewUser({ commit }, credentials) {
+      await userService
+        .registerNewUser(credentials)
+        .then(response => {
+          console.log('registration response', response);
+          commit('SET_USER_DATA', response);
+        })
+        .catch(err => {
+          console.log(err.response.data.error);
+          throw err;
+        });
     },
-    loginUser({ commit }, credentials) {
-      userService.loginUser(credentials).then(response => {
-        console.log('login response', response);
-        commit('SET_USER_DATA', response);
-      });
+    async loginUser({ commit }, credentials) {
+      await userService
+        .loginUser(credentials)
+        .then(response => {
+          commit('SET_USER_DATA', response);
+        })
+        .catch(err => {
+          console.log(err.response.data.error);
+          throw err;
+        });
+    },
+    logout({ commit }) {
+      commit('CLEAR_USER_DATA');
     }
   },
   getters: {

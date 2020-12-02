@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This is the new audio player component</h1>
+    <h1>Master Bus Processor Series</h1>
     <AudioPlayer />
   </div>
 </template>

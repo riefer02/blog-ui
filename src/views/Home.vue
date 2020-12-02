@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 import ImageTextLogo from '@/components/logo/ImageTextLogo.vue';
 import HomeMain from '@/components/layout/HomeMain.vue';
 
@@ -14,6 +15,6 @@ export default {
   components: {
     ImageTextLogo,
     HomeMain
-  }
+  },
 };
 </script>

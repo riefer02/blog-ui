@@ -2,7 +2,7 @@
   <div>
     <div class="overlay" v-if="modalConfig.modalActive">
       <div class="modal" v-if="modalConfig.modalActive">
-        <button class="close-btn" @click="resetModal">
+        <button  v-if="loggedIn" class="close-btn" @click="resetModal">
           <font-awesome-icon
             :icon="['fas', 'window-close']"
             class="close-icon"
