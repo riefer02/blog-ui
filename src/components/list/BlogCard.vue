@@ -5,6 +5,7 @@
         <div class="card-content">
           <router-link :to="'/blog/' + blog._id">
             <h3 class="card-title">{{ blog.title }}</h3>
+            <h4 v-if="blog.author">{{blog.author}}</h4>
             <h4>{{ blog.topic }}</h4>
             <p class="card-text">{{ blog.summary }}</p>
           </router-link>

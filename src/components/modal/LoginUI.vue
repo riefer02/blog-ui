@@ -56,27 +56,15 @@ export default {
       };
       this.$store.commit('SET_MODAL', modalConfig);
     },
-    async loginGuest() {
-      await this.$store
-        .dispatch('loginUser', {
-          username: 'dayzee',
-          password: 'dayzee'
-        })
-        .then(() => {
-          let modalConfig = {
-            modalType: 'disabled',
-            modalActive: false,
-            modalData: {}
-          };
-          this.$store.commit('SET_MODAL', modalConfig);
-          let message = `Welcome Guest!`;
-          this.$store.commit('SET_SNACK', message);
-        })
-        .catch(err => {
-          let message = `I'm sorry there was an error.`;
-          console.log(err);
-          this.$store.commit('SET_SNACK', message);
-        });
+    loginGuest() {
+      let modalConfig = {
+        modalType: 'disabled',
+        modalActive: false,
+        modalData: {}
+      };
+      this.$store.commit('SET_MODAL', modalConfig);
+      let message = `Welcome Guest!`;
+      this.$store.commit('SET_SNACK', message);
     },
     async loginUser() {
       // Write form validation logic here...

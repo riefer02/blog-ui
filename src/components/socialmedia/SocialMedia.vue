@@ -119,7 +119,7 @@ export default {
   .social-media {
     &-bar {
       right: 3px;
-      top: 4.6rem;
+      top: 1rem;
       z-index: 500;
     }
 

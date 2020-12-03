@@ -100,4 +100,18 @@ export default {
     opacity: 0;
   }
 }
+
+@media screen and (max-width: 470px) {
+  .ui-snackbar-container {
+    position: fixed;
+    left: 0;
+    width: 100%;
+
+    /* this is what centers your element in the fixed wrapper*/
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center; /* aligns on vertical for column */
+    align-items: center; /* aligns on horizontal for column */
+  }
+}
 </style>

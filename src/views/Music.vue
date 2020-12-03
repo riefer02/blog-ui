@@ -1,7 +1,16 @@
 <template>
   <div>
-    <h1>Master Bus Processor Series</h1>
-    <AudioPlayer />
+    <div class="toolbar-dodge">
+      <h1>Master Bus Processor Series</h1>
+      <p>
+        I have a strong background in music production. I discovered the audio
+        API for web and started building my own custom channel strip. Please
+        come back and visit to see each iteration.
+      </p>
+    </div>
+    <div class="mb-5">
+      <AudioPlayer />
+    </div>
   </div>
 </template>
 

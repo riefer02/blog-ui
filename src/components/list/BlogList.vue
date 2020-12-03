@@ -1,9 +1,21 @@
 <template>
   <div class="blog-list-container">
     <h2>Blog List</h2>
+    <div class="filter">
+      <label for="filter" class="filter-label">Filter by Topic</label>
+      <select class="filter-option" v-model="activeFilter">
+        <option
+          v-for="option in filterOptions"
+          :value="option"
+          :key="option"
+          :selected="option === activeFilter"
+          >{{ option }}</option
+        ></select
+      >
+    </div>
     <div class="d-flex justify-center">
       <BlogCard
-        v-for="blog in blogs"
+        v-for="blog in filteredBlogs"
         :key="blog.title"
         :blog="blog"
         :deleteBlog="deleteBlog"
@@ -22,6 +34,25 @@ export default {
   props: {
     blogs: {
       type: Array
+    }
+  },
+  mounted() {
+    this.$store.dispatch('retrieveBlogs');
+  },
+  data: () => ({
+    activeFilter: ''
+  }),
+  computed: {
+    filteredBlogs() {
+      let blogList = this.blogs.filter(blog => {
+        return blog.topic.match(this.activeFilter);
+      });
+      return blogList;
+    },
+    filterOptions() {
+      let filterList = this.$store.state.blogTopics;
+      filterList.unshift('');
+      return filterList;
     }
   },
   methods: {
@@ -43,5 +74,29 @@ export default {
 <style lang="scss" scoped>
 .blog-list-container {
   margin-bottom: 5rem;
+}
+
+.filter {
+  &-label {
+    margin-right: 1rem;
+  }
+
+  &-option {
+    margin: 15px 0;
+    padding: 10px 10px;
+    outline: none;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    background-color: #fff;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -ms-transition: 0.2s ease all;
+    -o-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+  }
 }
 </style>

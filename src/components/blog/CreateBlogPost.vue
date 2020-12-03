@@ -24,12 +24,11 @@ export default {
     BaseSelect,
     BaseTextArea
   },
-  mounted() {
-    this.$store.dispatch('retrieveBlogs');
-  },
+
   data: () => ({
     messageContent: '',
     blog: {
+      author: '',
       title: '',
       summary: '',
       topic: ''
@@ -39,7 +38,7 @@ export default {
     formSubmit: async function() {
       try {
         let self = this;
-        let { title, summary, topic } = self.blog;
+        let { title, summary, topic, author } = self.blog;
         if (!title || !summary || !topic) {
           self.messageContent = 'Validation Error';
           console.log(self.messageContent);
@@ -47,6 +46,7 @@ export default {
           return;
         }
         const newBlog = {
+          author,
           title,
           summary,
           topic
@@ -68,10 +68,13 @@ export default {
       }
     }
   },
+  mounted() {
+    this.blog.author = this.userName;
+  },
   computed: {
-    // userName() {
-    //   return this.$store.state.user.name;
-    // },
+    userName() {
+      return this.$store.state.user.data.user.username;
+    },
     ...mapState({
       categories: state => state.blogTopics
     })

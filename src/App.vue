@@ -37,6 +37,7 @@ import {
   faLayerGroup
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import Axios from 'axios';
 library.add(
   faWrench,
   faTrash,
@@ -65,20 +66,31 @@ export default {
     modalConfig: state => state.modalConfig
   }),
   created() {
-    console.log('User Data')
+    // store user data to bypass login...
     const userString = localStorage.getItem('user');
     if (userString) {
       const userData = JSON.parse(userString);
       this.$store.commit('SET_USER_DATA', userData);
     }
-    if(this.$store.state.user) {
-       let modalConfig = {
+    // if user data persists do not load initial login/register modal...
+    if (this.$store.state.user) {
+      let modalConfig = {
         modalType: 'disabled',
         modalActive: false,
         modalData: {}
       };
       this.$store.commit('SET_MODAL', modalConfig);
     }
+    // Auto logout if hacker attempts to create fake user data...
+    Axios.interceptors.response.use(
+      response => response,
+      error => {
+        if (error.response.status === 401) {
+          this.$store.dispatch('logout');
+        }
+        return Promise.reject(error);
+      }
+    );
   }
 };
 </script>
@@ -111,6 +123,14 @@ body {
 }
 
 /* Utility Classes */
+.toolbar-dodge {
+    padding: 0rem 20rem;
+  }
+@media screen and (max-width: 600px) {
+  .toolbar-dodge {
+    padding: 3rem 3.4rem 1rem 3.4rem;
+  }
+}
 
 .pt-5 {
   padding-top: 5px;
@@ -119,6 +139,10 @@ body {
 .my-5 {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
 }
 
 .d-flex {
