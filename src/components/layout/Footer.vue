@@ -12,11 +12,11 @@
       <div class="footer-links-group">
         <h6>Fast Travel</h6>
         <ul class="footer-links">
-          <li class="footer-link"><a href="#">Blog</a></li>
-          <li class="footer-link"><a href="#">Three</a></li>
-          <li class="footer-link"><a href="#">Store</a></li>
-          <li class="footer-link"><a href="#">Resume</a></li>
-          <li class="footer-link"><a href="#">Giraffe</a></li>
+          <li class="footer-link"><router-link to="/blogs">Blog</router-link></li>
+          <li class="footer-link"><router-link to="/three">Three</router-link></li>
+          <li class="footer-link"><router-link to="/music">Music</router-link></li>
+          <li class="footer-link"><router-link to="/resume">Resume</router-link></li>
+          <li class="footer-link"><router-link to="/">Home</router-link></li>
         </ul>
       </div>
     </div>

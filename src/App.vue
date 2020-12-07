@@ -60,6 +60,19 @@ export default {
     SocialMedia,
     Footer
   },
+  metaInfo: {
+    titleTemplate: '%s | riefer.io',
+    title: 'riefer.io',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'description',
+        content:
+          'Web application developer portfolio site for Andrew Riefenstahl.'
+      }
+    ]
+  },
   data: () => ({}),
   methods: {},
   computed: mapState({

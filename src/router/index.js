@@ -3,6 +3,8 @@ import Home from '../views/Home.vue';
 import Post from '../views/Post.vue';
 import Blog from '../views/Blog.vue';
 import Music from '../views/Music.vue';
+import Resume from '../views/Resume.vue';
+// import { registerRuntimeCompiler } from 'vue';
 
 const routes = [
   {
@@ -33,8 +35,13 @@ const routes = [
   {
     path: '/music',
     name: 'Music',
-    component: Music,
-    meta: { requiresAuth: true }
+    component: Music
+    // meta: { requiresAuth: true } // Uncomment to Make Protected Route
+  },
+  {
+    path: '/resume',
+    name: 'Resume',
+    component: Resume
   }
 ];
 
