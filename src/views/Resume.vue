@@ -67,7 +67,7 @@ export default {
         link: 'https://www.linkedin.com/in/andrewriefenstahl'
       },
       { name: 'Email', link: 'andrew.riefenstahl@gmail.com' },
-      { name: 'YouTube', link: '' },
+      { name: 'YouTube', link: 'https://www.youtube.com/riefer02' },
       { name: 'GitHub', link: 'https://github.com/riefer02' }
     ],
     experience: [
