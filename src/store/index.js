@@ -66,7 +66,7 @@ export default createStore({
       await userService
         .loginUser(credentials)
         .then(response => {
-          commit('SET_USER_DATA', response);
+          commit('SET_USER_DATA', response.data.user);
         })
         .catch(err => {
           console.log(err.response.data.error);

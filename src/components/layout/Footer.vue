@@ -335,4 +335,29 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 380px) {
+  .footer-row-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .social-media-bar {
+    margin-right: 58px;
+    order: 1;
+  }
+
+  .copyright {
+    padding-top: 10px;
+    order:2;
+  }
+
+  .copyright-text, .copyright-text a {
+
+    font-size: 1rem;
+  }
+
+}
 </style>

@@ -123,9 +123,31 @@ body {
 }
 
 /* Utility Classes */
+
 .toolbar-dodge {
-    padding: 0rem 20rem;
+  padding: 2rem 20rem 1rem 20rem;
+}
+
+@media screen and (max-width: 1300px) {
+  .toolbar-dodge {
+    padding: 3rem 17rem 1rem 17rem;
   }
+}
+@media screen and (max-width: 1000px) {
+  .toolbar-dodge {
+    padding: 3rem 15rem 1rem 15rem;
+  }
+}
+@media screen and (max-width: 970px) {
+  .toolbar-dodge {
+    padding: 4rem 11rem 1rem 11rem;
+  }
+}
+@media screen and (max-width: 722px) {
+  .toolbar-dodge {
+    padding: 4rem 9.5rem 1rem 9.5rem;
+  }
+}
 @media screen and (max-width: 600px) {
   .toolbar-dodge {
     padding: 3rem 3.4rem 1rem 3.4rem;

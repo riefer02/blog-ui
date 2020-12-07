@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     userName() {
-      return this.$store.state.user.data.user.username;
+      return this.$store.state.user.username;
     },
     ...mapState({
       categories: state => state.blogTopics

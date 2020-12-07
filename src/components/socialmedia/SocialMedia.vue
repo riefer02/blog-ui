@@ -118,7 +118,7 @@ export default {
 @media only screen and (max-width: 600px) {
   .social-media {
     &-bar {
-      right: 3px;
+      right: 4px;
       top: 1rem;
       z-index: 500;
     }

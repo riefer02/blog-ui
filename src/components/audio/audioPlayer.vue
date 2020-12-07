@@ -267,4 +267,12 @@ export default {
   opacity: 0.5;
   cursor: none;
 }
+
+@media screen and (max-width: 290px) {
+  .audio-player {
+    &-body {
+      width: 180px;
+    }
+  }
+}
 </style>

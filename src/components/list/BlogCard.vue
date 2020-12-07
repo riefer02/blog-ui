@@ -5,7 +5,9 @@
         <div class="card-content">
           <router-link :to="'/blog/' + blog._id">
             <h3 class="card-title">{{ blog.title }}</h3>
-            <h4 v-if="blog.author">{{blog.author}}</h4>
+            <h4 v-if="blog.author" class="card-author">
+              author: <span>@{{ blog.author }}</span>
+            </h4>
             <h4>{{ blog.topic }}</h4>
             <p class="card-text">{{ blog.summary }}</p>
           </router-link>
@@ -13,7 +15,11 @@
             <button class="edit-btn" @click="editBlog(this.blog)">
               <FontAwesomeIcon class="edit-icon" icon="wrench" />
             </button>
-            <button class="delete-btn" @click.prevent="deleteBlog(blog._id)">
+            <button
+              class="delete-btn"
+              @click.prevent="deleteBlog(blog._id)"
+              v-if="blog.author === this.curUserName"
+            >
               <FontAwesomeIcon class="trash-icon" icon="trash" />
             </button>
           </div>
@@ -46,6 +52,11 @@ export default {
         modalType: 'editor'
       };
       this.$store.commit('SET_MODAL', newModalConfig);
+    }
+  },
+  computed: {
+    curUserName() {
+      return this.$store.state.user.username;
     }
   }
 };
@@ -84,6 +95,11 @@ a {
   justify-content: center;
 }
 
+.card-title,
+.card-text {
+  text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+}
+
 .card-title {
   color: #ffffff;
   font-size: 1.1rem;
@@ -91,6 +107,14 @@ a {
   letter-spacing: 1px;
   text-transform: capitalize;
   margin: 0px;
+}
+
+.card-author {
+  font-size: 0.8rem;
+}
+
+.card-author span {
+  color: #fff;
 }
 
 .card-text {

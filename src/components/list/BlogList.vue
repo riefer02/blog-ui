@@ -53,7 +53,8 @@ export default {
       let filterList = this.$store.state.blogTopics;
       filterList.unshift('');
       return filterList;
-    }
+    },
+   
   },
   methods: {
     deleteBlog(id) {
