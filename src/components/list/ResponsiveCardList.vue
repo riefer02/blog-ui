@@ -1,7 +1,7 @@
 <template>
   <div class="card-container">
     <div v-for="item in items" :key="item.id" class="card-item">
-      <FontAwesomeIcon class="card-icon" :icon="['fa', 'layer-group']" />
+      <FontAwesomeIcon class="card-icon" :icon="['fa', item.icon]" />
       <h3 class="card-header">{{ item.name }}</h3>
       <p class="card-text">{{ item.summary }}</p>
     </div>
@@ -62,9 +62,9 @@ export default {
 
 @media screen and (max-width: 600px) {
   .card {
-  &-container {
-    grid-template-columns: 1fr;
-}
+    &-container {
+      grid-template-columns: 1fr;
+    }
 
     &-icon {
       right: 0px;

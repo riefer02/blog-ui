@@ -2,7 +2,7 @@
   <div>
     <div class="toolbar-dodge">
       <h1>Welcome to the Blog Arena</h1>
-      <p>
+      <p class="blog-view-text">
         This is an area where users can create blog posts and share them with
         visitors. If you are logged in you will be able to create a blog post.
       </p>
@@ -30,4 +30,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.blog-view-text {
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+}
+</style>

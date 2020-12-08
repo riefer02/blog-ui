@@ -53,8 +53,7 @@ export default {
       let filterList = this.$store.state.blogTopics;
       filterList.unshift('');
       return filterList;
-    },
-   
+    }
   },
   methods: {
     deleteBlog(id) {
@@ -80,6 +79,8 @@ export default {
 .filter {
   &-label {
     margin-right: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
   }
 
   &-option {
@@ -98,6 +99,7 @@ export default {
     -ms-transition: 0.2s ease all;
     -o-transition: 0.2s ease all;
     transition: 0.2s ease all;
+    font-size: 1rem;
   }
 }
 </style>

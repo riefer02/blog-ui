@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="experiences">
+    <div class="experience-container">
       <h2>Experience</h2>
       <div class="experience-list">
         <div
@@ -8,15 +8,27 @@
           v-for="experience in experience"
           :key="experience"
         >
-          <h3>{{ experience.roleTitle }}</h3>
-          <h4>{{ experience.date }}</h4>
-          <h4>{{ experience.employer }}</h4>
-          <h5>{{ experience.location }}</h5>
-          <ul>
+          <h3 class="experience-role">{{ experience.roleTitle }}</h3>
+          <hr />
+          <div class="experience-details-row">
+            <h4 class="experience-date">{{ experience.date }}</h4>
+            <h4 class="experience-employer-company">
+              {{ experience.employer }}
+            </h4>
+            <h5 class="experience-employer-location">
+              {{ experience.location }}
+            </h5>
+          </div>
+          <ul class="experience-description-list">
             <li
+              class="experience-description-item"
               v-for="description in experience.description"
               :key="description"
             >
+              <FontAwesomeIcon
+                class="experience-description-icon"
+                :icon="['fa', 'caret-right']"
+              />
               {{ description }}
             </li>
           </ul>
@@ -27,7 +39,12 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 export default {
+  name: 'ExperienceInfo',
+  components: {
+    FontAwesomeIcon
+  },
   props: {
     experience: {
       type: Object,
@@ -37,4 +54,82 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+hr {
+  width: 80%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(239, 141, 156, 0.8),
+    rgba(44, 62, 81, 1),
+    rgba(239, 141, 156, 0.8)
+  );
+}
+.experience {
+  &-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &-item {
+    margin-bottom: 0.9rem;
+    padding: 1rem 0;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
+  }
+
+  &-role {
+    font-size: 1.3rem;
+  }
+
+  &-role,
+  &-description-item,
+  &-employer-company {
+    text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+    color: #fff;
+  }
+
+  &-date {
+    margin: 0 1rem 0 0;
+    display: inline-block;
+  }
+
+  &-employer {
+    &-company {
+      display: inline-block;
+      margin-right: 1rem;
+      text-transform: uppercase;
+    }
+
+    &-location {
+      display: inline-block;
+      text-transform: uppercase;
+    }
+  }
+
+  &-description {
+    &-list {
+      margin: 0;
+      padding: 0 0 1rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &-item {
+      list-style-type: none;
+      padding: 0.3rem;
+      width: 80%;
+      line-height: 1.7rem;
+    }
+
+    &-icon {
+      color: #2c3e51;
+      font-size: 1rem;
+      padding-right: 5px;
+    }
+  }
+}
+</style>

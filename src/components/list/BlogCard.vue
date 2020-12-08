@@ -12,7 +12,11 @@
             <p class="card-text">{{ blog.summary }}</p>
           </router-link>
           <div class="card-btns">
-            <button class="edit-btn" @click="editBlog(this.blog)">
+            <button
+              v-if="blog.author === this.curUserName"
+              class="edit-btn"
+              @click="editBlog(this.blog)"
+            >
               <FontAwesomeIcon class="edit-icon" icon="wrench" />
             </button>
             <button

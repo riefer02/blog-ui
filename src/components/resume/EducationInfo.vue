@@ -25,4 +25,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.education {
+  &-list {
+display: flex;
+justify-content: space-evenly;
+  }
+
+  &-item {
+  }
+}
+</style>

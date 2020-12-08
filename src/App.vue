@@ -27,14 +27,17 @@ import {
   faGithub,
   faInstagram,
   faWhatsapp,
-  faYoutube
+  faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import {
   faWrench,
   faTrash,
   faWindowClose,
   faFeatherAlt,
-  faLayerGroup
+  faLayerGroup,
+  faServer,
+  faBezierCurve,
+  faCaretRight
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Axios from 'axios';
@@ -47,7 +50,10 @@ library.add(
   faInstagram,
   faWhatsapp,
   faYoutube,
-  faLayerGroup
+  faLayerGroup,
+  faServer,
+  faBezierCurve,
+  faCaretRight
 );
 
 export default {

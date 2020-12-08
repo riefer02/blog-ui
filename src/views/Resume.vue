@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="resume-container">
     <KnowledgeInfo :knowledges="knowledges" />
     <SummaryInfo :summary="summary" />
     <LinksInfo :links="links" />
@@ -81,27 +81,27 @@ export default {
         ]
       },
       {
-        date: 'August 2019-June 2020',
+        date: 'August 2019 - June 2020',
         roleTitle: 'Web Developer/Curriculum Writer',
         employer: 'Hello World Studios',
         location: 'Austin, TX',
         description: [
-          'Build an online platform to facilitate student learning and engagement',
-          'Manages the regional team of web development curriculum writers/developers',
-          'Writes an interactive HTML/CSS/Javascript curriculum for web learners',
-          'Oversees the development and quality control for online educational resources',
-          'Creates online video resources through screencasting, audio engineering, and video editing knowledge base.',
-          'Teaches in remotely, classrooms, extracurricular settings, and after school programs',
-          'Develops a curriculum for Sonic Pi, a Ruby programming playground taught in the form of music'
+          'Built an online platform to facilitate student learning and engagement',
+          'Managed regional team of web development curriculum writers/developers',
+          'Wrote an interactive HTML/CSS/Javascript curriculum for web learners',
+          'Oversaw the development and quality control for online educational resources',
+          'Created online video resources through screencasting, audio engineering, and video editing knowledge base.',
+          'Taught remotely, in person, after school programs, and extracurricular settings',
+          'Developed a curriculum for Sonic Pi, a Ruby programming playground taught in the form of music'
         ]
       },
       {
-        date: ' August 2017- July 2019',
+        date: ' August 2017 - July 2019',
         roleTitle: 'High School Computer Science Teacher',
         employer: 'KIPP Public Schools',
         location: 'Austin, TX',
         description: [
-          'Educate low-income at risk students in fundamentals of computer science',
+          'Educated low-income at risk students in fundamentals of computer science',
           'Teach JavaScript, CSS, and HTML and algorithm problem solving'
         ]
       }
@@ -132,4 +132,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.resume-container {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+</style>

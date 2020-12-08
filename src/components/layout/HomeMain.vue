@@ -38,23 +38,32 @@ export default {
     hobbies: [
       {
         id: 1,
-        name: 'Developer',
+        name: 'Full Stack Developer',
         summary:
           'I am a proficient full-stack developer. My favorite front-end framework is Vue.js and my backend is comprised of Express.js, MongoDB, and Node.js. I am also versed in several other stacks and technologies.',
-        image: ''
+        icon: 'layer-group' // fas
       },
       {
         id: 2,
-        name: 'Music Producer',
+        name: 'UX Design',
         summary:
-          ' For the past 10 years I have study audio engineering and music production. I have developed audio for commercials, video games, and musicians.'
+          'I focus on fast load times, responsive layouts for any device, intuitive, easy to use UX/UI. I build dynamic websites with fun and thriving energy.',
+        icon: 'bezier-curve' // fab
       },
       {
         id: 3,
-        name: 'Writer',
+        name: 'Database Engineer',
         summary:
-          "I just finished writing a science fiction novel and it's currently being edited. I can't wait to share it with the world."
-      }
+          'I maintain servers for database storage, write complex queries, development of all server-side logic, and ensure high performance and responsiveness to requests from the front-end.',
+        icon: 'server' // fas
+      },
+      {
+        id: 4,
+        name: 'Creator',
+        summary:
+          'I don’t like to define myself by the work I’ve done. I define myself by the work I want to do. Technologies can be learned, I prefer a good challenge myself.',
+        icon: 'feather-alt', // fas
+     }
     ]
   })
 };

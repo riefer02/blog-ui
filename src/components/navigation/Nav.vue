@@ -21,6 +21,9 @@
           <router-link to="/music" class="nav-link">Music</router-link>
         </li>
         <li class="nav-item">
+          <router-link to="/resume" class="nav-link">Resume</router-link>
+        </li>
+        <li class="nav-item">
           <router-link
             v-if="loggedIn"
             to="/"

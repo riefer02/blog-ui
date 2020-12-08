@@ -152,4 +152,8 @@ export default {
   top: -3px;
   font-size: 0.8rem;
 }
+
+.submit-btn {
+  margin-bottom: 1rem;
+}
 </style>
