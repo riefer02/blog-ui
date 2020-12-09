@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="experience-container">
-      <h2>Experience</h2>
+      <h2 class="experience-header">Experience</h2>
       <div class="experience-list">
         <div
           class="experience-item"
@@ -67,6 +67,11 @@ hr {
   );
 }
 .experience {
+
+  &-header {
+    margin-bottom: 2rem;
+  }
+
   &-container {
     width: 80%;
     margin: 0 auto;

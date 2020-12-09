@@ -19,7 +19,6 @@ export default {
 
 <style lang="scss" scoped>
 .summary {
-  margin: 0rem 0rem 1rem 0rem;
   .summary-section {
     width: 80%;
     margin: 0 auto;

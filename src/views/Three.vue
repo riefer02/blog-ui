@@ -31,13 +31,21 @@ export default {
       this.renderer.setSize(window.innerWidth, window.innerHeight);
       this.renderer.setClearColor('#e5e5e5');
       this.$refs.threeJS.appendChild(this.renderer.domElement);
+      // Create Cube
       let geometry = new THREE.BoxGeometry();
-      let material = new THREE.MeshBasicMaterial({ color: 0x000000 });
-      material.wireframe = true;  
+      let material = new THREE.MeshPhongMaterial({ color: 0xef8d9c });
+      // material.wireframe = true;
       this.cube = new THREE.Mesh(geometry, material);
       this.scene.add(this.cube);
       this.camera.position.z = 5;
       this.animate();
+      {
+        const color = 0xffffff;
+        const intensity = 1;
+        const light = new THREE.DirectionalLight(color, intensity);
+        light.position.set(-1, 2, 4);
+        this.scene.add(light);
+      }
     },
     animate() {
       requestAnimationFrame(this.animate);

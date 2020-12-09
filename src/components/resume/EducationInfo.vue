@@ -27,12 +27,16 @@ export default {
 
 <style lang="scss" scoped>
 .education {
+  width: 80%;
+  margin: 0 auto;
+
   &-list {
-display: flex;
-justify-content: space-evenly;
+    display: flex;
+    justify-content: space-evenly;
   }
 
   &-item {
+    width: 50%;
   }
 }
 </style>

@@ -21,7 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 .links {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   &-list {
     margin: 0px;
     padding: 0px;

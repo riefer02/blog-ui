@@ -2,10 +2,14 @@
   <div class="resume-container">
     <KnowledgeInfo :knowledges="knowledges" />
     <SummaryInfo :summary="summary" />
-    <LinksInfo :links="links" />
+    <hr />
     <ExperienceInfo :experience="experience" />
+    <hr />
     <EducationInfo :education="education" />
+    <hr />
     <PersonalInfo :personalInfo="personalInfo" />
+    <LinksInfo :links="links" />
+    <hr />
   </div>
 </template>
 
@@ -60,15 +64,15 @@ export default {
       'and more...'
     ],
     summary:
-      'I am a freelance Full Stack Developer and Educator who creates web applications and high-fidelity online digital media to drive growth and goal acquisition. I am a fast learner of new technologies, a strong grasp of computer science fundamentals, algorithmic logic, frontend frameworks, database management, and more. I am an experienced, results-oriented leader in person, remote, and professional communities.',
+      'I am a freelance Full Stack Developer and Educator who creates web applications. I like to make high-fidelity online digital media to drive growth. I am a fast learner of new technologies with a grasp of computer science fundamentals, algorithmic logic, frontend frameworks, database management, and more. I am an experienced, results-oriented leader in person, remotely, and professional community.',
     links: [
       {
         name: 'LinkedIn',
         link: 'https://www.linkedin.com/in/andrewriefenstahl'
       },
-      { name: 'Email', link: 'andrew.riefenstahl@gmail.com' },
       { name: 'YouTube', link: 'https://www.youtube.com/riefer02' },
-      { name: 'GitHub', link: 'https://github.com/riefer02' }
+      { name: 'GitHub', link: 'https://github.com/riefer02' },
+      { name: 'Instagram', link: 'https://www.instagram.com/riefer02' }
     ],
     experience: [
       {
@@ -77,7 +81,12 @@ export default {
         employer: 'IDEA Public School',
         location: 'Austin, TX',
         description: [
-          'Develops curriculum, focused on the fundamentals of computer science, ranging from debugging skills, language acquisition, client ethics, and the role of technology in modern society.'
+          'Develops  JavaScript curriculum using Repl.it online classroom',
+          'Focuses learners on the fundamentals of computers - historically and current, Instructs from a debugging ideologic stand point',
+          'Engages students in hard and soft skill development for entering collaborative workforce.',
+          'Emphasis on multiple language acquisition',
+          'Offers practice with client ethics and real world situations',
+          'Poses question to learners regarding the role of technology in modern society.'
         ]
       },
       {
@@ -102,13 +111,15 @@ export default {
         location: 'Austin, TX',
         description: [
           'Educated low-income at risk students in fundamentals of computer science',
-          'Teach JavaScript, CSS, and HTML and algorithm problem solving'
+          'Taught JavaScript, CSS, and HTML computer programming languages',
+          'Instructed students in algorithm problem solving methodology',
+          'Explored application design flow using user experience feedback'
         ]
       }
     ],
     education: [
       {
-        date: 'July 2017- May 2019',
+        date: 'July 2017 - May 2019',
         institute: 'Austin Community College',
         degree: 'Web Developer Certificate'
       },
@@ -121,7 +132,7 @@ export default {
     personalInfo: {
       name: 'Andrew Riefenstahl',
       address: 'Austin, TX 78745',
-      phone: '817-897-4599',
+      phone: 'eight one seven-897-4599',
       email: 'andrew.riefenstahl@gmail.com',
       age: 32,
       dOB: 'November 9th, 1988',
@@ -139,5 +150,20 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.resume-container > * {
+  margin-bottom: 3rem;
+}
+hr {
+  width: 80%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(239, 141, 156, 0.8),
+    rgba(44, 62, 81, 1),
+    rgba(239, 141, 156, 0.8)
+  );
 }
 </style>

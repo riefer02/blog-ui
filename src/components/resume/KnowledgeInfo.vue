@@ -30,10 +30,11 @@ export default {
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  margin-bottom: 0rem;
 
   &-section {
     width: 100%;
-    padding: 1rem;
+    padding: 1rem 1rem 0rem 1rem;
     align-self: center;
   }
 
