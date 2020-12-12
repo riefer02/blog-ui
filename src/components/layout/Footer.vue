@@ -345,7 +345,7 @@ export default {
   }
 
   .social-media-bar {
-    margin-right: 58px;
+    margin-right: 39px;
     order: 1;
   }
 

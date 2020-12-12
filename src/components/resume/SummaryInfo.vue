@@ -33,4 +33,12 @@ export default {
     padding-bottom: 1.5rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .summary {
+    &-section {
+      width: 95%;
+    }
+  }
+}
 </style>

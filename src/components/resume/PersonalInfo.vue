@@ -74,5 +74,29 @@ export default {
     color: #fff;
     font-size: 1.3rem;
   }
+
+  &-name-label,
+  &-email-label,
+  &-age-label,
+  &-dob-label,
+  &-phone-label {
+    margin-bottom: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .personal {
+    &-info {
+      width: 80%;
+      overflow: hidden;
+    }
+    &-name-value,
+    &-email-value,
+    &-age-value,
+    &-dob-value,
+    &-phone-value {
+      font-size: 1rem;
+    }
+  }
 }
 </style>

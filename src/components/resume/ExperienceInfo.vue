@@ -137,4 +137,16 @@ hr {
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .experience {
+    &-container {
+      width: 95%;
+    }
+
+    &-role {
+      padding: 0 1rem;
+    }
+  }
+}
 </style>

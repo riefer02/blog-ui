@@ -51,6 +51,27 @@ export default {
     BaseInput
   },
   methods: {
+    validateEmail(emailAddr) {
+      if (
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+          emailAddr
+        )
+      ) {
+        return true;
+      }
+      console.log('You have entered an invalid email address!');
+      return false;
+    },
+
+    checkPassword(password) {
+      var passwordRules = /^[A-Za-z]\w{7,14}$/;
+      if (password.match(passwordRules)) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+
     activateLoginModal() {
       let modalConfig = {
         modalType: 'login',
@@ -60,6 +81,28 @@ export default {
       this.$store.commit('SET_MODAL', modalConfig);
     },
     async registerNewUser() {
+      let message;
+      // Validate Username
+      if (this.registration.username.length <= 2) {
+        message = `Username must be greater than one characters`;
+        this.$store.commit('SET_SNACK', message);
+        return;
+      }
+      // Validate Email
+      let emailValidity = this.validateEmail(this.registration.email);
+      if (!emailValidity) {
+        message = `Email is not valid`;
+        this.$store.commit('SET_SNACK', message);
+        return;
+      }
+      // Validate Password
+      let passwordValidity = this.checkPassword(this.registration.password);
+      if (!passwordValidity) {
+        message = `Password must be between 7 to 16 characters & contain only alphanumeric characters, underscore, and first character must be a letter`;
+        this.$store.commit('SET_SNACK', message);
+        return;
+      }
+
       await this.$store
         .dispatch('registerNewUser', {
           username: this.registration.username,
@@ -73,11 +116,11 @@ export default {
             modalData: {}
           };
           this.$store.commit('SET_MODAL', modalConfig);
-          let message = `Welcome to riefer.io ${this.registration.username}!`;
+          message = `Welcome to riefer.io ${this.registration.username}!`;
           this.$store.commit('SET_SNACK', message);
         })
         .catch(err => {
-          let message = `I'm sorry we had an error during registration`;
+          message = `I'm sorry we had an error during registration`;
           console.log(err);
           this.$store.commit('SET_SNACK', message);
         });

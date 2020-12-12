@@ -67,6 +67,7 @@ export default {
       this.$store.commit('SET_SNACK', message);
     },
     async loginUser() {
+      let message;
       // Write form validation logic here...
       await this.$store
         .dispatch('loginUser', {
@@ -80,11 +81,11 @@ export default {
             modalData: {}
           };
           this.$store.commit('SET_MODAL', modalConfig);
-          let message = `Welcome back ${this.loginCredentials.username}!`;
+          message = `Welcome back ${this.loginCredentials.username}!`;
           this.$store.commit('SET_SNACK', message);
         })
         .catch(err => {
-          let message = `I'm sorry username and password are incorrect`;
+          message = `I'm sorry username and password are incorrect`;
           console.log(err);
           this.$store.commit('SET_SNACK', message);
         });

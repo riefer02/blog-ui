@@ -39,6 +39,7 @@ export default {
       this.scene.add(this.cube);
       this.camera.position.z = 5;
       this.animate();
+      // Set Lighting
       {
         const color = 0xffffff;
         const intensity = 1;

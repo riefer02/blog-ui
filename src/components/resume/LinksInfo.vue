@@ -27,11 +27,13 @@ export default {
     padding: 0px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   &-item {
     display: inline-block;
     list-style-type: none;
+    margin: 0.2rem;
     margin-right: 1rem;
   }
 
@@ -42,5 +44,7 @@ export default {
     line-height: 1.7rem;
     padding-bottom: 1.5rem;
   }
+}
+@media screen and (max-width: 600px) {
 }
 </style>

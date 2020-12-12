@@ -27,7 +27,7 @@ import {
   faGithub,
   faInstagram,
   faWhatsapp,
-  faYoutube,
+  faYoutube
 } from '@fortawesome/free-brands-svg-icons';
 import {
   faWrench,
@@ -37,7 +37,10 @@ import {
   faLayerGroup,
   faServer,
   faBezierCurve,
-  faCaretRight
+  faCaretRight,
+  faArrowLeft,
+  faHeart,
+  faComment
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Axios from 'axios';
@@ -53,7 +56,10 @@ library.add(
   faLayerGroup,
   faServer,
   faBezierCurve,
-  faCaretRight
+  faCaretRight,
+  faArrowLeft,
+  faHeart,
+  faComment
 );
 
 export default {

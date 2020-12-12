@@ -9,7 +9,7 @@
               author: <span>@{{ blog.author }}</span>
             </h4>
             <h4>{{ blog.topic }}</h4>
-            <p class="card-text">{{ blog.summary }}</p>
+            <p class="card-text">{{ truncatedSummary }}</p>
           </router-link>
           <div class="card-btns">
             <button
@@ -56,11 +56,30 @@ export default {
         modalType: 'editor'
       };
       this.$store.commit('SET_MODAL', newModalConfig);
+    },
+    truncatedText(str, num) {
+      // If the length of str is less than or equal to num
+      // just return str--don't truncate it.
+      if (str.length <= num) {
+        return str;
+      }
+      // Return str truncated with '...' concatenated to the end of str.
+      return str.slice(0, num) + '...';
     }
   },
+  mounted() {
+    if (this.$store.state.user) {
+      this.curUserName = this.$store.state.user.username;
+    } else {
+      this.curUserName = 'Guest';
+    }
+  },
+  data: () => ({
+    curUserName: ''
+  }),
   computed: {
-    curUserName() {
-      return this.$store.state.user.username;
+    truncatedSummary() {
+      return this.truncatedText(this.blog.summary, 120);
     }
   }
 };

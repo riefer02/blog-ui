@@ -35,7 +35,6 @@ export default {
       'WordPress',
       'Vue',
       'React',
-      'EJS',
       'GraphQL',
       'Github',
       'Node',
@@ -64,7 +63,7 @@ export default {
       'and more...'
     ],
     summary:
-      'I am a freelance Full Stack Developer and Educator who creates web applications. I like to make high-fidelity online digital media to drive growth. I am a fast learner of new technologies with a grasp of computer science fundamentals, algorithmic logic, frontend frameworks, database management, and more. I am an experienced, results-oriented leader in person, remotely, and professional community.',
+      'I am a freelance Full Stack Developer and Educator who creates web applications. I enjoy innovating and crafting high-quality digital media to drive growth. I am a fast learner of new technologies with a grasp of computer science fundamentals, algorithmic logic, frontend frameworks, database management, and more. Being an experienced teacher gives me the soft (real) skills to instruct, lead, and reflect. I am an experienced, results-oriented leader in person, remotely, and in all professional communities.',
     links: [
       {
         name: 'LinkedIn',
@@ -165,5 +164,11 @@ hr {
     rgba(44, 62, 81, 1),
     rgba(239, 141, 156, 0.8)
   );
+}
+
+@media screen and (max-width: 600px) {
+  .resume-container {
+    width: 85%;
+  }
 }
 </style>

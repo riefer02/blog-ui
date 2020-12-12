@@ -39,4 +39,19 @@ export default {
     width: 50%;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .education {
+    &-list {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-item {
+      width: 100%;
+    }
+  }
+}
 </style>
