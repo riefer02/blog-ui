@@ -55,17 +55,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-hr {
-  width: 80%;
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(239, 141, 156, 0.8),
-    rgba(44, 62, 81, 1),
-    rgba(239, 141, 156, 0.8)
-  );
-}
 .experience {
 
   &-header {

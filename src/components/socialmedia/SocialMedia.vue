@@ -83,7 +83,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1200px) {
   .social-media {
     &-bar {
       display: flex;

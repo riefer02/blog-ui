@@ -35,22 +35,38 @@ export default {
     justify-content: space-evenly;
   }
 
+  &-item:first-child {
+    margin-right: 0.5rem;
+  }
   &-item {
     width: 50%;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 20px -14px rgba(0, 0, 0, 0.25);
+    border: 1px solid  rgba(0, 0, 0, 0.25);
+    padding: 1rem;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .education {
+    width: 100%;
     &-list {
       display: flex;
-      justify-content: space-evenly;
       flex-direction: column;
       justify-content: center;
     }
 
+     &-item:first-child {
+    margin-right: 0rem;
+  }
+
+    &-item:last-child {
+      margin-top: 1rem;
+    }
+
     &-item {
-      width: 100%;
+      width: auto;
+      
     }
   }
 }

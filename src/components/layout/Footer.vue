@@ -12,11 +12,23 @@
       <div class="footer-links-group">
         <h6>Fast Travel</h6>
         <ul class="footer-links">
-          <li class="footer-link"><router-link to="/blogs">Blog</router-link></li>
-          <li class="footer-link"><router-link to="/three">Three</router-link></li>
-          <li class="footer-link"><router-link to="/music">Music</router-link></li>
-          <li class="footer-link"><router-link to="/resume">Resume</router-link></li>
-          <li class="footer-link"><router-link to="/">Home</router-link></li>
+          <li class="footer-link">
+            <router-link to="/blogs" @click="scrollToTop()">Blog</router-link>
+          </li>
+          <li class="footer-link">
+            <router-link to="/three" @click="scrollToTop()">Three</router-link>
+          </li>
+          <li class="footer-link">
+            <router-link to="/music" @click="scrollToTop()">Music</router-link>
+          </li>
+          <li class="footer-link">
+            <router-link to="/resume" @click="scrollToTop()"
+              >Resume</router-link
+            >
+          </li>
+          <li class="footer-link" @click="scrollToTop()">
+            <router-link to="/">Home</router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -70,6 +82,11 @@ export default {
     currentYear() {
       const d = new Date();
       return d.getFullYear();
+    }
+  },
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
     }
   }
 };
@@ -351,13 +368,12 @@ export default {
 
   .copyright {
     padding-top: 10px;
-    order:2;
+    order: 2;
   }
 
-  .copyright-text, .copyright-text a {
-
+  .copyright-text,
+  .copyright-text a {
     font-size: 1rem;
   }
-
 }
 </style>

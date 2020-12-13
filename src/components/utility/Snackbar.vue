@@ -1,11 +1,13 @@
 <template>
   <div class="ui-snackbar-container">
-    <div class="ui-snackbar" v-show="show" transition="ui-snackbar-toggle">
-      <div class="ui-snackbar-text">{{ snack }}</div>
-      <div class="ui-snackbar-action">
-        <button @click="resetSnack">Close</button>
+    <transition name="slide-up" mode="out-in">
+      <div class="ui-snackbar" v-show="show" transition="ui-snackbar-toggle">
+        <div class="ui-snackbar-text">{{ snack }}</div>
+        <div class="ui-snackbar-action">
+          <button @click="resetSnack">Close</button>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -18,8 +20,17 @@ export default {
   },
   methods: {
     resetSnack() {
-      let clearMessage = '';
-      this.$store.commit('SET_SNACK', clearMessage);
+      this.$store.commit('SET_SNACK', '');
+    }
+  },
+  watch: {
+    show: {
+      handler(val, oldVal) {
+        console.log('watching show property');
+        console.log(val);
+        console.log(oldVal);
+        setTimeout(() => this.$store.commit('SET_SNACK', ''), 5000);
+      }
     }
   },
   computed: {

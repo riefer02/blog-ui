@@ -7,7 +7,16 @@
         visitors. If you are logged in you will be able to create a blog post.
       </p>
     </div>
-    <CreateBlogPost v-if="loggedIn" />
+    <button
+      class="toggle-create-blog-btn"
+      @click="toggleCreateBlog()"
+      v-if="loggedIn"
+    >
+      Create Blog
+    </button>
+    <transition name="slide-up" mode="out-in">
+      <CreateBlogPost v-if="loggedIn && activeCreateBlog" />
+    </transition>
     <BlogList :blogs="blogs" />
   </div>
 </template>
@@ -20,6 +29,14 @@ export default {
   components: {
     CreateBlogPost,
     BlogList
+  },
+  data: () => ({
+    activeCreateBlog: false
+  }),
+  methods: {
+    toggleCreateBlog() {
+      this.activeCreateBlog = !this.activeCreateBlog;
+    }
   },
   computed: {
     blogs() {
@@ -34,5 +51,18 @@ export default {
 .blog-view-text {
   font-size: 1.2rem;
   line-height: 1.7rem;
+}
+
+.toggle-create-blog-btn {
+  padding: 0.6rem 1.2rem;
+  width: auto;
+  background: #1abc9c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease all;
+  border-radius: 10px 0 10px 0;
+  outline: none !important;
+  box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
 }
 </style>

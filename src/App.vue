@@ -7,9 +7,7 @@
         <component :is="Component" />
       </transition>
     </router-view>
-    <transition appear name="slide-fade" mode="out-in">
-      <Snackbar />
-    </transition>
+    <Snackbar />
     <Modal :modalConfig="modalConfig" @handleModal="handleModal(modalState)" />
     <Footer />
   </div>
@@ -87,9 +85,11 @@ export default {
   },
   data: () => ({}),
   methods: {},
-  computed: mapState({
-    modalConfig: state => state.modalConfig
-  }),
+  computed: {
+    ...mapState({
+      modalConfig: state => state.modalConfig
+    })
+  },
   created() {
     // store user data to bypass login...
     const userString = localStorage.getItem('user');
@@ -130,21 +130,24 @@ export default {
   box-sizing: border-box;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-
 body {
   margin: 0 auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+hr {
+  width: 80%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(239, 141, 156, 0.8),
+    rgba(44, 62, 81, 1),
+    rgba(239, 141, 156, 0.8)
+  );
 }
 
 /* Utility Classes */
@@ -209,18 +212,22 @@ body {
 
 /*** Transitions ***/
 
+/* Fade Transition */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.5s ease;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-enter-from, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
 }
+
+/* Slide-Fade */
 .slide-fade-enter-active,
 .slide-fade-leave-active {
   transition: all 0.5s ease;
 }
-.slide-fade-enter {
+.slide-fade-enter-from,
+.slide-fade-leave-to {
   opacity: 0;
   transform: translateX(10px);
 }
@@ -234,12 +241,26 @@ body {
   transform: translateX(-10px);
 }
 
-.slide-up-enter {
+/* Slide Up */
+.slide-up-enter-from {
   transform: translateY(10px); /* start 10px down*/
   opacity: 0;
 }
 
+.slide-up-leave-from {
+  opacity: 1;
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.slide-up-leave-active {
+  transition: all 0.4s ease;
+}
+
 .slide-up-enter-active {
-  transition: all 0.2s ease;
+  transition: all 0.4s ease;
 }
 </style>

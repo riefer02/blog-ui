@@ -3,6 +3,7 @@
     <main class="wrapper">
       <h1 class="header-text-primary">Full Stack Developer</h1>
       <!-- <h3 class="header-test-secondary"></h3> -->
+      <hr/>
       <p class="main-text">
         Hi, and welcome to my portfolio website. My name is Andrew Riefenstahl
         and I am a self-taught full stack developer. I studied anthropology when
@@ -23,6 +24,7 @@
         that add up to a great life and we are only given just one to live. So I
         try to make the best by exploring new aspects with every turning page.
       </p>
+      <hr />
     </main>
     <ResponsiveCardList :items="hobbies" />
   </div>
@@ -62,8 +64,8 @@ export default {
         name: 'Creator',
         summary:
           'I don’t like to define myself by the work I’ve done. I define myself by the work I want to do. Technologies can be learned, I prefer a good challenge myself.',
-        icon: 'feather-alt', // fas
-     }
+        icon: 'feather-alt' // fas
+      }
     ]
   })
 };
@@ -125,5 +127,17 @@ export default {
     margin-top: 1.3rem;
     margin-bottom: 1.9rem;
   }
+}
+
+hr {
+  width: 80%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(239, 141, 156, 0.8),
+    rgba(44, 62, 81, 1),
+    rgba(239, 141, 156, 0.8)
+  );
 }
 </style>

@@ -7,6 +7,7 @@
         <h3 class="post-topic"><span>Topic:</span> {{ blog.topic }}</h3>
         <h3 class="post-author"><span>Author:</span> @{{ blog.author }}</h3>
         <p class="post-text">{{ blog.summary }}</p>
+          <hr/>
         <div class="post-btns">
           <router-link to="/blogs">
             <button class="post-btns-return">
@@ -115,7 +116,7 @@ export default {
 
 <style lang="scss" scoped>
 .post {
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
   transition: all 0.3s ease-in-out;
   backface-visibility: hidden;
@@ -125,16 +126,19 @@ export default {
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
   padding: 2rem 1rem;
+
   &-section {
-    background-color: pink;
+    // background-color: pink;
     margin-bottom: 2.5rem;
   }
 
   &-container {
-    background-color: orangered;
+    // background-color: orangered;
     width: 80%;
     margin: 0 auto;
     padding-top: 2rem;
+    display: flex;
+    justify-content: center;
   }
 
   &-title {
@@ -197,4 +201,35 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .post {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .post {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .post {
+    width: 100%;
+    &-container {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0;
+    }
+    &-title {
+      padding: 2rem;
+    }
+  }
+}
+
+// @media screen and (max-width: 400px) {
+//   .post {
+//   }
+// }
 </style>

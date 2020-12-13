@@ -9,19 +9,19 @@
     <nav class="nav-nav">
       <ul class="nav-list">
         <li class="nav-item">
-          <router-link to="/" class="nav-link">Home</router-link>
+          <router-link to="/" class="nav-link" @click="scrollToTop()">Home</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/blogs" class="nav-link">Blog</router-link>
+          <router-link to="/blogs" class="nav-link" @click="scrollToTop()">Blog</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/three" class="nav-link">Three</router-link>
+          <router-link to="/three" class="nav-link" @click="scrollToTop()">Three</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/music" class="nav-link">Music</router-link>
+          <router-link to="/music" class="nav-link" @click="scrollToTop()">Music</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/resume" class="nav-link">Resume</router-link>
+          <router-link to="/resume" class="nav-link" @click="scrollToTop()">Resume</router-link>
         </li>
         <li class="nav-item">
           <router-link
@@ -71,6 +71,9 @@ export default {
     },
     logout() {
       this.$store.dispatch('logout');
+    },
+    scrollToTop() {
+      window.scrollTo(0, 0);
     }
   }
 };
@@ -84,8 +87,8 @@ export default {
 
   &-btn {
     background-color: #1abc9c;
-    height: 6rem;
-    width: 6rem;
+    height: 5.6rem;
+    width: 5.6rem;
     position: fixed;
     top: 1.8rem;
     left: 2.3rem;
@@ -97,8 +100,8 @@ export default {
   }
 
   &-bg {
-    height: 5rem;
-    width: 5rem;
+    height: 4.7rem;
+    width: 4.7rem;
     border-radius: 50%;
     position: fixed;
     top: 2.3rem;
@@ -129,14 +132,14 @@ export default {
     width: 100%;
   }
   &-item {
-    margin: 1rem;
+    margin: 0.7rem;
     overflow: hidden;
   }
   &-link {
     &:link,
     &:visited {
       display: inline-block;
-      font-size: 3rem;
+      font-size: 2.7rem;
       font-weight: 300;
       padding: 1rem 2rem;
       color: #ffffff;
@@ -174,7 +177,7 @@ export default {
   &-icon {
     position: relative;
     margin: auto;
-    margin-top: 2.9rem;
+    margin-top: 2.7rem;
     &,
     &::before,
     &::after {
