@@ -9,19 +9,29 @@
     <nav class="nav-nav">
       <ul class="nav-list">
         <li class="nav-item">
-          <router-link to="/" class="nav-link" @click="scrollToTop()">Home</router-link>
+          <router-link to="/" class="nav-link" @click="scrollToTop()"
+            >Home</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link to="/blogs" class="nav-link" @click="scrollToTop()">Blog</router-link>
+          <router-link to="/blogs" class="nav-link" @click="scrollToTop()"
+            >Blog</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link to="/three" class="nav-link" @click="scrollToTop()">Three</router-link>
+          <router-link to="/three" class="nav-link" @click="scrollToTop()"
+            >Three</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link to="/music" class="nav-link" @click="scrollToTop()">Music</router-link>
+          <router-link to="/music" class="nav-link" @click="scrollToTop()"
+            >Music</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link to="/resume" class="nav-link" @click="scrollToTop()">Resume</router-link>
+          <router-link to="/resume" class="nav-link" @click="scrollToTop()"
+            >Resume</router-link
+          >
         </li>
         <li class="nav-item">
           <router-link
@@ -83,6 +93,7 @@ export default {
 .nav {
   &-checkbox {
     display: none;
+    backface-visibility: hidden;
   }
 
   &-btn {
@@ -97,6 +108,42 @@ export default {
     box-shadow: 0 1rem 3rem rgba(#000, 0.1);
     text-align: center;
     cursor: pointer;
+    overflow: hidden;
+
+    &:after {
+      animation: shine 5s cubic-bezier(1, -0.43, 1, 1) infinite;
+      animation-fill-mode: forwards;
+      content: '';
+      position: absolute;
+      top: -110%;
+      left: -210%;
+      width: 200%;
+      height: 200%;
+      opacity: 0;
+      transform: rotate(30deg);
+
+      background: rgba(255, 255, 255, 0.13);
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.13) 0%,
+        rgba(255, 255, 255, 0.13) 77%,
+        rgba(255, 255, 255, 0.5) 92%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+
+    // &:hover:after {
+    //   opacity: 1;
+    //   top: -30%;
+    //   left: -30%;
+    //   transition-property: left, top, opacity;
+    //   transition-duration: 0.7s, 0.7s, 0.15s;
+    //   transition-timing-function: ease;
+    // }
+
+    &:active:after {
+      opacity: 0;
+    }
   }
 
   &-bg {
