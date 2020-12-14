@@ -7,7 +7,7 @@
         <h3 class="post-topic"><span>Topic:</span> {{ blog.topic }}</h3>
         <h3 class="post-author"><span>Author:</span> @{{ blog.author }}</h3>
         <p class="post-text">{{ blog.summary }}</p>
-          <hr/>
+
         <div class="post-btns">
           <router-link to="/blogs">
             <button class="post-btns-return">
@@ -31,13 +31,13 @@
               class="form-control"
               name="content"
               placeholder="Comment"
-              v-model="this.comment"
+              v-model="comment"
             ></textarea>
             <div class="text-right">
               <button
                 type="submit"
                 class="btn btn-primary"
-                @click.prevent="createComment(this.id)"
+                @click.prevent="createComment(id)"
               >
                 Post
               </button>

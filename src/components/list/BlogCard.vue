@@ -13,7 +13,7 @@
           </router-link>
           <div class="card-btns">
             <button
-              v-if="blog.author === this.curUserName"
+              v-if="blog.author === curUserName"
               class="edit-btn"
               @click="editBlog(this.blog)"
             >
@@ -22,7 +22,7 @@
             <button
               class="delete-btn"
               @click.prevent="deleteBlog(blog._id)"
-              v-if="blog.author === this.curUserName"
+              v-if="blog.author === curUserName"
             >
               <FontAwesomeIcon class="trash-icon" icon="trash" />
             </button>

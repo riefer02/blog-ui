@@ -263,4 +263,25 @@ hr {
 .slide-up-enter-active {
   transition: all 0.4s ease;
 }
+
+@keyframes shine {
+  10% {
+    opacity: 1;
+    top: -220%;
+    left: -420%;
+    transition-property: left, top, opacity;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-timing-function: ease;
+  }
+
+  65% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+  }
+}
 </style>

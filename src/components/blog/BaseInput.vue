@@ -3,7 +3,6 @@
     <label v-if="label">{{ label }}</label>
     <input
       v-bind="$attrs"
-      :placeholder="this.placeholder"
       class="field"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
@@ -23,7 +22,8 @@ export default {
       default: ''
     },
     placeholder: {
-      type: String
+      type: String,
+      default: ''
     }
   }
 };
