@@ -14,7 +14,10 @@
               <FontAwesomeIcon icon="arrow-left" />
             </button>
           </router-link>
-          <button class="post-btns-like">
+          <button
+            class="post-btns-like"
+            @click.prevent="likeBlogPost(this.id, this.curUserID)"
+          >
             <FontAwesomeIcon icon="heart" />
           </button>
           <button
@@ -56,6 +59,7 @@
 <script>
 import { authComputed } from '@/store/helper.js';
 import CommentService from '../services/CommentService';
+import LikeService from '../services/LikeService';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import BlogService from '../services/BlogService';
 import BlogSkeletonLoader from '@/components/utility/BlogSkeletonLoader.vue';
@@ -78,13 +82,18 @@ export default {
     blog: {},
     loadState: true,
     createCommentState: false,
-    comment: ''
+    comment: '',
+    curUserID: undefined
   }),
   mounted() {
     BlogService.getBlog(this.id).then(response => {
       this.blog = response.data.blog[0];
       this.loadState = !this.loadState;
     });
+
+    if (this.loggedIn) {
+      this.curUserID = this.$store.state.user._id;
+    }
   },
   methods: {
     toggleCreateComment() {
@@ -105,6 +114,23 @@ export default {
         BlogService.getBlog(this.id).then(response => {
           this.blog = response.data.blog[0];
         });
+      });
+    },
+    likeBlogPost(id, userID) {
+      const likeData = {
+        blogID: id,
+        userID: userID
+      };
+      LikeService.likeBlogPost(id, likeData).then(response => {
+        console.log(response.data.uniqueLike);
+        if (response.data.uniqueLike) {
+          this.$store.commit('SET_SNACK', 'You liked a post!');
+          BlogService.getBlog(this.id).then(response => {
+            this.blog = response.data.blog[0];
+          });
+        } else {
+          this.$store.commit('SET_SNACK', 'You already liked this post!');
+        }
       });
     }
   },

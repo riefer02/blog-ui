@@ -3,7 +3,7 @@
     <div class="cards-item">
       <div class="card">
         <div class="card-content">
-          <router-link :to="'/blog/' + blog._id">
+          <router-link :to="'/blog/' + blog._id" @click="scrollToTop()">
             <h3 class="card-title">{{ blog.title }}</h3>
             <h4 v-if="blog.author" class="card-author">
               author: <span>@{{ blog.author }}</span>
@@ -65,6 +65,9 @@ export default {
       }
       // Return str truncated with '...' concatenated to the end of str.
       return str.slice(0, num) + '...';
+    },
+    scrollToTop() {
+      window.scrollTo(0, 0);
     }
   },
   mounted() {
