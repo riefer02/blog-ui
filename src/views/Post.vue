@@ -3,6 +3,12 @@
     <div class="post-container">
       <BlogSkeletonLoader v-if="loadState" width="300px" height="80px" />
       <div v-else class="post">
+        <div class="post-detail-display">
+          <div class="post-detail-display-item">
+            <FontAwesomeIcon icon="heart" class="post-detail-heart" />
+            <div class="post-likes">{{ numberOfLikes }}</div>
+          </div>
+        </div>
         <h1 class="post-title">{{ blog.title }}</h1>
         <h3 class="post-topic"><span>Topic:</span> {{ blog.topic }}</h3>
         <h3 class="post-author"><span>Author:</span> @{{ blog.author }}</h3>
@@ -135,6 +141,9 @@ export default {
     }
   },
   computed: {
+    numberOfLikes() {
+      return this.blog.likes.length;
+    },
     ...authComputed
   }
 };
@@ -165,6 +174,38 @@ export default {
     padding-top: 2rem;
     display: flex;
     justify-content: center;
+  }
+
+  &-detail-display {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 3.5rem;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+  }
+
+  &-detail-heart {
+    color: #1abc9c;
+    position: relative;
+    font-size: 2rem;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    margin: 0 auto;
+  }
+
+  &-likes {
+    color: #fff;
+    position: relative;
+    right: 1px;
+    z-index: 1;
+    margin: 0 auto;
   }
 
   &-title {
@@ -198,7 +239,8 @@ export default {
   }
 
   &-text,
-  &-title {
+  &-title,
+  &-likes {
     text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
   }
 

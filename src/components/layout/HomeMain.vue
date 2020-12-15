@@ -3,7 +3,7 @@
     <main class="wrapper">
       <h1 class="header-text-primary">Full Stack Developer</h1>
       <!-- <h3 class="header-test-secondary"></h3> -->
-      <hr/>
+      <hr />
       <p class="main-text">
         Hi, and welcome to my portfolio website. My name is Andrew Riefenstahl
         and I am a self-taught full stack developer. I studied anthropology when
@@ -56,7 +56,7 @@ export default {
         id: 3,
         name: 'Database Engineer',
         summary:
-          'I maintain servers for database storage, write complex queries, development of all server-side logic, and ensure high performance and responsiveness to requests from the front-end.',
+          'I maintain servers for database storage, write complex queries, develop server-side logic, and ensure high performance and responsiveness to requests from the front-end.',
         icon: 'server' // fas
       },
       {

@@ -56,7 +56,6 @@ export default {
 
 <style lang="scss" scoped>
 .experience {
-
   &-header {
     margin-bottom: 2rem;
   }

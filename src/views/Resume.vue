@@ -90,7 +90,7 @@ export default {
       },
       {
         date: 'August 2019 - June 2020',
-        roleTitle: 'Web Developer/Curriculum Writer',
+        roleTitle: 'Web Developer || Curriculum Writer',
         employer: 'Hello World Studios',
         location: 'Austin, TX',
         description: [

@@ -8,24 +8,38 @@
             <h4 v-if="blog.author" class="card-author">
               author: <span>@{{ blog.author }}</span>
             </h4>
-            <h4>{{ blog.topic }}</h4>
+
+            <h4 class="card-topic">{{ blog.topic }}</h4>
+
             <p class="card-text">{{ truncatedSummary }}</p>
           </router-link>
-          <div class="card-btns">
-            <button
-              v-if="blog.author === curUserName"
-              class="edit-btn"
-              @click="editBlog(this.blog)"
-            >
-              <FontAwesomeIcon class="edit-icon" icon="wrench" />
-            </button>
-            <button
-              class="delete-btn"
-              @click.prevent="deleteBlog(blog._id)"
-              v-if="blog.author === curUserName"
-            >
-              <FontAwesomeIcon class="trash-icon" icon="trash" />
-            </button>
+          <div class="card-details-row">
+            <div class="card-details-left">
+              <div class="card-details-likes">
+                <FontAwesomeIcon class="heart-icon" icon="heart" />
+                <div class="card-likes">{{ numberOfLikes }}</div>
+              </div>
+              <div class="card-details-comments">
+                <FontAwesomeIcon class="heart-icon" icon="comment" />
+                <div class="card-comments">{{ numberOfComments }}</div>
+              </div>
+            </div>
+            <div class="card-btns">
+              <button
+                v-if="blog.author === curUserName"
+                class="edit-btn"
+                @click="editBlog(this.blog)"
+              >
+                <FontAwesomeIcon class="edit-icon" icon="wrench" />
+              </button>
+              <button
+                class="delete-btn"
+                @click.prevent="deleteBlog(blog._id)"
+                v-if="blog.author === curUserName"
+              >
+                <FontAwesomeIcon class="trash-icon" icon="trash" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -83,6 +97,12 @@ export default {
   computed: {
     truncatedSummary() {
       return this.truncatedText(this.blog.summary, 120);
+    },
+    numberOfLikes() {
+      return this.blog.likes.length;
+    },
+    numberOfComments() {
+      return this.blog.comments.length;
     }
   }
 };
@@ -110,6 +130,46 @@ a {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  &-details-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // &-topic {
+  // }
+
+  &-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    &-left {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    &-likes {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    &-comments {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+
+  &-likes,
+  &-comments {
+    text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+    margin-left: 0.4rem;
+    color: #fff;
+  }
 }
 
 .card-content {
@@ -189,5 +249,10 @@ a {
   color: white;
   position: relative;
   right: 1px;
+}
+
+.heart-icon {
+  color: #1abc9c;
+  margin-left: 0.7rem;
 }
 </style>

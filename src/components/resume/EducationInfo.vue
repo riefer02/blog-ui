@@ -8,7 +8,7 @@
         :key="education"
       >
         <h5>{{ education.date }}</h5>
-        <h3>{{ education.institute }}</h3>
+        <h3 class="education-institute">{{ education.institute }}</h3>
         <h4>{{ education.degree }}</h4>
       </div>
     </div>
@@ -29,6 +29,7 @@ export default {
 .education {
   width: 80%;
   margin: 0 auto;
+  text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
 
   &-list {
     display: flex;
@@ -40,10 +41,14 @@ export default {
   }
   &-item {
     width: 50%;
+    padding: 0.7rem 1.5rem 1rem 1.5rem;
     border-radius: 0.25rem;
-    box-shadow: 0 20px 20px -14px rgba(0, 0, 0, 0.25);
-    border: 1px solid  rgba(0, 0, 0, 0.25);
-    padding: 1rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
+  }
+
+  &-institute {
+    color: #fff;
   }
 }
 
@@ -56,9 +61,9 @@ export default {
       justify-content: center;
     }
 
-     &-item:first-child {
-    margin-right: 0rem;
-  }
+    &-item:first-child {
+      margin-right: 0rem;
+    }
 
     &-item:last-child {
       margin-top: 1rem;
@@ -66,7 +71,6 @@ export default {
 
     &-item {
       width: auto;
-      
     }
   }
 }
