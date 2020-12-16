@@ -9,7 +9,6 @@ module.exports = {
           target: 'http://localhost:6969'
         }
       }
-    }
-    plugins: []
+    },
   }
 };
