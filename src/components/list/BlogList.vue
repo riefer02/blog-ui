@@ -19,6 +19,7 @@
         :key="blog.title"
         :blog="blog"
         :deleteBlog="deleteBlog"
+        :loadState="loadState"
       ></BlogCard>
     </div>
   </div>
@@ -40,8 +41,14 @@ export default {
     this.$store.dispatch('retrieveBlogs');
   },
   data: () => ({
-    activeFilter: ''
+    activeFilter: '',
+    loadState: true
   }),
+  watch: {
+    blogs() {
+      this.loadState = false;
+    }
+  },
   computed: {
     filteredBlogs() {
       let blogList = this.blogs.filter(blog => {

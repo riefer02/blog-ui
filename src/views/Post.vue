@@ -34,10 +34,11 @@
             <FontAwesomeIcon icon="comment" />
           </button>
         </div>
+        <transition name="slide-up" mode="out-in">
         <div class="post-create-comment" v-if="createCommentState">
           <form>
             <textarea
-              class="form-control"
+              class="post-create-textarea"
               name="content"
               placeholder="Comment"
               v-model="comment"
@@ -45,7 +46,7 @@
             <div class="text-right">
               <button
                 type="submit"
-                class="btn btn-primary"
+                class="post-create-comment-btn"
                 @click.prevent="createComment(id)"
               >
                 Post
@@ -53,10 +54,8 @@
             </div>
           </form>
         </div>
+        </transition>
         <CommentSection :comments="blog.comments" />
-        <!-- <div class="post-comments">
-
-        </div> -->
       </div>
     </div>
   </div>
@@ -161,6 +160,31 @@ export default {
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
   padding: 2rem 1rem;
+
+  &-create-comment-btn{
+    padding: 0.4rem 1rem;
+    width: auto;
+    background: #1abc9c;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease all;
+    border-radius: 10px 0 10px 0;
+    outline: none !important;
+    box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
+  }
+  &-create-textarea {
+    font-family: 'Open sans', sans-serif;
+    line-height: 1.15;
+    width: 90%;
+    margin: 1.8rem 1rem 1rem 1rem;
+    outline: none;
+    border: 1px solid #bbb;
+    border-radius: 15px;
+    padding: 0.4rem 0.7rem;
+    height: 50px;
+    transition: 0.2s ease all;
+  }
 
   &-section {
     // background-color: pink;
