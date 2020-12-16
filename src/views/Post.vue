@@ -35,25 +35,25 @@
           </button>
         </div>
         <transition name="slide-up" mode="out-in">
-        <div class="post-create-comment" v-if="createCommentState">
-          <form>
-            <textarea
-              class="post-create-textarea"
-              name="content"
-              placeholder="Comment"
-              v-model="comment"
-            ></textarea>
-            <div class="text-right">
-              <button
-                type="submit"
-                class="post-create-comment-btn"
-                @click.prevent="createComment(id)"
-              >
-                Post
-              </button>
-            </div>
-          </form>
-        </div>
+          <div class="post-create-comment" v-if="createCommentState">
+            <form>
+              <textarea
+                class="post-create-textarea"
+                name="content"
+                placeholder="Comment"
+                v-model="comment"
+              ></textarea>
+              <div class="text-right">
+                <button
+                  type="submit"
+                  class="post-create-comment-btn"
+                  @click.prevent="createComment(id)"
+                >
+                  Post
+                </button>
+              </div>
+            </form>
+          </div>
         </transition>
         <CommentSection :comments="blog.comments" />
       </div>
@@ -161,7 +161,7 @@ export default {
   border-radius: 0.25rem;
   padding: 2rem 1rem;
 
-  &-create-comment-btn{
+  &-create-comment-btn {
     padding: 0.4rem 1rem;
     width: auto;
     background: #1abc9c;
