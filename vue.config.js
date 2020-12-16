@@ -1,5 +1,3 @@
-module.exports = {
-  configureWebpack: {
-    plugins: []
-  }
-};
+const path = require('path');
+
+module.exports = {};
