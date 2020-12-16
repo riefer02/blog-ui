@@ -1,6 +1,7 @@
 <template>
   <div class="card-body">
-    <div class="cards-item">
+    <BlogSkeletonLoader v-if="loadState" width="300px" height="80px" />
+    <div v-else-if="loadState === false" class="cards-item">
       <div class="card">
         <div class="card-content">
           <router-link :to="'/blog/' + blog._id" @click="scrollToTop()">
@@ -49,10 +50,12 @@
 
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import BlogSkeletonLoader from '@/components/utility/BlogSkeletonLoader.vue';
 
 export default {
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    BlogSkeletonLoader
   },
   props: {
     blog: {
@@ -60,6 +63,9 @@ export default {
     },
     deleteBlog: {
       type: Function
+    },
+    loadState: {
+      type: Boolean
     }
   },
   methods: {
