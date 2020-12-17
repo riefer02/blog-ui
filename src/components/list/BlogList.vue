@@ -13,7 +13,7 @@
         ></select
       >
     </div>
-    <div class="d-flex justify-center">
+    <div class="d-flex justify-center blog-list-item-container">
       <BlogCard
         v-for="blog in filteredBlogs"
         :key="blog.title"
@@ -37,19 +37,19 @@ export default {
       type: Array
     }
   },
-  mounted() {
+  created() {
     this.loadState = true;
     this.$store.dispatch('retrieveBlogs');
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loadState = false;
+    }, 1500);
   },
   data: () => ({
     activeFilter: '',
     loadState: undefined
   }),
-  watch: {
-    blogs() {
-      this.loadState = false;
-    }
-  },
   computed: {
     filteredBlogs() {
       let blogList = this.blogs.filter(blog => {
@@ -82,6 +82,10 @@ export default {
 <style lang="scss" scoped>
 .blog-list-container {
   margin-bottom: 5rem;
+}
+
+.blog-list-item-container {
+  min-height: 500px;
 }
 
 .filter {

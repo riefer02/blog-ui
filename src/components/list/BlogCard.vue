@@ -1,6 +1,6 @@
 <template>
   <div class="card-body">
-    <BlogSkeletonLoader v-if="loadState" width="300px" height="80px" />
+    <BlogSkeletonLoader v-if="loadState" width="480px" height="200px" />
     <div v-else-if="loadState === false" class="cards-item">
       <div class="card">
         <div class="card-content">

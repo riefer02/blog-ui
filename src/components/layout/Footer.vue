@@ -93,6 +93,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// .site-footer {
+//   position: fixed;
+//   left: 0;
+//   bottom: 0;
+//   width: 100%;
+// }
 .footer-row-1,
 .footer-row-2 {
   display: flex;
