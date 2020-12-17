@@ -38,11 +38,12 @@ export default {
     }
   },
   mounted() {
+    this.loadState = true;
     this.$store.dispatch('retrieveBlogs');
   },
   data: () => ({
     activeFilter: '',
-    loadState: true
+    loadState: undefined
   }),
   watch: {
     blogs() {

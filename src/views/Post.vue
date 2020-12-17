@@ -22,7 +22,7 @@
           </router-link>
           <button
             class="post-btns-like"
-            @click.prevent="likeBlogPost(this.id, this.curUserID)"
+            @click.prevent="likeBlogPost($route.params.id, curUserID)"
           >
             <FontAwesomeIcon icon="heart" />
           </button>
