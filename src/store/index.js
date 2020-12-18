@@ -55,7 +55,7 @@ export default createStore({
         .registerNewUser(credentials)
         .then(response => {
           console.log('registration response', response);
-          commit('SET_USER_DATA', response);
+          commit('SET_USER_DATA', response.data.user);
         })
         .catch(err => {
           console.log(err.response.data.error);

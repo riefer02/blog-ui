@@ -13,6 +13,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import BlogService from '@/services/BlogService.js'
 import BaseInput from '@/components/blog/BaseInput.vue';
 import BaseSelect from '@/components/blog/BaseSelect.vue';
 import BaseTextArea from '@/components/blog/BaseTextArea.vue';
@@ -51,10 +52,7 @@ export default {
           summary,
           topic
         };
-        const response = await self.axios.post(
-          'http://localhost:6969/api/v1/blog/create',
-          newBlog
-        );
+        const response = await BlogService.createBlog(newBlog)
         console.log(response);
         self.blog.title = '';
         self.blog.summary = '';
