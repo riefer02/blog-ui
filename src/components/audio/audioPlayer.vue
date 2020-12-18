@@ -119,7 +119,7 @@ export default {
       panner: true,
       masterOut: true
     },
-    signalFlow: undefined
+    signalFlow: undefined,
   }),
   mounted: function() {
     // create audio environment

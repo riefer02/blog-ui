@@ -10,10 +10,10 @@ const apiClient = axios.create({
 });
 
 export default {
-  registerNewUser(credentials) {
-    return apiClient.post('/auth/signup', credentials);
+  async registerNewUser(credentials) {
+    return await apiClient.post('/auth/signup', credentials);
   },
-  loginUser(credentials) {
-    return apiClient.post('/auth/login', credentials);
+  async loginUser(credentials) {
+    return await apiClient.post('/auth/login', credentials);
   }
 };
