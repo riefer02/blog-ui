@@ -29,7 +29,7 @@
               <button
                 v-if="blog.author === curUserName"
                 class="edit-btn"
-                @click="editBlog(this.blog)"
+                @click="editBlog(blog)"
               >
                 <FontAwesomeIcon class="edit-icon" icon="wrench" />
               </button>

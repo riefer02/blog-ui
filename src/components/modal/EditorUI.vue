@@ -28,7 +28,7 @@
         :placeholder="summaryPlaceholder"
         v-model="blog.summary"
       />
-      <button class="submit-btn" @click.prevent="updateBlog(this.blogID)">
+      <button class="submit-btn" @click.prevent="updateBlog(blogID)">
         Submit
       </button>
     </form>

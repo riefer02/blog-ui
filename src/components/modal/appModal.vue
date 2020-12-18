@@ -23,7 +23,7 @@
           <EditorUI
             v-else-if="modalMode === 'editor'"
             key="3"
-            :modalConfig="this.modalConfig"
+            :modalConfig="modalConfig"
           />
           <!-- Disabled Mode -->
           <div v-else-if="modalMode === 'disabled'" key="4">
