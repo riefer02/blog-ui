@@ -69,7 +69,7 @@ export default {
         name: 'LinkedIn',
         link: 'https://www.linkedin.com/in/andrewriefenstahl'
       },
-      { name: 'YouTube', link: 'https://www.youtube.com/riefer02' },
+      { name: 'YouTube', link: 'https://youtu.be/erDW9qG8Vrs' },
       { name: 'GitHub', link: 'https://github.com/riefer02' },
       { name: 'Instagram', link: 'https://www.instagram.com/riefer02' }
     ],
@@ -132,7 +132,7 @@ export default {
       name: 'Andrew Riefenstahl',
       address: 'Austin, TX 78745',
       phone: 'eight one seven-897-4599',
-      email: 'andrew.riefenstahl@gmail.com',
+      email: "firstname + '.riefenstahl@gmail.com'",
       age: 32,
       dOB: 'November 9th, 1988',
       heritage: ['German', 'Italian', 'Cherokee', 'Texan'],
@@ -168,7 +168,7 @@ hr {
 
 @media screen and (max-width: 600px) {
   .resume-container {
-    width: 85%;
+    width: 94%;
   }
 }
 </style>

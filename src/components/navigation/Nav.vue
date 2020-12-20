@@ -291,6 +291,7 @@ export default {
       top: 1.5rem;
       left: 2.1rem;
     }
+
     &-icon {
       position: relative;
       margin: auto;
@@ -330,9 +331,13 @@ export default {
     &-btn:hover &-icon::after {
       top: 0.7rem;
     }
-  }
-}
 
-@media only screen and (min-width: 600px) and (max-width: 760px) {
+    &-link {
+      &:link,
+      &:visited {
+        font-size: 2rem;
+      }
+    }
+  }
 }
 </style>

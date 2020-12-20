@@ -120,6 +120,7 @@ export default {
       masterOut: true
     },
     signalFlow: undefined,
+    audioUnlocked: false
   }),
   mounted: function() {
     // create audio environment
@@ -127,7 +128,8 @@ export default {
     this.audioCtx = new this.AudioContext({
       sampleRate: 44100
     });
-    console.log('base latency: ' + this.audioCtx.baseLatency);
+    // unlock audio for safari and chrome mobile
+    this.unlockAudio();
     // initialize plugins
     // compressor
     this.compressor = this.audioCtx.createDynamicsCompressor();
@@ -221,6 +223,26 @@ export default {
     toggleCompressor() {
       this.pluginController.compressor = !this.pluginController.compressor;
       this.pluginSwitch(this.pluginController);
+    },
+    unlockAudio() {
+      // unlock audio for chrome/safar mobile browser on initial load
+      console.log(this.audioUnlocked);
+      if (this.audioUnlocked) return;
+      var buffer = this.audioCtx.createBuffer(1, 1, 22050);
+      var source = this.audioCtx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(this.audioCtx.destination);
+      source.start(0);
+
+      setTimeout(function() {
+        if (
+          source.playbackState === source.PLAYING_STATE ||
+          source.playbackState === source.FINISHED_STATE
+        ) {
+          this.audioUnlocked = true;
+          console.log(this.audioUnlocked);
+        }
+      }, 0);
     }
   }
 };

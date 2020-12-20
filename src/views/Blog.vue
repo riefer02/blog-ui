@@ -24,7 +24,7 @@
 <script>
 import { authComputed } from '@/store/helper.js';
 import CreateBlogPost from '@/components/blog/CreateBlogPost.vue';
-import BlogList from '@/components/list/BlogList.vue';
+import BlogList from '@/components/blog/BlogList.vue';
 export default {
   components: {
     CreateBlogPost,

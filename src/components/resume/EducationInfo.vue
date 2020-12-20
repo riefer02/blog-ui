@@ -7,9 +7,9 @@
         v-for="education in education"
         :key="education"
       >
-        <h5>{{ education.date }}</h5>
+        <h5 class="education-date">{{ education.date }}</h5>
         <h3 class="education-institute">{{ education.institute }}</h3>
-        <h4>{{ education.degree }}</h4>
+        <h4 class="education-degree">{{ education.degree }}</h4>
       </div>
     </div>
   </div>
@@ -49,6 +49,10 @@ export default {
 
   &-institute {
     color: #fff;
+  }
+
+  &-degree, &-date {
+    text-shadow: none;
   }
 }
 

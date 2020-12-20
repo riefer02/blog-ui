@@ -32,7 +32,7 @@
 
 <script>
 import TextLogo from '@/components/logo/TextLogo.vue';
-import BaseInput from '@/components/blog/BaseInput.vue';
+import BaseInput from '@/components/inputs/BaseInput.vue';
 export default {
   props: {
     modalConfig: {
@@ -119,6 +119,7 @@ export default {
           this.$store.commit('SET_MODAL', modalConfig);
           let message = `Welcome to riefer.io ${this.registration.username}!`;
           this.$store.commit('SET_SNACK', message);
+          this.$router.push({ path: '/' });
         })
         .catch(err => {
           console.log(err);

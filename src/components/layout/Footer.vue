@@ -64,7 +64,7 @@
             class="social-media-icon"
             :icon="['fab', 'instagram']"
         /></a>
-        <a href="#" class="social-media-link"
+        <a href="https://youtu.be/erDW9qG8Vrs" class="social-media-link"
           ><FontAwesomeIcon class="social-media-icon" :icon="['fab', 'youtube']"
         /></a>
       </div>

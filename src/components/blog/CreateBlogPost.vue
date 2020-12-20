@@ -14,9 +14,9 @@
 <script>
 import { mapState } from 'vuex';
 import BlogService from '@/services/BlogService.js'
-import BaseInput from '@/components/blog/BaseInput.vue';
-import BaseSelect from '@/components/blog/BaseSelect.vue';
-import BaseTextArea from '@/components/blog/BaseTextArea.vue';
+import BaseInput from '@/components/inputs/BaseInput.vue';
+import BaseSelect from '@/components/inputs/BaseSelect.vue';
+import BaseTextArea from '@/components/inputs/BaseTextArea.vue';
 
 export default {
   name: 'BlogForm',

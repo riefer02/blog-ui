@@ -135,6 +135,10 @@ export default {
     &-role {
       padding: 0 1rem;
     }
+
+    &-description-list {
+      font-size: 0.9rem;
+    }
   }
 }
 </style>

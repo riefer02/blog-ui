@@ -2,7 +2,7 @@
   <div>
     <div class="overlay" v-if="modalConfig.modalActive">
       <div class="modal" v-if="modalConfig.modalActive">
-        <button  v-if="loggedIn" class="close-btn" @click="resetModal">
+        <button v-if="loggedIn" class="close-btn" @click="resetModal">
           <font-awesome-icon
             :icon="['fas', 'window-close']"
             class="close-icon"
@@ -38,10 +38,10 @@
 </template>
 
 <script>
+import {authComputed} from '@/store/helper.js';
 import LoginUI from '@/components/modal/LoginUI.vue';
 import SignUpUI from '@/components/modal/SignUpUI.vue';
 import EditorUI from '@/components/modal/EditorUI.vue';
-// import Velocity from 'velocity-animate';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
@@ -70,27 +70,12 @@ export default {
       };
       this.$store.commit('SET_MODAL', resetConfig);
     }
-    // beforeEnter(el) {
-    //   el.style.opacity = 0;
-    //   el.style.height = 0;
-    // },
-    // enter(el, done) {
-    //   // var delay = el.dataset.index * 150;
-    //   setTimeout(function() {
-    //     Velocity(el, { opacity: 1 }, { complete: done });
-    //   }, 500);
-    // },
-    // leave(el, done) {
-    //   // var delay = el.dataset.index * 150;
-    //   setTimeout(function() {
-    //     Velocity(el, { opacity: 0, height: 0 }, { complete: done });
-    //   }, 0);
-    // }
   },
   computed: {
     modalMode() {
       return this.modalConfig.modalType;
-    }
+    },
+    ...authComputed
   }
 };
 </script>
@@ -163,10 +148,10 @@ export default {
   color: white;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (max-width: 900px) {
   // Anything bigger than 900 px
   .modal {
-    width: 50%;
+    width: 80%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -179,11 +164,8 @@ export default {
 }
 
 @media screen and (max-width: 600px) {
-  // Anything 600 and smaller
-  // .modal {
-  //   height: 100vh;
-  //   width: 100vw;
-  //   padding: 2px;
-  // }
+  .model {
+    width: 90%;
+  }
 }
 </style>

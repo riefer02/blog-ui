@@ -227,7 +227,7 @@ export default {
   &-likes {
     color: #fff;
     position: relative;
-    right: 1px;
+    right: 0px;
     z-index: 1;
     margin: 0 auto;
   }

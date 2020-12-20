@@ -27,7 +27,7 @@
 
 <script>
 import BlogService from '../../services/BlogService';
-import BlogCard from '@/components/list/BlogCard.vue';
+import BlogCard from '@/components/blog/BlogCard.vue';
 export default {
   components: {
     BlogCard
