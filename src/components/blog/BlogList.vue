@@ -21,6 +21,7 @@
         :deleteBlog="deleteBlog"
         :loadState="loadState"
       ></BlogCard>
+      <Observer @intersect="intersected" />
     </div>
   </div>
 </template>
@@ -28,9 +29,12 @@
 <script>
 import BlogService from '../../services/BlogService';
 import BlogCard from '@/components/blog/BlogCard.vue';
+import Observer from '@/components/utility/Observer.vue';
 export default {
+  name: 'BlogList',
   components: {
-    BlogCard
+    BlogCard,
+    Observer
   },
   props: {
     blogs: {
@@ -49,6 +53,9 @@ export default {
   data: () => ({
     activeFilter: '',
     loadState: undefined
+    // page: 0,
+    // blogList: [],
+    // chunkSize: 6
   }),
   computed: {
     filteredBlogs() {
@@ -64,6 +71,19 @@ export default {
     }
   },
   methods: {
+    // intersected() {
+    //   if (this.blogList.length === 0) {
+    //     return (this.blogList = this.filteredBlogs.slice(0, 5));
+    //   }
+    //   console.log('intersected');
+    //   this.page++;
+    //   const start = this.page * this.chunkSize;
+    //   console.log(start);
+    //   const end = start + this.chunkSize;
+    //   console.log(end);
+    //   const newChunk = this.filteredBlogs.slice(start, end);
+    //   this.blogList = [...this.blogList, ...newChunk];
+    // },
     deleteBlog(id) {
       console.log('Blog deletion process has begun...');
       BlogService.deleteBlog(id).then(() => {
