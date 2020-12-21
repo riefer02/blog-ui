@@ -40,7 +40,10 @@ export default {
   name: 'Modal',
   props: {
     modalConfig: {
-      type: Object
+      type: Object,
+      default: () => {
+        return { modalType: 'disabled', modalActive: false, modalData: {} };
+      }
     }
   },
   components: {
@@ -141,23 +144,21 @@ export default {
 }
 
 @media screen and (max-width: 900px) {
-  // Anything bigger than 900 px
   .modal {
     width: 80%;
   }
 }
-@media screen and (max-width: 768px) {
-  // Anything 768 and smaller
-  // .modal {
-  //   height: auto;
-  //   width: 80%;
-  //   padding: 3rem;
-  // }
-}
 
 @media screen and (max-width: 600px) {
-  .model {
+  .modal {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .modal {
+    width: 98%;
+    margin: 0 auto;
   }
 }
 </style>

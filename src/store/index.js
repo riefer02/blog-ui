@@ -42,6 +42,10 @@ export default createStore({
     CLEAR_USER_DATA() {
       localStorage.removeItem('user');
       location.reload();
+    },
+    SET_GUEST_DATA(state, guest) {
+      state.user = guest;
+      localStorage.setItem('user', JSON.stringify(guest));
     }
   },
   actions: {

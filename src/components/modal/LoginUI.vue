@@ -62,6 +62,7 @@ export default {
         modalActive: false,
         modalData: {}
       };
+      this.$store.commit('SET_GUEST_DATA', 'Guest');
       this.$store.commit('SET_MODAL', modalConfig);
       let message = `Welcome Guest!`;
       this.$store.commit('SET_SNACK', message);
