@@ -88,9 +88,8 @@ export default {
   .personal {
     &-info {
       width: 40%;
-      text-align:center
+      text-align: center;
     }
-
   }
 }
 

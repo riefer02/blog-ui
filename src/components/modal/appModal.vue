@@ -9,13 +9,6 @@
           />
         </button>
         <div class="modal-content">
-          <!-- <transition-group
-            tag="div"
-            @before-enter="beforeEnter"
-            @enter="enter"
-            @leave="leave"
-            :css="false"
-          > -->
           <LoginUI v-if="modalMode === 'login'" key="1" />
           <!-- Register New User -->
           <SignUpUI v-else-if="modalMode === 'register'" key="2" />
@@ -30,7 +23,6 @@
             <h3 class="modal-disabled-text">Modal Disabled</h3>
             <p>This is the default state of the modal</p>
           </div>
-          <!-- </transition-group> -->
         </div>
       </div>
     </div>
@@ -38,7 +30,7 @@
 </template>
 
 <script>
-import {authComputed} from '@/store/helper.js';
+import { authComputed } from '@/store/helper.js';
 import LoginUI from '@/components/modal/LoginUI.vue';
 import SignUpUI from '@/components/modal/SignUpUI.vue';
 import EditorUI from '@/components/modal/EditorUI.vue';
