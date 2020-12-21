@@ -84,6 +84,16 @@ export default {
   }
 }
 
+@media screen and(min-width:1000px) {
+  .personal {
+    &-info {
+      width: 40%;
+      text-align:center
+    }
+
+  }
+}
+
 @media screen and (max-width: 600px) {
   .personal {
     &-info {

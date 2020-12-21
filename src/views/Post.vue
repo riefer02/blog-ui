@@ -294,6 +294,12 @@ export default {
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .post-section {
+    min-height: 800px;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .post {
     width: 75%;

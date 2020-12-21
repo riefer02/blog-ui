@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blog-container">
     <div class="toolbar-dodge">
       <h1>Welcome to the Blog Arena</h1>
       <p class="blog-view-text">
@@ -64,5 +64,11 @@ export default {
   border-radius: 10px 0 10px 0;
   outline: none !important;
   box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
+}
+
+@media screen and (min-width: 1200px) {
+  .blog-container {
+    min-height: 850px;
+  }
 }
 </style>

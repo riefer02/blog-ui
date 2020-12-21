@@ -7,6 +7,7 @@
         API for web and started building my own custom channel strip. Please
         come back and visit to see each iteration.
       </p>
+      <sub>Disclaimer: This application is not fully compatible with all browser platforms.</sub>
     </div>
     <div class="mb-5">
       <AudioPlayer />

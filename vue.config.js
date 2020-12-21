@@ -8,5 +8,11 @@ module.exports = {
         target: 'http://localhost:6969'
       }
     }
+  },
+  chainWebpack: config => {
+    config.plugin('html').tap(args => {
+      args[0].title = 'riefer.io';
+      return args;
+    });
   }
 };

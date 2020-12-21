@@ -132,9 +132,7 @@ export default {
     this.audioCtx = new this.AudioContext({
       sampleRate: 44100
     });
-    console.log(this.audioCtx.state);
-    // unlock audio for safari and chrome mobile
-    // this.unlockAudio();
+    console.log('state of audio on initial load is ' + this.audioCtx.state);
     // initialize plugins
     // compressor
     this.compressor = this.audioCtx.createDynamicsCompressor();
@@ -164,13 +162,46 @@ export default {
   methods: {
     powerOnAudioPlayer() {
       this.$refs.audio.muted = !this.$refs.audio.muted;
+
       this.powerOn = !this.powerOn;
-      console.log(this.$refs.audio.muted, this.powerOn);
+
+      console.log(
+        'the audio elements muted status is ' + this.$refs.audio.muted
+      );
+      console.log('the boolean powerOn is ' + this.powerOn);
+
       if (this.$refs.audio.muted === false) {
         this.audioCtx.resume().then(() => {
-          console.log('playback is resumed');
+          console.log('playback is ' + this.audioCtx.state);
+        });
+      } else if (this.$refs.audio.muted === true) {
+        this.audioCtx.suspend().then(() => {
+          console.log('playback is ' + this.audioCtx.state);
         });
       }
+    },
+    playButton() {
+      console.log("the audio element's state is " + this.audioCtx.state);
+      if (!this.audioCtx) {
+        this.init();
+      }
+      //check if content is suspended (autoplay policy)
+      if (this.audioCtx.state === 'suspended') {
+        this.audioCtx.resume();
+      }
+
+      if (this.audioPlaying === false) {
+        this.audioSource.play().catch(err => {
+          console.log(err);
+        });
+        this.audioPlaying = true;
+
+        // if track is playing pause it
+      } else if (this.audioPlaying === true) {
+        this.audioSource.pause();
+        this.audioPlaying = false;
+      }
+      console.log('the state of audioPlaying is ' + this.audioPlaying);
     },
     resetPluginNodes() {
       this.inputGainNode.disconnect();
@@ -204,27 +235,7 @@ export default {
       console.log('ending audio...');
       this.audioPlaying = false;
     },
-    playButton() {
-      if (!this.audioCtx) {
-        this.init();
-      }
-      //check if content is suspended (autoplay policy)
-      if (this.audioCtx.state === 'suspended') {
-        this.audioCtx.resume();
-      }
 
-      if (this.audioPlaying === false) {
-        this.audioSource.play().catch(err => {
-          console.log(err);
-        });
-        this.audioPlaying = true;
-
-        // if track is playing pause it
-      } else if (this.audioPlaying === true) {
-        this.audioSource.pause();
-        this.audioPlaying = false;
-      }
-    },
     toggleReverb() {
       console.log('reverb plugin in development');
       // this.pluginController.reverb = !this.pluginController.reverb;
@@ -239,26 +250,6 @@ export default {
       this.pluginController.compressor = !this.pluginController.compressor;
       this.pluginSwitch(this.pluginController);
     }
-    // unlockAudio() {
-    //   // unlock audio for chrome/safar mobile browser on initial load
-    //   console.log(this.audioUnlocked);
-    //   if (this.audioUnlocked) return;
-    //   var buffer = this.audioCtx.createBuffer(1, 1, 22050);
-    //   var source = this.audioCtx.createBufferSource();
-    //   source.buffer = buffer;
-    //   source.connect(this.audioCtx.destination);
-    //   source.start(0);
-
-    //   setTimeout(function() {
-    //     if (
-    //       source.playbackState === source.PLAYING_STATE ||
-    //       source.playbackState === source.FINISHED_STATE
-    //     ) {
-    //       this.audioUnlocked = true;
-    //       console.log(this.audioUnlocked);
-    //     }
-    //   }, 0);
-    // }
   }
 };
 </script>
