@@ -296,7 +296,7 @@ export default {
 
 @media screen and (min-width: 1200px) {
   .post-section {
-    min-height: 800px;
+    min-height: 810px;
   }
 }
 

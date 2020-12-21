@@ -13,6 +13,9 @@
         ></select
       >
     </div>
+    <div v-show="blogs.length === 0">
+      I'm sorry but database is offline
+    </div>
     <div class="d-flex justify-center blog-list-item-container">
       <BlogCard
         v-for="blog in filteredBlogs"
@@ -21,6 +24,7 @@
         :deleteBlog="deleteBlog"
         :loadState="loadState"
       ></BlogCard>
+
       <Observer @intersect="intersected" />
     </div>
   </div>
@@ -52,7 +56,7 @@ export default {
   },
   data: () => ({
     activeFilter: '',
-    loadState: undefined,
+    loadState: undefined
     // page: 0,
     // blogList: [],
     // chunkSize: 6

@@ -166,6 +166,12 @@ hr {
   );
 }
 
+@media screen and (min-width: 1700px ) {
+  .resume-container {
+    width: 50%;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .resume-container {
     width: 94%;
