@@ -52,7 +52,7 @@ export default {
   },
   data: () => ({
     activeFilter: '',
-    loadState: undefined
+    loadState: undefined,
     // page: 0,
     // blogList: [],
     // chunkSize: 6
@@ -105,7 +105,7 @@ export default {
 }
 
 .blog-list-item-container {
-  min-height: 500px;
+  // min-height: 500px;
 }
 
 .filter {

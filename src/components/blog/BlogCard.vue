@@ -251,6 +251,18 @@ a {
   margin-left: 0.7rem;
 }
 
+@media screen and (min-width: 1200px) {
+  .card {
+    &-body {
+      width: 25%;
+    }
+
+    &-content {
+    
+    }
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .card {
     &-body {
@@ -258,7 +270,7 @@ a {
     }
     &-content {
       padding: 0.5rem;
-      min-height: auto;
+      min-height: min-content;
     }
 
     &-link {
@@ -288,7 +300,7 @@ a {
     }
 
     &-topic {
-      align-self: start;
+      align-self: center;
       justify-self: start;
       grid-area: to;
       margin-top: 0;
@@ -297,7 +309,7 @@ a {
 
     &-author {
       grid-area: a;
-      align-self: start;
+      align-self: center;
       justify-self: end;
     }
 

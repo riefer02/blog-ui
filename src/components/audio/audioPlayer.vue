@@ -6,6 +6,8 @@
       </div>
       <div class="audio-player-source">
         <audio
+          muted
+          autoplay
           ref="audio"
           :src="audio"
           crossorigin="anonymous"
@@ -74,16 +76,17 @@
             <label for="panner">Panning</label>
           </div>
           <!-- Power Button -->
-          <!-- <div class="controller-power">
-            <button
-              class="power-control"
-              role="switch"
-              aria-checked="false"
-              data-power="on"
-            >
-              <span>On/Off</span>
+          <div class="controller-power">
+            <button class="power-control" @click="powerOnAudioPlayer()">
+              <div class="power-control-indicator">
+                <div
+                  class="power-control-indicator-light"
+                  :class="{ on: powerOn, off: !powerOn }"
+                ></div>
+                <div class="power-control-indicator-text">Power</div>
+              </div>
             </button>
-          </div> -->
+          </div>
           <!-- Play Button -->
           <div class="controller-play">
             <button class="play-button" role="switch" @click="playButton()">
@@ -119,8 +122,9 @@ export default {
       panner: true,
       masterOut: true
     },
-    signalFlow: undefined,
-    audioUnlocked: false
+    powerOn: false,
+    signalFlow: undefined
+    // audioUnlocked: false
   }),
   mounted: function() {
     // create audio environment
@@ -128,8 +132,9 @@ export default {
     this.audioCtx = new this.AudioContext({
       sampleRate: 44100
     });
+    console.log(this.audioCtx.state);
     // unlock audio for safari and chrome mobile
-    this.unlockAudio();
+    // this.unlockAudio();
     // initialize plugins
     // compressor
     this.compressor = this.audioCtx.createDynamicsCompressor();
@@ -157,6 +162,16 @@ export default {
     this.pluginSwitch(this.pluginController);
   },
   methods: {
+    powerOnAudioPlayer() {
+      this.$refs.audio.muted = !this.$refs.audio.muted;
+      this.powerOn = !this.powerOn;
+      console.log(this.$refs.audio.muted, this.powerOn);
+      if (this.$refs.audio.muted === false) {
+        this.audioCtx.resume().then(() => {
+          console.log('playback is resumed');
+        });
+      }
+    },
     resetPluginNodes() {
       this.inputGainNode.disconnect();
       this.highPassFilter.disconnect();
@@ -223,27 +238,27 @@ export default {
     toggleCompressor() {
       this.pluginController.compressor = !this.pluginController.compressor;
       this.pluginSwitch(this.pluginController);
-    },
-    unlockAudio() {
-      // unlock audio for chrome/safar mobile browser on initial load
-      console.log(this.audioUnlocked);
-      if (this.audioUnlocked) return;
-      var buffer = this.audioCtx.createBuffer(1, 1, 22050);
-      var source = this.audioCtx.createBufferSource();
-      source.buffer = buffer;
-      source.connect(this.audioCtx.destination);
-      source.start(0);
-
-      setTimeout(function() {
-        if (
-          source.playbackState === source.PLAYING_STATE ||
-          source.playbackState === source.FINISHED_STATE
-        ) {
-          this.audioUnlocked = true;
-          console.log(this.audioUnlocked);
-        }
-      }, 0);
     }
+    // unlockAudio() {
+    //   // unlock audio for chrome/safar mobile browser on initial load
+    //   console.log(this.audioUnlocked);
+    //   if (this.audioUnlocked) return;
+    //   var buffer = this.audioCtx.createBuffer(1, 1, 22050);
+    //   var source = this.audioCtx.createBufferSource();
+    //   source.buffer = buffer;
+    //   source.connect(this.audioCtx.destination);
+    //   source.start(0);
+
+    //   setTimeout(function() {
+    //     if (
+    //       source.playbackState === source.PLAYING_STATE ||
+    //       source.playbackState === source.FINISHED_STATE
+    //     ) {
+    //       this.audioUnlocked = true;
+    //       console.log(this.audioUnlocked);
+    //     }
+    //   }, 0);
+    // }
   }
 };
 </script>
@@ -295,6 +310,74 @@ export default {
     &-body {
       width: 180px;
     }
+  }
+}
+
+.on {
+  background-color: #b6ff00;
+  -webkit-animation: on 1.5s ease-in-out infinite alternate;
+  -moz-animation: on 1.5s ease-in-out infinite alternate;
+  animation: on 1.5s ease-in-out infinite alternate;
+}
+
+.off {
+  background-color: #ff1177;
+  -webkit-animation: off 1.5s ease-in-out infinite alternate;
+  -moz-animation: off 1.5s ease-in-out infinite alternate;
+  animation: off 1.5s ease-in-out infinite alternate;
+}
+
+// Power Control
+.power-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.power-control-indicator {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+
+  &-light {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    margin: 3px;
+    margin-right: 0.2rem;
+  }
+
+  &-text {
+    font-size: 0.7rem;
+    align-self: center;
+    padding: 0.2rem;
+  }
+}
+
+@keyframes on {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #b6ff00,
+      0 0 70px #b6ff00, 0 0 80px #b6ff00, 0 0 100px #b6ff00, 0 0 150px #b6ff00;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #b6ff00,
+      0 0 35px #b6ff00, 0 0 40px #b6ff00, 0 0 50px #b6ff00, 0 0 75px #b6ff00;
+  }
+}
+
+@keyframes off {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff1177,
+      0 0 70px #ff1177, 0 0 80px #ff1177, 0 0 100px #ff1177, 0 0 150px #ff1177;
+  }
+  to {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1177,
+      0 0 35px #ff1177, 0 0 40px #ff1177, 0 0 50px #ff1177, 0 0 75px #ff1177;
   }
 }
 </style>
