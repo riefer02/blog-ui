@@ -132,7 +132,7 @@ export default {
     this.audioCtx = new this.AudioContext({
       sampleRate: 44100
     });
-    console.log('state of audio on initial load is ' + this.audioCtx.state);
+    // console.log('state of audio on initial load is ' + this.audioCtx.state);
     // initialize plugins
     // compressor
     this.compressor = this.audioCtx.createDynamicsCompressor();
@@ -165,23 +165,23 @@ export default {
 
       this.powerOn = !this.powerOn;
 
-      console.log(
-        'the audio elements muted status is ' + this.$refs.audio.muted
-      );
-      console.log('the boolean powerOn is ' + this.powerOn);
+      // console.log(
+      //   'the audio elements muted status is ' + this.$refs.audio.muted
+      // );
+      // console.log('the boolean powerOn is ' + this.powerOn);
 
       if (this.$refs.audio.muted === false) {
         this.audioCtx.resume().then(() => {
-          console.log('playback is ' + this.audioCtx.state);
+          // console.log('playback is ' + this.audioCtx.state);
         });
       } else if (this.$refs.audio.muted === true) {
         this.audioCtx.suspend().then(() => {
-          console.log('playback is ' + this.audioCtx.state);
+          // console.log('playback is ' + this.audioCtx.state);
         });
       }
     },
     playButton() {
-      console.log("the audio element's state is " + this.audioCtx.state);
+      // console.log("the audio element's state is " + this.audioCtx.state);
       if (!this.audioCtx) {
         this.init();
       }
@@ -201,7 +201,7 @@ export default {
         this.audioSource.pause();
         this.audioPlaying = false;
       }
-      console.log('the state of audioPlaying is ' + this.audioPlaying);
+      // console.log('the state of audioPlaying is ' + this.audioPlaying);
     },
     resetPluginNodes() {
       this.inputGainNode.disconnect();

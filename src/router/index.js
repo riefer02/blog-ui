@@ -5,7 +5,7 @@ import Blog from '../views/Blog.vue';
 import Music from '../views/Music.vue';
 import Resume from '../views/Resume.vue';
 import NotFound from '../views/NotFound.vue';
-// import { registerRuntimeCompiler } from 'vue';
+
 
 const routes = [
   {
