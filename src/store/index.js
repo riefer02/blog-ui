@@ -86,6 +86,9 @@ export default createStore({
       return state.snack;
     },
     loggedIn(state) {
+      if (state.user === 'Guest') {
+        return false;
+      }
       return !!state.user;
     }
   },

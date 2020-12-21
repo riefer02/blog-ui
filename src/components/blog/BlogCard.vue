@@ -29,19 +29,11 @@
                 <div class="card-comments">{{ numberOfComments }}</div>
               </div>
             </div>
-            <div class="card-btns">
-              <button
-                v-if="blog.author === curUserName"
-                class="edit-btn"
-                @click="editBlog(blog)"
-              >
+            <div class="card-btns" v-if="blog.author === curUserName">
+              <button class="edit-btn" @click="editBlog(blog)">
                 <FontAwesomeIcon class="edit-icon" icon="wrench" />
               </button>
-              <button
-                class="delete-btn"
-                @click.prevent="deleteBlog(blog._id)"
-                v-if="blog.author === curUserName"
-              >
+              <button class="delete-btn" @click.prevent="deleteBlog(blog._id)">
                 <FontAwesomeIcon class="trash-icon" icon="trash" />
               </button>
             </div>
@@ -95,10 +87,10 @@ export default {
     }
   },
   mounted() {
-    if (this.$store.state.user) {
-      this.curUserName = this.$store.state.user.username;
-    } else {
+    if (this.$store.state.user === 'Guest') {
       this.curUserName = 'Guest';
+    } else {
+      this.curUserName = this.$store.state.user.username;
     }
   },
   data: () => ({
@@ -256,9 +248,6 @@ a {
     &-body {
       width: 25%;
     }
-
-    &-content {
-    }
   }
 }
 
@@ -319,9 +308,6 @@ a {
       font-size: 0.75rem;
       margin-top: 0;
     }
-  }
-  .delete-btn,
-  .edit-btn {
   }
 
   .trash-icon,
