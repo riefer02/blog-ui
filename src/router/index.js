@@ -5,7 +5,7 @@ import Blog from '../views/Blog.vue';
 import Music from '../views/Music.vue';
 import Resume from '../views/Resume.vue';
 import NotFound from '../views/NotFound.vue';
-
+import Chart from '../views/Chart.vue';
 
 const routes = [
   {
@@ -47,6 +47,10 @@ const routes = [
   {
     path: '/:catchAll(.*)',
     component: NotFound
+  },
+  {
+    path: '/chart',
+    component: Chart
   }
 ];
 

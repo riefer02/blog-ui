@@ -10,6 +10,7 @@
             class="card-link"
           >
             <h3 class="card-title">{{ blog.title }}</h3>
+
             <h4 v-if="blog.author" class="card-author">
               author: <span>@{{ blog.author }}</span>
             </h4>
@@ -180,8 +181,13 @@ a {
 }
 
 .card-title,
-.card-text {
+.card-text, .card-topic {
   text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+  transition: all 0.1s ease-in;
+}
+
+.card-topic {
+  font-size: 0.8rem;
 }
 
 .card-title {
@@ -241,6 +247,15 @@ a {
 .heart-icon {
   color: #1abc9c;
   margin-left: 0.7rem;
+}
+
+.card-content:hover a > .card-text,
+.card-content:hover a > .card-title {
+  color: #2c3e50;
+  text-shadow: none;
+}
+.card-content:hover a > .card-topic {
+  color: white;
 }
 
 @media screen and (min-width: 1200px) {

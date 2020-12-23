@@ -50,12 +50,12 @@
             <label>Compressor</label>
           </div>
           <!-- Reverb -->
-          <div class="controller-reverb">
+          <!-- <div class="controller-reverb">
             <button class="reverb-button disabled" @click="toggleReverb()">
               <span>On/Off</span>
             </button>
             <label>Reverb</label>
-          </div>
+          </div> -->
           <!-- Panning Controller -->
           <div class="controller-panner">
             <input

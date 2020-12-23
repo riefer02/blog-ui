@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="music-container">
     <div class="toolbar-dodge">
       <h1>Master Bus Processor Series</h1>
       <p>
@@ -7,7 +7,10 @@
         API for web and started building my own custom channel strip. Please
         come back and visit to see each iteration.
       </p>
-      <sub>Disclaimer: This application is not fully compatible with all browser platforms.</sub>
+      <h3>
+        <span>Disclaimer:</span> This application is not fully compatible with
+        all browser platforms.
+      </h3>
     </div>
     <div class="mb-5">
       <AudioPlayer />
@@ -24,4 +27,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+h3 span {
+  background-color: red;
+  color:white;
+  padding: 0.2rem;
+  border-radius: 2px;
+}
+</style>
