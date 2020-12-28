@@ -249,14 +249,14 @@ a {
   margin-left: 0.7rem;
 }
 
-.card-content:hover a > .card-text,
-.card-content:hover a > .card-title {
-  color: #2c3e50;
-  text-shadow: none;
-}
-.card-content:hover a > .card-topic {
-  color: white;
-}
+// .card-content:hover a > .card-text,
+// .card-content:hover a > .card-title {
+//   color: #2c3e50;
+//   text-shadow: none;
+// }
+// .card-content:hover a > .card-topic {
+//   color: white;
+// }
 
 @media screen and (min-width: 1200px) {
   .card {
