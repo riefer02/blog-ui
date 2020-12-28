@@ -84,10 +84,13 @@ export default {
         employer: 'MS Assistance',
         location: 'Austin, TX',
         description: [
-          'Built front-end applications using React, Redux, Electrode',
+          'Built front-end applications using React, Redux, and Electrode',
           'Write maintainable React Components',
           'Contribute, maintain React component library',
           'Maintain existing APIs written in NodeJS',
+          'Oversee automated testing and provide feedback to management during development process',
+          'Modify and test changes to previously developed programs',
+          'Maintain and upgrade software following deployment',
         ],
       },
       {
