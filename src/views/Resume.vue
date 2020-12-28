@@ -35,13 +35,13 @@ export default {
       'WordPress',
       'Vue',
       'React',
-      'Redux',
       'GraphQL',
       'Github',
       'Node',
       'PostgreSQL',
       'MongoDB',
       'Express',
+      'Redux',
       'Data Modeling',
       'Data Security',
       'NoSQL',
@@ -63,10 +63,11 @@ export default {
       'Photoshop',
       'Media Encoder',
       'Cubase 10',
+      'Docker',
       'and more...',
     ],
     summary:
-      'I am a freelance Full Stack Developer and Educator who creates web applications. I enjoy innovating and crafting high-quality digital media to drive growth. I am a fast learner of new technologies with a grasp of computer science fundamentals, algorithmic logic, frontend frameworks, database management, and more. Being an experienced teacher gives me the soft (real) skills to instruct, lead, and reflect. I am an experienced, results-oriented leader in person, remotely, and in all professional communities.',
+      'I am a freelance Full Stack Developer who builds problem-solving web applications and high-fidelity UX to drive growth and goal acquisition. I am a fast learner of new technologies, a strong grasp of computer science fundamentals, algorithmic logic, frontend frameworks, database management, and more. I am an experienced, results-oriented leader in person, remote, and professional communities.',
     links: [
       // {
       //   name: 'LinkedIn',
@@ -119,6 +120,21 @@ export default {
           'Maintain brand standards under company guidelines',
         ],
       },
+      {
+        date: 'June 2012 - May 2017',
+        roleTitle: 'Senior Analyst',
+        employer: 'CVS',
+        location: 'Woonsocket, RI',
+        description: [
+          'Utilized MVC principles to ensure a clean architecture and a lean code base for maximum optimation',
+          'Maintained close communication with UI/UX team to enhance product quality',
+          'Followed Agile development and consistently delivered new features on time during sprints',
+          'Drafted UI design documents for applications',
+          'Solved problems using a combination of JavaScript, JSON, and jQuery',
+          'Developed application to access JSON from RESTful web service',
+          'Tested front-end code in multiple browsers to ensure cross-browser compatibility',
+        ],
+      },
       // {
       //   date: 'August 2020 - Present',
       //   roleTitle: 'AP Computer Science Teacher',
@@ -162,6 +178,11 @@ export default {
       // }
     ],
     education: [
+      {
+        date: '2009 - 2012',
+        institute: 'Texas State University, San Marcos, TX',
+        degree: 'Bachelor of Science, Computer Science',
+      },
       // {
       //   date: 'July 2017 - May 2019',
       //   institute: 'Austin Community College',

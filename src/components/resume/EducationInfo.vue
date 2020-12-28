@@ -19,9 +19,9 @@
 export default {
   props: {
     education: {
-      type: Array
-    }
-  }
+      type: Array,
+    },
+  },
 };
 </script>
 
@@ -51,7 +51,8 @@ export default {
     color: #fff;
   }
 
-  &-degree, &-date {
+  &-degree,
+  &-date {
     text-shadow: none;
   }
 }
@@ -75,6 +76,7 @@ export default {
 
     &-item {
       width: auto;
+      min-height: 180px;
     }
   }
 }

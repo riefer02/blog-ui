@@ -22,17 +22,26 @@
 import AudioPlayer from '@/components/audio/audioPlayer.vue';
 export default {
   components: {
-    AudioPlayer
-  }
+    AudioPlayer,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.music-container {
+  min-height: 845px;
+}
 
 h3 span {
   background-color: red;
-  color:white;
+  color: white;
   padding: 0.2rem;
   border-radius: 2px;
+}
+
+@media screen and (max-width: 600px) {
+  h3 span {
+    padding: 0 0.2rem;
+  }
 }
 </style>
