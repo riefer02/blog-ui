@@ -42,6 +42,10 @@ export default createStore({
     CLEAR_USER_DATA() {
       localStorage.removeItem('user');
       location.reload();
+    },
+    SET_GUEST_DATA(state, guest) {
+      state.user = guest;
+      localStorage.setItem('user', JSON.stringify(guest));
     }
   },
   actions: {
@@ -55,7 +59,7 @@ export default createStore({
         .registerNewUser(credentials)
         .then(response => {
           console.log('registration response', response);
-          commit('SET_USER_DATA', response);
+          commit('SET_USER_DATA', response.data.user);
         })
         .catch(err => {
           console.log(err.response.data.error);
@@ -82,6 +86,9 @@ export default createStore({
       return state.snack;
     },
     loggedIn(state) {
+      if (state.user === 'Guest') {
+        return false;
+      }
       return !!state.user;
     }
   },

@@ -10,6 +10,6 @@ export default {};
 
 <style lang="scss" scoped>
 h1 {
-  padding: 10rem;
+  padding: 12.5rem;
 }
 </style>

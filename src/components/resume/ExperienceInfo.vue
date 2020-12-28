@@ -43,14 +43,14 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 export default {
   name: 'ExperienceInfo',
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
   },
   props: {
     experience: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
 
@@ -94,6 +94,7 @@ export default {
       display: inline-block;
       margin-right: 1rem;
       text-transform: uppercase;
+      font-size: 1.1rem;
     }
 
     &-location {
@@ -116,6 +117,7 @@ export default {
       padding: 0.3rem;
       width: 80%;
       line-height: 1.7rem;
+      text-align: left;
     }
 
     &-icon {
@@ -123,6 +125,20 @@ export default {
       font-size: 1rem;
       padding-right: 5px;
     }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .experience-role {
+    font-size: 2.3rem;
+  }
+
+  .experience-description-item {
+    font-size: 1.3rem;
+    line-height: 2rem;
+  }
+  .experience-description-list {
+    padding: 0 4rem 1rem 4rem;
   }
 }
 
@@ -134,6 +150,30 @@ export default {
 
     &-role {
       padding: 0 1rem;
+    }
+
+    &-description-list {
+      font-size: 0.9rem;
+    }
+
+    &-details-row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &-employer-company {
+      margin-right: 0;
+    }
+
+    &-employer-location {
+      margin-top: 0;
+    }
+
+    &-date {
+      margin-top: 0.9rem;
+      text-align: center;
+      margin-right: 0;
     }
   }
 }

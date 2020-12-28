@@ -6,6 +6,18 @@
 import * as THREE from 'three';
 
 export default {
+  // metaInfo: {
+  //   titleTemplate: '%s | riefer.io',
+  //   title: 'three.js',
+  //   meta: [
+  //     {
+  //       name: 'description',
+  //       content:
+  //         'Andrew Riefenstahl built a vue component that jump starts users with a basic three.js (webGL) set up so developers can explore this amazing library quickly and efficiently.'
+  //     }
+  //   ],
+  //   link: [{ rel: 'canonical', href: 'https://riefer.io/three' }]
+  // },
   mounted() {
     this.$nextTick(function() {
       console.log(this.$refs.threeJS);

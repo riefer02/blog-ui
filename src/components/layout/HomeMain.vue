@@ -6,12 +6,11 @@
       <hr />
       <p class="main-text">
         Hi, and welcome to my portfolio website. My name is Andrew Riefenstahl
-        and I am a self-taught full stack developer. I studied anthropology when
-        I was younger, and serve my community as a career educator. I began
-        exploring computer science a few years back and discovered a passion I
-        never knew existed. I'm creative, love to learn, a team player, and
-        enjoy solving puzzles. I have many other hobbies too, so if you want to
-        learn more please, "stay awhile and listen".
+        and I am a full stack developer. When I began studying computer science
+        I discovered a passion I never knew existed. I'm creative, love to
+        learn, a team player, and enjoy solving puzzles. I have many other
+        hobbies too, so if you want to learn more please, "stay awhile and
+        listen".
       </p>
       <img
         class="full-bleed giraffe-banner"
@@ -19,10 +18,9 @@
         :src="require('../../assets/images/giraffeHerd.jpg')"
       />
       <p class="main-text pt-5">
-        I study many knowledge fields related to the human experience, because I
-        genuinely want to grow everyday. I know that it is the little things
-        that add up to a great life and we are only given just one to live. So I
-        try to make the best by exploring new aspects with every turning page.
+        I like to explore many fields related to the human experience. One thing
+        I learned is that, "It's the little things that add up to a great life."
+        So I try to make the best by exploring new ideas with every new chapter.
       </p>
       <hr />
     </main>
@@ -34,7 +32,7 @@
 import ResponsiveCardList from '@/components/list/ResponsiveCardList.vue';
 export default {
   components: {
-    ResponsiveCardList
+    ResponsiveCardList,
   },
   data: () => ({
     hobbies: [
@@ -42,32 +40,32 @@ export default {
         id: 1,
         name: 'Full Stack Developer',
         summary:
-          'I am a proficient full-stack developer. My favorite front-end framework is Vue.js and my backend is comprised of Express.js, MongoDB, and Node.js. I am also versed in several other stacks and technologies.',
-        icon: 'layer-group' // fas
+          'I am a proficient full-stack developer. My favorite front-end frameworks are React.js and Vue.js and my favorite backend for app development is comprised of Express.js, MongoDB, and Node.js. I am also versed in several other stacks and technologies.',
+        icon: 'layer-group', // fas
       },
       {
         id: 2,
         name: 'UX Design',
         summary:
           'I focus on fast load times, responsive layouts for any device, intuitive, easy to use UX/UI. I build dynamic websites with fun and thriving energy.',
-        icon: 'bezier-curve' // fab
+        icon: 'bezier-curve', // fab
       },
       {
         id: 3,
         name: 'Database Engineer',
         summary:
           'I maintain servers for database storage, write complex queries, develop server-side logic, and ensure high performance and responsiveness to requests from the front-end.',
-        icon: 'server' // fas
+        icon: 'server', // fas
       },
       {
         id: 4,
         name: 'Creator',
         summary:
           'I don’t like to define myself by the work I’ve done. I define myself by the work I want to do. Technologies can be learned, I prefer a good challenge myself.',
-        icon: 'feather-alt' // fas
-      }
-    ]
-  })
+        icon: 'feather-alt', // fas
+      },
+    ],
+  }),
 };
 </script>
 
@@ -139,5 +137,16 @@ hr {
     rgba(44, 62, 81, 1),
     rgba(239, 141, 156, 0.8)
   );
+}
+
+@media screen and (min-width: 1400px) {
+  .wrapper {
+ 
+  grid-template-columns: 1fr min(90ch, calc(100% - 64px)) 1fr;
+}
+  .main-text {
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
 }
 </style>

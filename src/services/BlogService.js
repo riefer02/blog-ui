@@ -10,11 +10,14 @@ const apiClient = axios.create({
 });
 
 export default {
-  getBlogs() {
-    return apiClient.get('/blog');
+ async getBlogs() {
+    return await apiClient.get('/blog');
   },
-  getBlog(id) {
-    return apiClient.get('/blog/' + id);
+  async getBlog(id) {
+    return await apiClient.get('/blog/' + id);
+  },
+  async createBlog(data) {
+    return await apiClient.post('/blog/create/', data);
   },
   deleteBlog(id) {
     return apiClient.delete('/blog/delete/' + id);

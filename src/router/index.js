@@ -1,11 +1,11 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Post from '../views/Post.vue';
 import Blog from '../views/Blog.vue';
 import Music from '../views/Music.vue';
 import Resume from '../views/Resume.vue';
 import NotFound from '../views/NotFound.vue';
-// import { registerRuntimeCompiler } from 'vue';
+import Chart from '../views/Chart.vue';
 
 const routes = [
   {
@@ -47,11 +47,16 @@ const routes = [
   {
     path: '/:catchAll(.*)',
     component: NotFound
+  },
+  {
+    path: '/chart',
+    component: Chart
   }
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
+  // mode: 'history',
   routes
 });
 

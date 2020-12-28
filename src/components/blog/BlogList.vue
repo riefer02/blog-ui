@@ -13,6 +13,9 @@
         ></select
       >
     </div>
+    <div v-show="blogs.length === 0">
+      I'm sorry but database is offline
+    </div>
     <div class="d-flex justify-center blog-list-item-container">
       <BlogCard
         v-for="blog in filteredBlogs"
@@ -21,16 +24,21 @@
         :deleteBlog="deleteBlog"
         :loadState="loadState"
       ></BlogCard>
+
+      <Observer @intersect="intersected" />
     </div>
   </div>
 </template>
 
 <script>
 import BlogService from '../../services/BlogService';
-import BlogCard from '@/components/list/BlogCard.vue';
+import BlogCard from '@/components/blog/BlogCard.vue';
+import Observer from '@/components/utility/Observer.vue';
 export default {
+  name: 'BlogList',
   components: {
-    BlogCard
+    BlogCard,
+    Observer
   },
   props: {
     blogs: {
@@ -49,6 +57,9 @@ export default {
   data: () => ({
     activeFilter: '',
     loadState: undefined
+    // page: 0,
+    // blogList: [],
+    // chunkSize: 6
   }),
   computed: {
     filteredBlogs() {
@@ -64,6 +75,19 @@ export default {
     }
   },
   methods: {
+    // intersected() {
+    //   if (this.blogList.length === 0) {
+    //     return (this.blogList = this.filteredBlogs.slice(0, 5));
+    //   }
+    //   console.log('intersected');
+    //   this.page++;
+    //   const start = this.page * this.chunkSize;
+    //   console.log(start);
+    //   const end = start + this.chunkSize;
+    //   console.log(end);
+    //   const newChunk = this.filteredBlogs.slice(start, end);
+    //   this.blogList = [...this.blogList, ...newChunk];
+    // },
     deleteBlog(id) {
       console.log('Blog deletion process has begun...');
       BlogService.deleteBlog(id).then(() => {
@@ -85,7 +109,7 @@ export default {
 }
 
 .blog-list-item-container {
-  min-height: 500px;
+  // min-height: 500px;
 }
 
 .filter {

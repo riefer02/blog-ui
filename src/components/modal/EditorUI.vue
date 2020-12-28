@@ -28,7 +28,7 @@
         :placeholder="summaryPlaceholder"
         v-model="blog.summary"
       />
-      <button class="submit-btn" @click.prevent="updateBlog(this.blogID)">
+      <button class="submit-btn" @click.prevent="updateBlog(blogID)">
         Submit
       </button>
     </form>
@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import BaseInput from '@/components/blog/BaseInput.vue';
-import BaseSelect from '@/components/blog/BaseSelect.vue';
-import BaseTextArea from '@/components/blog/BaseTextArea.vue';
+import BaseInput from '@/components/inputs/BaseInput.vue';
+import BaseSelect from '@/components/inputs/BaseSelect.vue';
+import BaseTextArea from '@/components/inputs/BaseTextArea.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import BlogService from '../../services/BlogService';
 import { mapState } from 'vuex';

@@ -70,19 +70,20 @@ export default {
     SocialMedia,
     Footer
   },
-  metaInfo: {
-    titleTemplate: '%s | riefer.io',
-    title: 'riefer.io',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        name: 'description',
-        content:
-          'Web application developer portfolio site for Andrew Riefenstahl.'
-      }
-    ]
-  },
+  // metaInfo: {
+  //   titleTemplate: '%s | riefer.io',
+  //   title: 'riefer.io',
+  //   meta: [
+  //     { charset: 'utf-8' },
+  //     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+  //     {
+  //       name: 'description',
+  //       content:
+  //         "Andrew Riefenstahl built riefer.io - a modern web application developer's portfolio site. This developer's playground includes: a resume, a community blog app built from express/mongoDB stack, an audio player interface using the Web Audio API, and a three dimensional webGL graphi built by three.js. Andrew Riefenstahl is a anthropologist, developer, musician, and teacher."
+  //     }
+  //   ],
+  //   link: [{ rel: 'canonical', href: 'https://riefer.io/' }]
+  // },
   data: () => ({}),
   methods: {},
   computed: {
@@ -98,6 +99,7 @@ export default {
       this.$store.commit('SET_USER_DATA', userData);
     }
     // if user data persists do not load initial login/register modal...
+    console.log(this.$store.state.user);
     if (this.$store.state.user) {
       let modalConfig = {
         modalType: 'disabled',

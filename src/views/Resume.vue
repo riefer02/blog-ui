@@ -28,7 +28,7 @@ export default {
     KnowledgeInfo,
     PersonalInfo,
     LinksInfo,
-    SummaryInfo
+    SummaryInfo,
   },
   data: () => ({
     knowledges: [
@@ -41,6 +41,7 @@ export default {
       'PostgreSQL',
       'MongoDB',
       'Express',
+      'Redux',
       'Data Modeling',
       'Data Security',
       'NoSQL',
@@ -52,6 +53,8 @@ export default {
       'Bootstrap',
       'SASS',
       'SCSS',
+      'Tailwind',
+      'Ant',
       'Javascript',
       'Jquery',
       'PHP',
@@ -60,85 +63,148 @@ export default {
       'Photoshop',
       'Media Encoder',
       'Cubase 10',
-      'and more...'
+      'Docker',
+      'and more...',
     ],
     summary:
-      'I am a freelance Full Stack Developer and Educator who creates web applications. I enjoy innovating and crafting high-quality digital media to drive growth. I am a fast learner of new technologies with a grasp of computer science fundamentals, algorithmic logic, frontend frameworks, database management, and more. Being an experienced teacher gives me the soft (real) skills to instruct, lead, and reflect. I am an experienced, results-oriented leader in person, remotely, and in all professional communities.',
+      'I am a freelance Full Stack Developer who builds problem-solving web applications and high-fidelity UX to drive growth and goal acquisition. I am a fast learner of new technologies, a strong grasp of computer science fundamentals, algorithmic logic, frontend frameworks, database management, and more. I am an experienced, results-oriented leader in person, remote, and professional communities.',
     links: [
-      {
-        name: 'LinkedIn',
-        link: 'https://www.linkedin.com/in/andrewriefenstahl'
-      },
-      { name: 'YouTube', link: 'https://www.youtube.com/riefer02' },
+      // {
+      //   name: 'LinkedIn',
+      //   link: 'https://www.linkedin.com/in/andrewriefenstahl'
+      // },
+      { name: 'YouTube', link: 'https://youtu.be/erDW9qG8Vrs' },
       { name: 'GitHub', link: 'https://github.com/riefer02' },
-      { name: 'Instagram', link: 'https://www.instagram.com/riefer02' }
+      { name: 'Instagram', link: 'https://www.instagram.com/riefer02' },
     ],
     experience: [
       {
-        date: 'August 2020 - Present',
-        roleTitle: 'AP Computer Science Teacher',
-        employer: 'IDEA Public School',
+        date: 'August 2019 - November 2020',
+        roleTitle: 'Full-Stack Software Engineer',
+        employer: 'MS Assistance',
         location: 'Austin, TX',
         description: [
-          'Develops  JavaScript curriculum using Repl.it online classroom',
-          'Focuses learners on the fundamentals of computers - historically and current, Instructs from a debugging ideologic stand point',
-          'Engages students in hard and soft skill development for entering collaborative workforce.',
-          'Emphasis on multiple language acquisition',
-          'Offers practice with client ethics and real world situations',
-          'Poses question to learners regarding the role of technology in modern society.'
-        ]
+          'Built front-end applications using React, Redux, Electrode',
+          'Write maintainable React Components',
+          'Contribute, maintain React component library',
+          'Maintain existing APIs written in NodeJS',
+        ],
       },
       {
-        date: 'August 2019 - June 2020',
-        roleTitle: 'Web Developer || Curriculum Writer',
-        employer: 'Hello World Studios',
-        location: 'Austin, TX',
+        date: 'May 2018 - April 2019',
+        roleTitle: 'UX Developer',
+        employer: 'NIC Inc.',
+        location: 'Olathe, KS',
         description: [
-          'Built an online platform to facilitate student learning and engagement',
-          'Managed regional team of web development curriculum writers/developers',
-          'Wrote an interactive HTML/CSS/Javascript curriculum for web learners',
-          'Oversaw the development and quality control for online educational resources',
-          'Created online video resources through screencasting, audio engineering, and video editing knowledge base.',
-          'Taught remotely, in person, after school programs, and extracurricular settings',
-          'Developed a curriculum for Sonic Pi, a Ruby programming playground taught in the form of music'
-        ]
+          'Built front-end applications using React/Redux',
+          'Set guidelines, best practices to help achieve better code',
+          'Fine-tune front-end build process using Webpack, Nodejs',
+          'Write maintainable React components',
+          'Interact with UX, backend developers to build applications',
+          'Work with RESTful APIs',
+        ],
       },
       {
-        date: ' August 2017 - July 2019',
-        roleTitle: 'High School Computer Science Teacher',
-        employer: 'KIPP Public Schools',
-        location: 'Austin, TX',
+        date: 'May 2017 - May 2018',
+        roleTitle: 'Software Engineer',
+        employer: 'General Electric',
+        location: 'Boston, MA',
         description: [
-          'Educated low-income at risk students in fundamentals of computer science',
-          'Taught JavaScript, CSS, and HTML computer programming languages',
-          'Instructed students in algorithm problem solving methodology',
-          'Explored application design flow using user experience feedback'
-        ]
-      }
+          'Built large-scale front-end architecture using React, Redux, and ES6',
+          'Scalable and maintainable CSS, and tooling to facilitate scalability',
+          'Front-end build processes using Webpack, Node.js',
+          'Javascript unit testing',
+          'Used principles and practice of responsive web development (grid, flex-box), accessibility',
+          'Maintained close communication with UI/UX team to enhance product quality',
+          'Followed Agile development and consistently delivered new features on time during sprints',
+          'Maintain brand standards under company guidelines',
+        ],
+      },
+      {
+        date: 'June 2012 - May 2017',
+        roleTitle: 'Senior Analyst',
+        employer: 'CVS',
+        location: 'Woonsocket, RI',
+        description: [
+          'Utilized MVC principles to ensure a clean architecture and a lean code base for maximum optimation',
+          'Maintained close communication with UI/UX team to enhance product quality',
+          'Followed Agile development and consistently delivered new features on time during sprints',
+          'Drafted UI design documents for applications',
+          'Solved problems using a combination of JavaScript, JSON, and jQuery',
+          'Developed application to access JSON from RESTful web service',
+          'Tested front-end code in multiple browsers to ensure cross-browser compatibility',
+        ],
+      },
+      // {
+      //   date: 'August 2020 - Present',
+      //   roleTitle: 'AP Computer Science Teacher',
+      //   employer: 'IDEA Public School',
+      //   location: 'Austin, TX',
+      //   description: [
+      //     'Develops  JavaScript curriculum using Repl.it online classroom',
+      //     'Focuses learners on the fundamentals of computers - historically and current, Instructs from a debugging ideologic stand point',
+      //     'Engages students in hard and soft skill development for entering collaborative workforce.',
+      //     'Emphasis on multiple language acquisition',
+      //     'Offers practice with client ethics and real world situations',
+      //     'Poses question to learners regarding the role of technology in modern society.'
+      //   ]
+      // },
+      // {
+      //   date: 'August 2019 - June 2020',
+      //   roleTitle: 'Web Developer || Curriculum Writer',
+      //   employer: 'Hello World Studios',
+      //   location: 'Austin, TX',
+      //   description: [
+      //     'Built an online platform to facilitate student learning and engagement',
+      //     'Managed regional team of web development curriculum writers/developers',
+      //     'Wrote an interactive HTML/CSS/Javascript curriculum for web learners',
+      //     'Oversaw the development and quality control for online educational resources',
+      //     'Created online video resources through screencasting, audio engineering, and video editing knowledge base.',
+      //     'Taught remotely, in person, after school programs, and extracurricular settings',
+      //     'Developed a curriculum for Sonic Pi, a Ruby programming playground taught in the form of music'
+      //   ]
+      // },
+      // {
+      //   date: ' August 2017 - July 2019',
+      //   roleTitle: 'High School Computer Science Teacher',
+      //   employer: 'KIPP Public Schools',
+      //   location: 'Austin, TX',
+      //   description: [
+      //     'Educated low-income at risk students in fundamentals of computer science',
+      //     'Taught JavaScript, CSS, and HTML computer programming languages',
+      //     'Instructed students in algorithm problem solving methodology',
+      //     'Explored application design flow using user experience feedback'
+      //   ]
+      // }
     ],
     education: [
       {
-        date: 'July 2017 - May 2019',
-        institute: 'Austin Community College',
-        degree: 'Web Developer Certificate'
+        date: '2009 - 2012',
+        institute: 'Texas State University, San Marcos, TX',
+        degree: 'Bachelor of Science, Computer Science',
       },
-      {
-        date: 'August 2009 - May 2013',
-        institute: 'Texas State University San Marcos',
-        degree: 'Bachelor of Science in Anthropology'
-      }
+      // {
+      //   date: 'July 2017 - May 2019',
+      //   institute: 'Austin Community College',
+      //   degree: 'Web Developer Certificate'
+      // },
+      // {
+      //   date: 'August 2009 - May 2013',
+      //   institute: 'Texas State University San Marcos',
+      //   degree: 'Bachelor of Science in Anthropology'
+      // }
     ],
     personalInfo: {
       name: 'Andrew Riefenstahl',
       address: 'Austin, TX 78745',
       phone: 'eight one seven-897-4599',
-      email: 'andrew.riefenstahl@gmail.com',
+      email: "firstname + '.riefenstahl@gmail.com'",
       age: 32,
       dOB: 'November 9th, 1988',
       heritage: ['German', 'Italian', 'Cherokee', 'Texan'],
-      religion: null
-    }
-  })
+      religion: null,
+    },
+  }),
 };
 </script>
 
@@ -166,9 +232,15 @@ hr {
   );
 }
 
+@media screen and (min-width: 1700px) {
+  .resume-container {
+    width: 50%;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .resume-container {
-    width: 85%;
+    width: 94%;
   }
 }
 </style>

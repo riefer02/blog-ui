@@ -39,6 +39,10 @@ export default {
     &-section {
       width: 95%;
     }
+
+    &-text {
+      font-size: 1rem;
+    }
   }
 }
 </style>

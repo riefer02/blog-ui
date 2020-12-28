@@ -30,7 +30,7 @@
 
 <script>
 import TextLogo from '@/components/logo/TextLogo.vue';
-import BaseInput from '@/components/blog/BaseInput.vue';
+import BaseInput from '@/components/inputs/BaseInput.vue';
 export default {
   props: {
     modalConfig: {
@@ -62,6 +62,7 @@ export default {
         modalActive: false,
         modalData: {}
       };
+      this.$store.commit('SET_GUEST_DATA', 'Guest');
       this.$store.commit('SET_MODAL', modalConfig);
       let message = `Welcome Guest!`;
       this.$store.commit('SET_SNACK', message);

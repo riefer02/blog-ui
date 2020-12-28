@@ -2,20 +2,13 @@
   <div>
     <div class="overlay" v-if="modalConfig.modalActive">
       <div class="modal" v-if="modalConfig.modalActive">
-        <button  v-if="loggedIn" class="close-btn" @click="resetModal">
+        <button v-if="loggedIn" class="close-btn" @click="resetModal">
           <font-awesome-icon
             :icon="['fas', 'window-close']"
             class="close-icon"
           />
         </button>
         <div class="modal-content">
-          <!-- <transition-group
-            tag="div"
-            @before-enter="beforeEnter"
-            @enter="enter"
-            @leave="leave"
-            :css="false"
-          > -->
           <LoginUI v-if="modalMode === 'login'" key="1" />
           <!-- Register New User -->
           <SignUpUI v-else-if="modalMode === 'register'" key="2" />
@@ -23,14 +16,13 @@
           <EditorUI
             v-else-if="modalMode === 'editor'"
             key="3"
-            :modalConfig="this.modalConfig"
+            :modalConfig="modalConfig"
           />
           <!-- Disabled Mode -->
           <div v-else-if="modalMode === 'disabled'" key="4">
             <h3 class="modal-disabled-text">Modal Disabled</h3>
             <p>This is the default state of the modal</p>
           </div>
-          <!-- </transition-group> -->
         </div>
       </div>
     </div>
@@ -38,17 +30,20 @@
 </template>
 
 <script>
+import { authComputed } from '@/store/helper.js';
 import LoginUI from '@/components/modal/LoginUI.vue';
 import SignUpUI from '@/components/modal/SignUpUI.vue';
 import EditorUI from '@/components/modal/EditorUI.vue';
-// import Velocity from 'velocity-animate';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
   name: 'Modal',
   props: {
     modalConfig: {
-      type: Object
+      type: Object,
+      default: () => {
+        return { modalType: 'disabled', modalActive: false, modalData: {} };
+      }
     }
   },
   components: {
@@ -70,27 +65,12 @@ export default {
       };
       this.$store.commit('SET_MODAL', resetConfig);
     }
-    // beforeEnter(el) {
-    //   el.style.opacity = 0;
-    //   el.style.height = 0;
-    // },
-    // enter(el, done) {
-    //   // var delay = el.dataset.index * 150;
-    //   setTimeout(function() {
-    //     Velocity(el, { opacity: 1 }, { complete: done });
-    //   }, 500);
-    // },
-    // leave(el, done) {
-    //   // var delay = el.dataset.index * 150;
-    //   setTimeout(function() {
-    //     Velocity(el, { opacity: 0, height: 0 }, { complete: done });
-    //   }, 0);
-    // }
   },
   computed: {
     modalMode() {
       return this.modalConfig.modalType;
-    }
+    },
+    ...authComputed
   }
 };
 </script>
@@ -119,8 +99,8 @@ export default {
   max-height: 100%;
   width: 70%;
   max-width: 800px;
-  padding: 0px 25px;
-  margin: 70px auto;
+  padding: 1rem 1rem;
+  margin: 2rem auto;
   border-radius: 0.25rem;
   background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
@@ -163,27 +143,22 @@ export default {
   color: white;
 }
 
-@media screen and (min-width: 900px) {
-  // Anything bigger than 900 px
+@media screen and (max-width: 900px) {
   .modal {
-    width: 50%;
+    width: 80%;
   }
-}
-@media screen and (max-width: 768px) {
-  // Anything 768 and smaller
-  // .modal {
-  //   height: auto;
-  //   width: 80%;
-  //   padding: 3rem;
-  // }
 }
 
 @media screen and (max-width: 600px) {
-  // Anything 600 and smaller
-  // .modal {
-  //   height: 100vh;
-  //   width: 100vw;
-  //   padding: 2px;
-  // }
+  .modal {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .modal {
+    width: 98%;
+    margin: 0 auto;
+  }
 }
 </style>

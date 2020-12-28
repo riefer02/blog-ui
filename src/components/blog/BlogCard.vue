@@ -4,8 +4,13 @@
     <div v-else-if="loadState === false" class="cards-item">
       <div class="card">
         <div class="card-content">
-          <router-link :to="'/blog/' + blog._id" @click="scrollToTop()">
+          <router-link
+            :to="'/blog/' + blog._id"
+            @click="scrollToTop()"
+            class="card-link"
+          >
             <h3 class="card-title">{{ blog.title }}</h3>
+
             <h4 v-if="blog.author" class="card-author">
               author: <span>@{{ blog.author }}</span>
             </h4>
@@ -25,19 +30,11 @@
                 <div class="card-comments">{{ numberOfComments }}</div>
               </div>
             </div>
-            <div class="card-btns">
-              <button
-                v-if="blog.author === curUserName"
-                class="edit-btn"
-                @click="editBlog(this.blog)"
-              >
+            <div class="card-btns" v-if="blog.author === curUserName">
+              <button class="edit-btn" @click="editBlog(blog)">
                 <FontAwesomeIcon class="edit-icon" icon="wrench" />
               </button>
-              <button
-                class="delete-btn"
-                @click.prevent="deleteBlog(blog._id)"
-                v-if="blog.author === curUserName"
-              >
+              <button class="delete-btn" @click.prevent="deleteBlog(blog._id)">
                 <FontAwesomeIcon class="trash-icon" icon="trash" />
               </button>
             </div>
@@ -91,10 +88,10 @@ export default {
     }
   },
   mounted() {
-    if (this.$store.state.user) {
-      this.curUserName = this.$store.state.user.username;
-    } else {
+    if (this.$store.state.user === 'Guest') {
       this.curUserName = 'Guest';
+    } else {
+      this.curUserName = this.$store.state.user.username;
     }
   },
   data: () => ({
@@ -130,7 +127,6 @@ a {
 }
 
 .card {
-  background-color: white;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -142,9 +138,6 @@ a {
     justify-content: space-between;
     align-items: center;
   }
-
-  // &-topic {
-  // }
 
   &-details {
     display: flex;
@@ -188,8 +181,13 @@ a {
 }
 
 .card-title,
-.card-text {
+.card-text, .card-topic {
   text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+  transition: all 0.1s ease-in;
+}
+
+.card-topic {
+  font-size: 0.8rem;
 }
 
 .card-title {
@@ -215,17 +213,6 @@ a {
   line-height: 1.5;
   margin-bottom: 1.25rem;
   font-weight: 400;
-}
-@media only screen and (max-width: 600px) {
-  .card-body {
-    width: 100%;
-  }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 760px) {
-  .card-body {
-    width: 90%;
-  }
 }
 
 .card-btns {
@@ -260,5 +247,93 @@ a {
 .heart-icon {
   color: #1abc9c;
   margin-left: 0.7rem;
+}
+
+// .card-content:hover a > .card-text,
+// .card-content:hover a > .card-title {
+//   color: #2c3e50;
+//   text-shadow: none;
+// }
+// .card-content:hover a > .card-topic {
+//   color: white;
+// }
+
+@media screen and (min-width: 1200px) {
+  .card {
+    &-body {
+      width: 25%;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    &-body {
+      width: 100%;
+    }
+    &-content {
+      padding: 0.5rem;
+      min-height: min-content;
+    }
+
+    &-link {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: min-content min-content min-content;
+      gap: 5px 5px;
+      grid-template-areas:
+        't t t t'
+        'to to a a'
+        's s s s';
+    }
+
+    &-title,
+    &-topic,
+    &-text,
+    &-author {
+      margin: 5px;
+      font-size: 0.7rem;
+    }
+
+    &-title {
+      align-self: start;
+      justify-self: start;
+      grid-area: t;
+      font-size: 0.9rem;
+    }
+
+    &-topic {
+      align-self: center;
+      justify-self: start;
+      grid-area: to;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    &-author {
+      grid-area: a;
+      align-self: center;
+      justify-self: end;
+    }
+
+    &-text {
+      grid-area: s;
+      align-self: start;
+      justify-self: start;
+      font-size: 0.75rem;
+      margin-top: 0;
+    }
+  }
+
+  .trash-icon,
+  .edit-icon {
+    font-size: 0.6rem;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 760px) {
+  .card-body {
+    width: 90%;
+  }
 }
 </style>

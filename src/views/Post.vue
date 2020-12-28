@@ -227,7 +227,7 @@ export default {
   &-likes {
     color: #fff;
     position: relative;
-    right: 1px;
+    right: 0px;
     z-index: 1;
     margin: 0 auto;
   }
@@ -291,6 +291,12 @@ export default {
       transform: scale(1.1);
       background-color: #f25f5c;
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .post-section {
+    min-height: 810px;
   }
 }
 

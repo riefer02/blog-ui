@@ -54,7 +54,7 @@ export default {
 <style lang="scss" scoped>
 .card-skeleton {
   width: 270px;
-  height: 300px;
+  height: 250px;
   margin: 0 auto;
   position: relative;
   top: 0;

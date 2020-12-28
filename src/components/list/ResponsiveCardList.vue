@@ -60,6 +60,14 @@ export default {
   }
 }
 
+@media screen and (min-width: 1400px) {
+  .card-container {
+    width: 50%;
+    margin-bottom: 6rem;
+    margin-top: 5rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .card {
     &-container {
