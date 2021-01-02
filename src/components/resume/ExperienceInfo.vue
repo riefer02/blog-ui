@@ -65,6 +65,12 @@ export default {
     margin: 0 auto;
   }
 
+  &-details-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &-item {
     margin-bottom: 0.9rem;
     padding: 1rem 0;
@@ -87,6 +93,7 @@ export default {
   &-date {
     margin: 0 1rem 0 0;
     display: inline-block;
+    font-size: 0.9rem;
   }
 
   &-employer {
@@ -100,6 +107,7 @@ export default {
     &-location {
       display: inline-block;
       text-transform: uppercase;
+      font-size: 0.9rem;
     }
   }
 

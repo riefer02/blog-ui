@@ -9,6 +9,7 @@
       >
         <h5 class="education-date">{{ education.date }}</h5>
         <h3 class="education-institute">{{ education.institute }}</h3>
+        <h3 class="education-location">{{education.location}}</h3>
         <h4 class="education-degree">{{ education.degree }}</h4>
       </div>
     </div>
@@ -30,10 +31,12 @@ export default {
   width: 80%;
   margin: 0 auto;
   text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+ 
 
   &-list {
     display: flex;
     justify-content: space-evenly;
+     font-size: 1.3rem;
   }
 
   &-item:first-child {
@@ -51,9 +54,15 @@ export default {
     color: #fff;
   }
 
+  &-location {
+    text-shadow: none;
+    font-size: 1.1rem;
+  }
+
   &-degree,
   &-date {
     text-shadow: none;
+    font-size: 0.9rem;
   }
 }
 

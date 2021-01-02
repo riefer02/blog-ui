@@ -33,13 +33,15 @@ export default {
   data: () => ({
     knowledges: [
       'WordPress',
-      'Vue',
       'React',
+      'Vue',
       'GraphQL',
-      'Github',
+      'Git',
       'Node',
+      'Electron',
       'PostgreSQL',
       'MongoDB',
+      'Firebase',
       'Express',
       'Redux',
       'Data Modeling',
@@ -48,13 +50,14 @@ export default {
       'Web  Applications',
       'Heroku',
       'DNS Management',
-      'Advanced CSS3',
+      'CSS3',
       'Responsive Design',
       'Bootstrap',
       'SASS',
       'SCSS',
       'Tailwind',
       'Ant',
+      'Bootstrap',
       'Javascript',
       'Jquery',
       'PHP',
@@ -79,12 +82,12 @@ export default {
     ],
     experience: [
       {
-        date: 'August 2019 - November 2020',
+        date: 'Aug 2019 - Nov 2020',
         roleTitle: 'Full-Stack Software Engineer',
         employer: 'MS Assistance',
         location: 'Austin, TX',
         description: [
-          'Built front-end applications using React, Redux, and Electrode',
+          'Built front-end applications using React, Redux, and Electron',
           'Write maintainable React Components',
           'Contribute, maintain React component library',
           'Maintain existing APIs written in NodeJS',
@@ -94,7 +97,7 @@ export default {
         ],
       },
       {
-        date: 'May 2018 - April 2019',
+        date: 'May 2018 - Apr 2019',
         roleTitle: 'UX Developer',
         employer: 'NIC Inc.',
         location: 'Olathe, KS',
@@ -103,8 +106,8 @@ export default {
           'Set guidelines, best practices to help achieve better code',
           'Fine-tune front-end build process using Webpack, Nodejs',
           'Write maintainable React components',
-          'Interact with UX, backend developers to build applications',
-          'Work with RESTful APIs',
+          'Interact with UX and backend developers to build applications',
+          'Provide input to backend developers during API prototyping',
         ],
       },
       {
@@ -124,7 +127,7 @@ export default {
         ],
       },
       {
-        date: 'June 2012 - May 2017',
+        date: 'Jun 2014 - May 2017',
         roleTitle: 'Senior Analyst',
         employer: 'CVS',
         location: 'Woonsocket, RI',
@@ -183,7 +186,8 @@ export default {
     education: [
       {
         date: '2009 - 2012',
-        institute: 'Texas State University, San Marcos, TX',
+        institute: 'Texas State University',
+        location: 'San Marcos, TX',
         degree: 'Bachelor of Science, Computer Science',
       },
       // {
