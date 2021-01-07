@@ -122,7 +122,7 @@ export default {
 
     &-item {
       list-style-type: none;
-      padding: 0.3rem;
+      padding: 0.27rem;
       width: 80%;
       line-height: 1.7rem;
       text-align: left;
@@ -138,15 +138,14 @@ export default {
 
 @media screen and (min-width: 1400px) {
   .experience-role {
-    font-size: 2.3rem;
+    font-size: 2.1rem;
   }
 
   .experience-description-item {
-    font-size: 1.3rem;
     line-height: 2rem;
   }
   .experience-description-list {
-    padding: 0 4rem 1rem 4rem;
+    padding: 0 2.8rem 1rem 2.8rem;
   }
 }
 

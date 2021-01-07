@@ -9,8 +9,9 @@
       >
         <h5 class="education-date">{{ education.date }}</h5>
         <h3 class="education-institute">{{ education.institute }}</h3>
-        <h3 class="education-location">{{education.location}}</h3>
+
         <h4 class="education-degree">{{ education.degree }}</h4>
+        <h3 class="education-location">{{ education.location }}</h3>
       </div>
     </div>
   </div>
@@ -31,12 +32,11 @@ export default {
   width: 80%;
   margin: 0 auto;
   text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
- 
 
   &-list {
     display: flex;
     justify-content: space-evenly;
-     font-size: 1.3rem;
+    font-size: 1.3rem;
   }
 
   &-item:first-child {
@@ -44,26 +44,36 @@ export default {
   }
   &-item {
     width: 50%;
-    padding: 0.7rem 1.5rem 1rem 1.5rem;
     border-radius: 0.25rem;
     box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
     background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: column;
   }
 
   &-institute {
     color: #fff;
+    font-size: 1.3rem;
+    margin: 0;
   }
 
   &-location {
     text-shadow: none;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
+    padding-bottom: 0.4rem
   }
 
   &-degree,
   &-date {
     text-shadow: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
+
+    &-date {
+      font-size: 0.9rem;
+    }
 }
 
 @media screen and (max-width: 900px) {

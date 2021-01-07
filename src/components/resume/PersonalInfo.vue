@@ -54,7 +54,7 @@ export default {
     border-radius: 0.25rem;
     box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
     background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
-    text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+    // text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
     padding: 1.5rem;
     width: min-content;
     margin: 0 auto;
@@ -81,6 +81,7 @@ export default {
   &-dob-label,
   &-phone-label {
     margin-bottom: 0.3rem;
+    font-weight: bold;
   }
 }
 
