@@ -15,14 +15,19 @@
     <div class="mb-5">
       <AudioPlayer />
     </div>
+    <div class="mb-5">
+      <AudioUploader />
+    </div>
   </div>
 </template>
 
 <script>
-import AudioPlayer from '@/components/audio/audioPlayer.vue';
+import AudioPlayer from '@/components/audio/AudioPlayer.vue';
+import AudioUploader from '@/components/audio/AudioUploader.vue';
 export default {
   components: {
     AudioPlayer,
+    AudioUploader,
   },
 };
 </script>
