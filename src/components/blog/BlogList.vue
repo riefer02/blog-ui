@@ -14,7 +14,8 @@
       >
     </div>
     <div v-show="blogs.length === 0">
-      I'm sorry but database is offline
+      Connecting to database...
+      <Loader />
     </div>
     <div class="d-flex justify-center blog-list-item-container">
       <BlogCard
@@ -34,11 +35,13 @@
 import BlogService from '../../services/BlogService';
 import BlogCard from '@/components/blog/BlogCard.vue';
 import Observer from '@/components/utility/Observer.vue';
+import Loader from '@/components/utility/Loader.vue';
 export default {
   name: 'BlogList',
   components: {
     BlogCard,
-    Observer
+    Observer,
+    Loader
   },
   props: {
     blogs: {
@@ -108,9 +111,6 @@ export default {
   margin-bottom: 5rem;
 }
 
-.blog-list-item-container {
-  // min-height: 500px;
-}
 
 .filter {
   &-label {

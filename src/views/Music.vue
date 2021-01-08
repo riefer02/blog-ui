@@ -15,7 +15,7 @@
     <div class="mb-5">
       <AudioPlayer />
     </div>
-    <div class="mb-5">
+    <div v-if="ready" class="mb-5">
       <AudioUploader />
     </div>
   </div>
@@ -27,8 +27,13 @@ import AudioUploader from '@/components/audio/AudioUploader.vue';
 export default {
   components: {
     AudioPlayer,
-    AudioUploader,
+    AudioUploader
   },
+  data() {
+    return {
+      ready: false
+    };
+  }
 };
 </script>
 
