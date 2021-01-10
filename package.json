@@ -13,7 +13,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/vue-fontawesome": "^3.0.0-3",
     "axios": "^0.21.1",
-    "chart.js": "^2.9.4",
     "core-js": "^3.8.1",
     "lodash": "^4.17.20",
     "prettier": "^2.2.1",
@@ -21,7 +20,6 @@
     "velocity-animate": "^1.5.2",
     "vue": "^3.0.4",
     "vue-axios": "^3.2.0",
-    "vue-chartjs": "^3.5.1",
     "vue-router": "^4.0.1",
     "vuex": "^4.0.0-rc.2"
   },
