@@ -13,7 +13,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import BlogService from '@/services/BlogService.js'
+import BlogService from '@/services/BlogService.js';
 import BaseInput from '@/components/inputs/BaseInput.vue';
 import BaseSelect from '@/components/inputs/BaseSelect.vue';
 import BaseTextArea from '@/components/inputs/BaseTextArea.vue';
@@ -23,7 +23,7 @@ export default {
   components: {
     BaseInput,
     BaseSelect,
-    BaseTextArea
+    BaseTextArea,
   },
 
   data: () => ({
@@ -32,39 +32,37 @@ export default {
       author: '',
       title: '',
       summary: '',
-      topic: ''
-    }
+      topic: '',
+    },
   }),
   methods: {
-    formSubmit: async function() {
+    formSubmit: async function () {
       try {
         let self = this;
         let { title, summary, topic, author } = self.blog;
         if (!title || !summary || !topic) {
-          self.messageContent = 'Validation Error';
-          console.log(self.messageContent);
-          this.$store.commit('SET_SNACK', self.messageContent);
+          this.$store.commit('SET_SNACK', 'Validation Error');
           return;
         }
         const newBlog = {
           author,
           title,
           summary,
-          topic
+          topic,
         };
-        const response = await BlogService.createBlog(newBlog)
-        console.log(response);
+        await BlogService.createBlog(newBlog);
         self.blog.title = '';
         self.blog.summary = '';
         self.blog.topic = '';
-        self.messageContent =
-          'Your blog post has been saved to database successfully';
-        self.$store.commit('SET_SNACK', self.messageContent);
+        self.$store.commit(
+          'SET_SNACK',
+          'Your blog post has been saved to database successfully'
+        );
         this.$store.dispatch('retrieveBlogs');
       } catch (error) {
         console.error(error);
       }
-    }
+    },
   },
   mounted() {
     this.blog.author = this.userName;
@@ -74,9 +72,9 @@ export default {
       return this.$store.state.user.username;
     },
     ...mapState({
-      categories: state => state.blogTopics
-    })
-  }
+      categories: (state) => state.blogTopics,
+    }),
+  },
 };
 </script>
 

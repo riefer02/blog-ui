@@ -1,7 +1,4 @@
 <template>
-  <!-- <div>
-    <div :style="{ height, width: computedWidth }" class="skeleton-loader" />
-  </div> -->
   <div class="card-skeleton">
     <div class="animated-background">
       <div class="card-skeleton-img"></div>

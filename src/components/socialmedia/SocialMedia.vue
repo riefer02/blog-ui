@@ -29,8 +29,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
   components: {
-    FontAwesomeIcon
-  }
+    FontAwesomeIcon,
+  },
 };
 </script>
 
@@ -46,11 +46,9 @@ export default {
 
   &-icon {
     font-size: 35px;
-    // color: rgba(26, 188, 156, 1);
     color: #fff;
     transition: transform 0.5s;
   }
-  // rgba(239, 141, 156, 1)
   &-link {
     display: flex;
     background-image: linear-gradient(

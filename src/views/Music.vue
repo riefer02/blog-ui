@@ -27,13 +27,13 @@ import AudioUploader from '@/components/audio/AudioUploader.vue';
 export default {
   components: {
     AudioPlayer,
-    AudioUploader
+    AudioUploader,
   },
   data() {
     return {
-      ready: false
+      ready: false,
     };
-  }
+  },
 };
 </script>
 
@@ -43,8 +43,8 @@ export default {
 }
 
 h3 span {
-  background-color: red;
-  color: white;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: #fff;
   padding: 0.2rem;
   border-radius: 2px;
 }

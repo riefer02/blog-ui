@@ -9,7 +9,6 @@
       >
         <h5 class="education-date">{{ education.date }}</h5>
         <h3 class="education-institute">{{ education.institute }}</h3>
-
         <h4 class="education-degree">{{ education.degree }}</h4>
         <h3 class="education-location">{{ education.location }}</h3>
       </div>

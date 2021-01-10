@@ -1,9 +1,7 @@
 <template>
   <div class="audio-player">
     <div class="audio-player-body">
-      <div class="audio-player-signature">
-        Riefer Designs
-      </div>
+      <div class="audio-player-signature">Riefer Designs</div>
       <div class="audio-player-source">
         <audio
           muted
@@ -30,33 +28,23 @@
               @input="updateVolume($event.target.value)"
             />
             <datalist id="gain-vals">
-              <option value="0" label="min"> </option>
-              <option value="2" label="max"> </option>
+              <option value="0" label="min"></option>
+              <option value="2" label="max"></option>
             </datalist>
             <label for="volume">Input Gain</label>
           </div>
-          <!-- High Pass Filter Controller -->
           <div class="controller-hpf">
             <button class="hpf-button" @click="toggleHighPassFilter()">
               <span>On/Off</span>
             </button>
             <label>Highpass Filter</label>
           </div>
-          <!-- Compression Controller -->
           <div class="controller-compressor">
             <button class="compressor-button" @click="toggleCompressor()">
               <span>On/Off</span>
             </button>
             <label>Compressor</label>
           </div>
-          <!-- Reverb -->
-          <!-- <div class="controller-reverb">
-            <button class="reverb-button disabled" @click="toggleReverb()">
-              <span>On/Off</span>
-            </button>
-            <label>Reverb</label>
-          </div> -->
-          <!-- Panning Controller -->
           <div class="controller-panner">
             <input
               type="range"
@@ -70,12 +58,11 @@
               @input="updatePanning($event.target.value)"
             />
             <datalist id="pan-vals">
-              <option value="-1" label="left"> </option>
-              <option value="1" label="right"> </option>
+              <option value="-1" label="left"></option>
+              <option value="1" label="right"></option>
             </datalist>
             <label for="panner">Panning</label>
           </div>
-          <!-- Power Button -->
           <div class="controller-power">
             <button class="power-control" @click="powerOnAudioPlayer()">
               <div class="power-control-indicator">
@@ -87,7 +74,6 @@
               </div>
             </button>
           </div>
-          <!-- Play Button -->
           <div class="controller-play">
             <button class="play-button" role="switch" @click="playButton()">
               <span>Play/Pause</span>
@@ -120,17 +106,17 @@ export default {
       compressor: true,
       reverb: false,
       panner: true,
-      masterOut: true
+      masterOut: true,
     },
     powerOn: false,
-    signalFlow: undefined
+    signalFlow: undefined,
     // audioUnlocked: false
   }),
-  mounted: function() {
+  mounted: function () {
     // create audio environment
     this.AudioContext = window.AudioContext || window.webkitAudioContext;
     this.audioCtx = new this.AudioContext({
-      sampleRate: 44100
+      sampleRate: 44100,
     });
     // console.log('state of audio on initial load is ' + this.audioCtx.state);
     // initialize plugins
@@ -191,7 +177,7 @@ export default {
       }
 
       if (this.audioPlaying === false) {
-        this.audioSource.play().catch(err => {
+        this.audioSource.play().catch((err) => {
           console.log(err);
         });
         this.audioPlaying = true;
@@ -214,8 +200,8 @@ export default {
       this.resetPluginNodes();
       let pluginChain = [];
       let keys = Object.keys(controllerObj);
-      let filterByOn = keys.filter(k => controllerObj[k]);
-      filterByOn.forEach(el => {
+      let filterByOn = keys.filter((k) => controllerObj[k]);
+      filterByOn.forEach((el) => {
         let curPlugin = `.connect(this.${el})`;
         pluginChain.push(curPlugin);
       });
@@ -232,14 +218,7 @@ export default {
       this.panner.pan.value = value;
     },
     endAudio() {
-      console.log('ending audio...');
       this.audioPlaying = false;
-    },
-
-    toggleReverb() {
-      console.log('reverb plugin in development');
-      // this.pluginController.reverb = !this.pluginController.reverb;
-      // this.pluginSwitch(this.pluginController);
     },
     toggleHighPassFilter() {
       this.pluginController.highPassFilter = !this.pluginController
@@ -249,15 +228,37 @@ export default {
     toggleCompressor() {
       this.pluginController.compressor = !this.pluginController.compressor;
       this.pluginSwitch(this.pluginController);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+label {
+  margin-top: 2px;
+}
+button {
+  background-color: rgba(167, 29, 29, 0.9);
+  text-align: center;
+  border-radius: 10px;
+  width: min-content;
+  margin: 0 auto;
+  box-shadow: 1px 3px 3px #888888;
+  padding: 5px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid grey;
+  border-left: 1px solid grey;
+}
+
+button span {
+  color: rgb(209, 221, 255);
+  text-shadow: 0px 0px 5px rgb(226, 124, 124);
+}
+
 .audio-player {
   &-body {
-    background: rgb(209, 217, 230);
+    background: rgb(50, 90, 155);
     background: linear-gradient(
       0deg,
       rgba(209, 217, 230, 1) 0%,
@@ -312,7 +313,7 @@ export default {
 }
 
 .off {
-  background-color: #ff1177;
+  background-color: #ff111d;
   -webkit-animation: off 1.5s ease-in-out infinite alternate;
   -moz-animation: off 1.5s ease-in-out infinite alternate;
   animation: off 1.5s ease-in-out infinite alternate;
@@ -326,12 +327,16 @@ export default {
   background-color: transparent;
   outline: none;
   border: none;
+  background-color: rgba(167, 29, 29, 0.9);
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid grey;
+  border-left: 1px solid grey;
 }
 
 .power-control-indicator {
-  background-color: white;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   padding: 0.2rem;
 
@@ -340,13 +345,15 @@ export default {
     width: 10px;
     border-radius: 50%;
     margin: 3px;
-    margin-right: 0.2rem;
+    margin-right: 0.3rem;
   }
 
   &-text {
-    font-size: 0.7rem;
+    font-size: 1rem;
     align-self: center;
-    padding: 0.2rem;
+
+    color: rgb(209, 221, 255);
+    text-shadow: 0px 0px 5px rgb(226, 124, 124);
   }
 }
 

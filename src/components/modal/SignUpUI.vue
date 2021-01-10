@@ -36,19 +36,19 @@ import BaseInput from '@/components/inputs/BaseInput.vue';
 export default {
   props: {
     modalConfig: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   data: () => ({
     registration: {
       username: '',
       email: '',
-      password: ''
-    }
+      password: '',
+    },
   }),
   components: {
     TextLogo,
-    BaseInput
+    BaseInput,
   },
   methods: {
     validateEmail(emailAddr) {
@@ -75,7 +75,7 @@ export default {
       let modalConfig = {
         modalType: 'login',
         modalActive: true,
-        modalData: {}
+        modalData: {},
       };
       this.$store.commit('SET_MODAL', modalConfig);
     },
@@ -107,13 +107,13 @@ export default {
         .dispatch('registerNewUser', {
           username: this.registration.username,
           password: this.registration.password,
-          email: this.registration.email
+          email: this.registration.email,
         })
         .then(() => {
           let modalConfig = {
             modalType: 'disabled',
             modalActive: false,
-            modalData: {}
+            modalData: {},
           };
 
           this.$store.commit('SET_MODAL', modalConfig);
@@ -121,15 +121,14 @@ export default {
           this.$store.commit('SET_SNACK', message);
           this.$router.push({ path: '/' });
         })
-        .catch(err => {
-          console.log(err);
+        .catch(() => {
           this.$store.commit(
             'SET_SNACK',
             "I'm sorry we had an error during registration"
           );
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

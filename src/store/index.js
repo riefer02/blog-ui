@@ -5,22 +5,21 @@ import userService from '../services/UserServices.js';
 
 export default createStore({
   state: {
-    // user: { name: 'Andrew Riefenstahl', age: 32 },
     user: null,
     blogTopics: [
       'music',
       'web development',
       'lifestyle',
       'politics',
-      'science'
+      'science',
     ],
     blogs: [],
     snack: '',
     modalConfig: {
       modalType: 'login',
       modalActive: true,
-      modalData: {}
-    }
+      modalData: {},
+    },
   },
   mutations: {
     SET_MODAL(state, config) {
@@ -46,22 +45,22 @@ export default createStore({
     SET_GUEST_DATA(state, guest) {
       state.user = guest;
       localStorage.setItem('user', JSON.stringify(guest));
-    }
+    },
   },
   actions: {
     retrieveBlogs({ commit }) {
-      blogService.getBlogs().then(response => {
+      blogService.getBlogs().then((response) => {
         commit('SET_BLOGS', response.data.blogs);
       });
     },
     async registerNewUser({ commit }, credentials) {
       await userService
         .registerNewUser(credentials)
-        .then(response => {
+        .then((response) => {
           console.log('registration response', response);
           commit('SET_USER_DATA', response.data.user);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err.response.data.error);
           throw err;
         });
@@ -69,20 +68,20 @@ export default createStore({
     async loginUser({ commit }, credentials) {
       await userService
         .loginUser(credentials)
-        .then(response => {
+        .then((response) => {
           commit('SET_USER_DATA', response.data.user);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err.response.data.error);
           throw err;
         });
     },
     logout({ commit }) {
       commit('CLEAR_USER_DATA');
-    }
+    },
   },
   getters: {
-    snackMessage: state => {
+    snackMessage: (state) => {
       return state.snack;
     },
     loggedIn(state) {
@@ -90,7 +89,7 @@ export default createStore({
         return false;
       }
       return !!state.user;
-    }
+    },
   },
-  modules: {}
+  modules: {},
 });

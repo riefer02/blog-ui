@@ -2,7 +2,6 @@
   <div>
     <main class="wrapper">
       <h1 class="header-text-primary">Full Stack Developer</h1>
-      <!-- <h3 class="header-test-secondary"></h3> -->
       <hr />
       <p class="main-text">
         Hi, and welcome to my portfolio website. My name is Andrew Riefenstahl
@@ -12,11 +11,14 @@
         hobbies too, so if you want to learn more please, "stay awhile and
         listen".
       </p>
-      <img
+      <!-- <img
         class="full-bleed giraffe-banner"
         alt="A Herd of Giraffe"
         :src="require('../../assets/images/giraffeHerd.jpg')"
-      />
+      /> -->
+      <div class="full-bleed giraffe-banner">
+        <ImagePanel image="giraffeHerd" alt="a picture of giraffes" />
+      </div>
       <p class="main-text pt-5">
         I like to explore many fields related to the human experience. One thing
         I learned is that, "It's the little things that add up to a great life."
@@ -30,9 +32,11 @@
 
 <script>
 import ResponsiveCardList from '@/components/list/ResponsiveCardList.vue';
+import ImagePanel from '@/components/utility/ImagePanel.vue';
 export default {
   components: {
     ResponsiveCardList,
+    ImagePanel,
   },
   data: () => ({
     hobbies: [
@@ -79,21 +83,6 @@ export default {
   grid-column: 2;
 }
 
-.full-bleed {
-  grid-column: 1 / -1;
-  width: 100%;
-  position: relative;
-  margin-top: 3rem;
-  margin-bottom: 3.6rem;
-}
-
-.giraffe-banner {
-  object-fit: cover;
-  width: 100%;
-  height: 325px;
-  object-position: 0 -150px;
-}
-
 .header-text-primary {
   margin-top: 0;
   filter: drop-shadow(0 0 1px #ef8d9c);
@@ -104,19 +93,35 @@ export default {
   line-height: 1.7rem;
   padding-bottom: 1.5rem;
 }
+.full-bleed {
+  grid-column: 1 / -1;
+  width: 100%;
+  position: relative;
+  margin-top: 3rem;
+  margin-bottom: 3.6rem;
+  overflow: hidden;
+
+}
+
+.giraffe-banner {
+  object-fit: cover;
+  width: 100%;
+  height: 325px;
+  object-position: 0 -150px;
+}
 @media only screen and (max-width: 600px) {
   .giraffe-banner {
     object-position: -60px -50px;
+    overflow:hidden;
   }
 
   .full-bleed {
     grid-column: 1 / -1;
-    width: 100%;
-    position: relative;
     margin: 0;
+    height: 100%;
   }
   .main-text {
-    margin-top: 0;
+    margin-top: 2rem;
   }
 }
 
@@ -141,9 +146,8 @@ hr {
 
 @media screen and (min-width: 1400px) {
   .wrapper {
- 
-  grid-template-columns: 1fr min(90ch, calc(100% - 64px)) 1fr;
-}
+    grid-template-columns: 1fr min(90ch, calc(100% - 64px)) 1fr;
+  }
   .main-text {
     font-size: 1.4rem;
     line-height: 2rem;

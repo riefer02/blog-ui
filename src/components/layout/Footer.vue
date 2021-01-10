@@ -65,7 +65,9 @@
             :icon="['fab', 'instagram']"
         /></a>
         <a href="https://youtu.be/erDW9qG8Vrs" class="social-media-link"
-          ><FontAwesomeIcon class="social-media-icon" :icon="['fab', 'youtube']"
+          ><FontAwesomeIcon
+            class="social-media-icon"
+            :icon="['fab', 'youtube']"
         /></a>
       </div>
     </div>
@@ -76,29 +78,23 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 export default {
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
   },
   computed: {
     currentYear() {
       const d = new Date();
       return d.getFullYear();
-    }
+    },
   },
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-// .site-footer {
-//   position: fixed;
-//   left: 0;
-//   bottom: 0;
-//   width: 100%;
-// }
 .footer-row-1,
 .footer-row-2 {
   display: flex;
@@ -228,14 +224,12 @@ export default {
 
   &-icon {
     font-size: 35px;
-    // color: rgba(33, 45, 58, 0.87);
     color: #fff;
     transition: all 0.2s;
   }
   &-link:hover &-icon {
     color: #fff;
   }
-  // rgba(239, 141, 156, 1)
   &-link {
     display: flex;
     background-image: linear-gradient(
@@ -253,8 +247,6 @@ export default {
     justify-content: center;
     text-decoration: none;
     transition: transform 0.5s;
-    // box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
-    //   -6px -6px 10px -1px rgba(239, 141, 156, 0.7);
     box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 2px black;
   }

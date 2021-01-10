@@ -16,17 +16,17 @@ export default {
   name: 'BaseInput',
   props: {
     label: {
-      type: String
+      type: String,
     },
     modelValue: {
       type: [String, Number],
-      default: ''
+      default: '',
     },
     placeholder: {
       type: String,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 };
 </script>
 
@@ -67,10 +67,5 @@ input {
   -ms-transition: 0.2s ease all;
   -o-transition: 0.2s ease all;
   transition: 0.2s ease all;
-}
-
-@media screen and (max-width: 600px) {
-  .field input {
-  }
 }
 </style>
