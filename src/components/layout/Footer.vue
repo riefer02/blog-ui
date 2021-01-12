@@ -29,6 +29,25 @@
           <li class="footer-link" @click="scrollToTop()">
             <router-link to="/">Home</router-link>
           </li>
+               <li class="nav-item">
+          <router-link
+            v-show="loggedIn"
+            to="/"
+            class="nav-link"
+            @click.prevent="logout()"
+            >Logout</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link
+            v-show="!loggedIn"
+            to="/"
+            @click.prevent="activateLoginModal()"
+            class="nav-link"
+          >
+            Login
+          </router-link>
+        </li>
         </ul>
       </div>
     </div>
@@ -75,6 +94,7 @@
 </template>
 
 <script>
+import { authComputed } from '@/store/helper.js';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 export default {
   components: {
@@ -85,8 +105,20 @@ export default {
       const d = new Date();
       return d.getFullYear();
     },
+     ...authComputed,
   },
   methods: {
+        activateLoginModal() {
+      let modalConfig = {
+        modalType: 'login',
+        modalActive: true,
+        modalData: {},
+      };
+      this.$store.commit('SET_MODAL', modalConfig);
+    },
+    logout() {
+      this.$store.dispatch('logout');
+    },
     scrollToTop() {
       window.scrollTo(0, 0);
     },

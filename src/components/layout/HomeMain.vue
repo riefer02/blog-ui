@@ -5,24 +5,26 @@
       <hr />
       <p class="main-text">
         Hi, and welcome to my portfolio website. My name is Andrew Riefenstahl
-        and I am a full stack developer. When I began studying computer science
+        and I am a full stack developer. A few years ago I began studying computer science and
         I discovered a passion I never knew existed. I'm creative, love to
-        learn, a team player, and enjoy solving puzzles. I have many other
-        hobbies too, so if you want to learn more please, "stay awhile and
+        learn, and enjoy solving puzzles. When I'm not coding, I have many other
+        hobbies to explore, so if you want to learn more please, "stay awhile and
         listen".
       </p>
-      <!-- <img
-        class="full-bleed giraffe-banner"
-        alt="A Herd of Giraffe"
-        :src="require('../../assets/images/giraffeHerd.jpg')"
-      /> -->
+         <p class="main-text">
+       The purpose of this website is to showcase different aspects of design and functionality I can bring to your projects or team. This site will be under constant development as I build out new features, and explore the awesome ecosystem that is the web.
+      </p>
+          <p class="main-text">
+            Please create a user account and leave me a message on the <router-link class="inline-text-link" to="/blogs">blog page</router-link> so I can meet you and hear your feedback.
+      </p>
       <div class="full-bleed giraffe-banner">
         <ImagePanel image="giraffeHerd" alt="a picture of giraffes" />
       </div>
       <p class="main-text pt-5">
-        I like to explore many fields related to the human experience. One thing
-        I learned is that, "It's the little things that add up to a great life."
-        So I try to make the best by exploring new ideas with every new chapter.
+        I like to explore many fields related to the human experience. I am a rock and roll music producer,
+         a writer, an anthropolgist, and a dog dad. One thing
+        I learned is from a young age is, "It's the little things that add up to a great life."
+        So I try to make the best by exploring new ideas with each new day.
       </p>
       <hr />
     </main>
@@ -44,7 +46,7 @@ export default {
         id: 1,
         name: 'Full Stack Developer',
         summary:
-          'I am a proficient full-stack developer. My favorite front-end frameworks are React.js and Vue.js and my favorite backend for app development is comprised of Express.js, MongoDB, and Node.js. I am also versed in several other stacks and technologies.',
+          'I am a proficient full-stack developer. My favorite front-end frameworks are React.js and Vue.js and a few of my favorite backend for app development is comprised of Express.js, MongoDB or Firebase, and Node.js. I am also versed in several other stacks and technologies.',
         icon: 'layer-group', // fas
       },
       {
@@ -91,7 +93,7 @@ export default {
 .main-text {
   font-size: 1.2rem;
   line-height: 1.7rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
 }
 .full-bleed {
   grid-column: 1 / -1;
@@ -109,6 +111,13 @@ export default {
   height: 325px;
   object-position: 0 -150px;
 }
+
+.inline-text-link {
+  text-decoration: none;
+  color:inherit;
+  font-weight: 600;
+  font-style: italic;
+}
 @media only screen and (max-width: 600px) {
   .giraffe-banner {
     object-position: -60px -50px;
@@ -121,7 +130,7 @@ export default {
     height: 100%;
   }
   .main-text {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 }
 
