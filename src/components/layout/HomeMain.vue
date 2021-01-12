@@ -23,7 +23,7 @@
       <p class="main-text pt-5">
         I like to explore many fields related to the human experience. I am a rock and roll music producer,
          a writer, an anthropolgist, and a dog dad. One thing
-        I learned is from a young age is, "It's the little things that add up to a great life."
+        I learned from a young age is, "It's the little things that add up to a great life."
         So I try to make the best by exploring new ideas with each new day.
       </p>
       <hr />
