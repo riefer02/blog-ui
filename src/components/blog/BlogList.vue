@@ -78,25 +78,8 @@ export default {
     }
   },
   methods: {
-    // intersected() {
-    //   if (this.blogList.length === 0) {
-    //     return (this.blogList = this.filteredBlogs.slice(0, 5));
-    //   }
-    //   console.log('intersected');
-    //   this.page++;
-    //   const start = this.page * this.chunkSize;
-    //   console.log(start);
-    //   const end = start + this.chunkSize;
-    //   console.log(end);
-    //   const newChunk = this.filteredBlogs.slice(start, end);
-    //   this.blogList = [...this.blogList, ...newChunk];
-    // },
     deleteBlog(id) {
-      console.log('Blog deletion process has begun...');
       BlogService.deleteBlog(id).then(() => {
-        console.log(
-          'Blog was successfully deleted from database. Filtering and rerendering blog list...'
-        );
         let newBlogList = this.$store.state.blogs;
         newBlogList = newBlogList.filter(blogs => blogs._id != id);
         this.$store.commit('SET_BLOGS', newBlogList);

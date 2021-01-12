@@ -106,21 +106,16 @@ export default {
       compressor: true,
       reverb: false,
       panner: true,
-      masterOut: true,
+      masterOut: true
     },
     powerOn: false,
-    signalFlow: undefined,
-    // audioUnlocked: false
+    signalFlow: undefined
   }),
-  mounted: function () {
-    // create audio environment
+  mounted: function() {
     this.AudioContext = window.AudioContext || window.webkitAudioContext;
     this.audioCtx = new this.AudioContext({
-      sampleRate: 44100,
+      sampleRate: 44100
     });
-    // console.log('state of audio on initial load is ' + this.audioCtx.state);
-    // initialize plugins
-    // compressor
     this.compressor = this.audioCtx.createDynamicsCompressor();
     this.compressor.threshold.value = -50;
     this.compressor.knee.value = 40;
@@ -128,19 +123,14 @@ export default {
     this.compressor.attack.value = 0;
     this.compressor.release.value = 0.25;
     this.compressorOn = true;
-    // panner
     const pannerOptions = { pan: 0 };
     this.panner = new StereoPannerNode(this.audioCtx, pannerOptions);
-    // volume
     this.inputGainNode = this.audioCtx.createGain();
-    // high pass filter @500Hz
     this.highPassFilter = new BiquadFilterNode(this.audioCtx);
     this.highPassFilter.type = 'highpass';
     this.highPassFilter.frequency.value = 500;
     this.highPassFilterOn = true;
-    // reverb
     this.reverb = this.audioCtx.createConvolver();
-    // audio source
     this.audioSource = this.$refs.audio;
     this.track = this.audioCtx.createMediaElementSource(this.audioSource);
     this.pluginSwitch(this.pluginController);
@@ -150,44 +140,30 @@ export default {
       this.$refs.audio.muted = !this.$refs.audio.muted;
 
       this.powerOn = !this.powerOn;
-
-      // console.log(
-      //   'the audio elements muted status is ' + this.$refs.audio.muted
-      // );
-      // console.log('the boolean powerOn is ' + this.powerOn);
-
       if (this.$refs.audio.muted === false) {
-        this.audioCtx.resume().then(() => {
-          // console.log('playback is ' + this.audioCtx.state);
-        });
+        this.audioCtx.resume().then(() => {});
       } else if (this.$refs.audio.muted === true) {
-        this.audioCtx.suspend().then(() => {
-          // console.log('playback is ' + this.audioCtx.state);
-        });
+        this.audioCtx.suspend().then(() => {});
       }
     },
     playButton() {
-      // console.log("the audio element's state is " + this.audioCtx.state);
       if (!this.audioCtx) {
         this.init();
       }
-      //check if content is suspended (autoplay policy)
       if (this.audioCtx.state === 'suspended') {
         this.audioCtx.resume();
       }
 
       if (this.audioPlaying === false) {
-        this.audioSource.play().catch((err) => {
+        this.audioSource.play().catch(err => {
           console.log(err);
         });
         this.audioPlaying = true;
 
-        // if track is playing pause it
       } else if (this.audioPlaying === true) {
         this.audioSource.pause();
         this.audioPlaying = false;
       }
-      // console.log('the state of audioPlaying is ' + this.audioPlaying);
     },
     resetPluginNodes() {
       this.inputGainNode.disconnect();
@@ -200,8 +176,8 @@ export default {
       this.resetPluginNodes();
       let pluginChain = [];
       let keys = Object.keys(controllerObj);
-      let filterByOn = keys.filter((k) => controllerObj[k]);
-      filterByOn.forEach((el) => {
+      let filterByOn = keys.filter(k => controllerObj[k]);
+      filterByOn.forEach(el => {
         let curPlugin = `.connect(this.${el})`;
         pluginChain.push(curPlugin);
       });
@@ -228,8 +204,8 @@ export default {
     toggleCompressor() {
       this.pluginController.compressor = !this.pluginController.compressor;
       this.pluginSwitch(this.pluginController);
-    },
-  },
+    }
+  }
 };
 </script>
 

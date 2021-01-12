@@ -57,11 +57,9 @@ export default createStore({
       await userService
         .registerNewUser(credentials)
         .then((response) => {
-          console.log('registration response', response);
           commit('SET_USER_DATA', response.data.user);
         })
         .catch((err) => {
-          console.log(err.response.data.error);
           throw err;
         });
     },
@@ -72,7 +70,6 @@ export default createStore({
           commit('SET_USER_DATA', response.data.user);
         })
         .catch((err) => {
-          console.log(err.response.data.error);
           throw err;
         });
     },
