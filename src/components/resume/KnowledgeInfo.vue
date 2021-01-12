@@ -19,9 +19,9 @@
 export default {
   props: {
     knowledges: {
-      type: Array
-    }
-  }
+      type: Array,
+    },
+  },
 };
 </script>
 
@@ -60,10 +60,6 @@ export default {
 @media screen and (max-width: 600px) {
   .knowledges {
     padding: 0.5rem;
-    // &-list {
-
-    // }
-  
     &-item {
       padding: 0.5rem;
     }

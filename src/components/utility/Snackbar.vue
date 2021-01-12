@@ -25,10 +25,7 @@ export default {
   },
   watch: {
     show: {
-      handler(val, oldVal) {
-        console.log('watching show property');
-        console.log(val);
-        console.log(oldVal);
+      handler() {
         setTimeout(() => this.$store.commit('SET_SNACK', ''), 5000);
       }
     }
@@ -117,12 +114,10 @@ export default {
     position: fixed;
     left: 0;
     width: 100%;
-
-    /* this is what centers your element in the fixed wrapper*/
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center; /* aligns on vertical for column */
-    align-items: center; /* aligns on horizontal for column */
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>

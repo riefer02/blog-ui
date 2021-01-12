@@ -21,9 +21,7 @@
       </button>
       <hr />
       <p class="sign-up-text">Need an account?&nbsp;</p>
-      <p class="sign-up-link" @click="switchToSignUpMode">
-        Sign Up
-      </p>
+      <p class="sign-up-link" @click="switchToSignUpMode">Sign Up</p>
     </form>
   </div>
 </template>
@@ -34,25 +32,25 @@ import BaseInput from '@/components/inputs/BaseInput.vue';
 export default {
   props: {
     modalConfig: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   data: () => ({
     loginCredentials: {
       username: '',
-      password: ''
-    }
+      password: '',
+    },
   }),
   components: {
     TextLogo,
-    BaseInput
+    BaseInput,
   },
   methods: {
     switchToSignUpMode() {
       let modalConfig = {
         modalType: 'register',
         modalActive: true,
-        modalData: {}
+        modalData: {},
       };
       this.$store.commit('SET_MODAL', modalConfig);
     },
@@ -60,7 +58,7 @@ export default {
       let modalConfig = {
         modalType: 'disabled',
         modalActive: false,
-        modalData: {}
+        modalData: {},
       };
       this.$store.commit('SET_GUEST_DATA', 'Guest');
       this.$store.commit('SET_MODAL', modalConfig);
@@ -69,29 +67,27 @@ export default {
     },
     async loginUser() {
       let message;
-      // Write form validation logic here...
       await this.$store
         .dispatch('loginUser', {
           username: this.loginCredentials.username,
-          password: this.loginCredentials.password
+          password: this.loginCredentials.password,
         })
         .then(() => {
           let modalConfig = {
             modalType: 'disabled',
             modalActive: false,
-            modalData: {}
+            modalData: {},
           };
           this.$store.commit('SET_MODAL', modalConfig);
           message = `Welcome back ${this.loginCredentials.username}!`;
           this.$store.commit('SET_SNACK', message);
         })
-        .catch(err => {
+        .catch(() => {
           message = `I'm sorry username and password are incorrect`;
-          console.log(err);
           this.$store.commit('SET_SNACK', message);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

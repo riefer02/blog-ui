@@ -5,65 +5,62 @@ import Blog from '../views/Blog.vue';
 import Music from '../views/Music.vue';
 import Resume from '../views/Resume.vue';
 import NotFound from '../views/NotFound.vue';
-import Chart from '../views/Chart.vue';
+import Three from '../views/Three.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/three',
     name: 'Three',
+    component: Three,
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/Three.vue')
+    // component: () =>
+    //   import(/* webpackChunkName: "about" */ '../views/Three.vue'),
   },
   {
     path: '/blog/:id',
     name: 'Post',
     component: Post,
-    props: true
+    props: true,
   },
   {
     path: '/blogs',
     name: 'Blog',
-    component: Blog
+    component: Blog,
   },
   {
     path: '/music',
     name: 'Music',
-    component: Music
+    component: Music,
     // meta: { requiresAuth: true } // Uncomment to Make Protected Route
   },
   {
     path: '/resume',
     name: 'Resume',
-    component: Resume
+    component: Resume,
   },
   {
     path: '/:catchAll(.*)',
-    component: NotFound
+    component: NotFound,
   },
-  {
-    path: '/chart',
-    component: Chart
-  }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   // mode: 'history',
-  routes
+  routes,
 });
 
 // Check to see if route contains meta attribute to determine access...
 router.beforeEach((to, from, next) => {
   const loggedIn = localStorage.getItem('user');
-  if (to.matched.some(record => record.meta.requiresAuth && !loggedIn)) {
+  if (to.matched.some((record) => record.meta.requiresAuth && !loggedIn)) {
     next('/');
   }
   next();

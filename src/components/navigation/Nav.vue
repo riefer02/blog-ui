@@ -62,20 +62,19 @@ import { authComputed } from '@/store/helper.js';
 export default {
   name: 'Nav',
   watch: {
-    $route(to, from) {
-      console.log(to, from);
+    $route() {
       document.getElementById('nav-toggle').checked = false;
-    }
+    },
   },
   computed: {
-    ...authComputed
+    ...authComputed,
   },
   methods: {
     activateLoginModal() {
       let modalConfig = {
         modalType: 'login',
         modalActive: true,
-        modalData: {}
+        modalData: {},
       };
       this.$store.commit('SET_MODAL', modalConfig);
     },
@@ -84,8 +83,8 @@ export default {
     },
     scrollToTop() {
       window.scrollTo(0, 0);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -121,7 +120,6 @@ export default {
       height: 200%;
       opacity: 0;
       transform: rotate(30deg);
-
       background: rgba(255, 255, 255, 0.13);
       background: linear-gradient(
         to right,
@@ -131,15 +129,6 @@ export default {
         rgba(255, 255, 255, 0) 100%
       );
     }
-
-    // &:hover:after {
-    //   opacity: 1;
-    //   top: -30%;
-    //   left: -30%;
-    //   transition-property: left, top, opacity;
-    //   transition-duration: 0.7s, 0.7s, 0.15s;
-    //   transition-timing-function: ease;
-    // }
 
     &:active:after {
       opacity: 0;

@@ -10,15 +10,12 @@
         </button>
         <div class="modal-content">
           <LoginUI v-if="modalMode === 'login'" key="1" />
-          <!-- Register New User -->
           <SignUpUI v-else-if="modalMode === 'register'" key="2" />
-          <!-- Editor Mode -->
           <EditorUI
             v-else-if="modalMode === 'editor'"
             key="3"
             :modalConfig="modalConfig"
           />
-          <!-- Disabled Mode -->
           <div v-else-if="modalMode === 'disabled'" key="4">
             <h3 class="modal-disabled-text">Modal Disabled</h3>
             <p>This is the default state of the modal</p>
@@ -43,35 +40,35 @@ export default {
       type: Object,
       default: () => {
         return { modalType: 'disabled', modalActive: false, modalData: {} };
-      }
-    }
+      },
+    },
   },
   components: {
     FontAwesomeIcon,
     LoginUI,
     SignUpUI,
-    EditorUI
+    EditorUI,
   },
   data: () => ({
     editBlogMode: false,
-    messageContent: ''
+    messageContent: '',
   }),
   methods: {
     resetModal() {
       let resetConfig = {
         modalType: 'disabled',
         modalActive: false,
-        modalData: {}
+        modalData: {},
       };
       this.$store.commit('SET_MODAL', resetConfig);
-    }
+    },
   },
   computed: {
     modalMode() {
       return this.modalConfig.modalType;
     },
-    ...authComputed
-  }
+    ...authComputed,
+  },
 };
 </script>
 

@@ -15,14 +15,24 @@
     <div class="mb-5">
       <AudioPlayer />
     </div>
+    <div v-if="ready" class="mb-5">
+      <AudioUploader />
+    </div>
   </div>
 </template>
 
 <script>
-import AudioPlayer from '@/components/audio/audioPlayer.vue';
+import AudioPlayer from '@/components/audio/AudioPlayer.vue';
+import AudioUploader from '@/components/audio/AudioUploader.vue';
 export default {
   components: {
     AudioPlayer,
+    AudioUploader,
+  },
+  data() {
+    return {
+      ready: false,
+    };
   },
 };
 </script>
@@ -33,8 +43,8 @@ export default {
 }
 
 h3 span {
-  background-color: red;
-  color: white;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: #fff;
   padding: 0.2rem;
   border-radius: 2px;
 }
