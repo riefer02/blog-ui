@@ -111,8 +111,7 @@ export default {
         author: this.$store.state.user.username,
         authorID: this.$store.state.user.id
       };
-      CommentService.createComment(id, commentData).then(response => {
-        console.log(response);
+      CommentService.createComment(id, commentData).then(() => {
         this.comment = '';
         this.$store.commit('SET_SNACK', 'Thanks for commenting!');
         this.createCommentState = false;
@@ -127,7 +126,6 @@ export default {
         userID: userID
       };
       LikeService.likeBlogPost(id, likeData).then(response => {
-        console.log(response.data.uniqueLike);
         if (response.data.uniqueLike) {
           this.$store.commit('SET_SNACK', 'You liked a post!');
           BlogService.getBlog(this.id).then(response => {

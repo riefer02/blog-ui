@@ -85,7 +85,6 @@ export default {
       this.$store.commit('SET_USER_DATA', userData);
     }
     // if user data persists do not load initial login/register modal...
-    console.log(this.$store.state.user);
     if (this.$store.state.user) {
       let modalConfig = {
         modalType: 'disabled',

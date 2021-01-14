@@ -11,7 +11,6 @@ const apiClient = axios.create({
 
 export default {
   likeBlogPost(id, likeData) {
-    console.log(likeData);
     return apiClient.post(id + '/like', likeData);
   }
 };

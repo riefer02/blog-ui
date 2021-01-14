@@ -90,6 +90,8 @@ export default {
       grid-row: 2;
       grid-column: 1/-1;
       text-align: center;
+      font-size: 1.2rem;
+  line-height: 1.7rem;
     }
   }
 }

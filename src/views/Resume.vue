@@ -72,10 +72,10 @@ export default {
     summary:
       'I am a Full Stack Developer and I love to build web applications. I am a fast learner of new technologies, a strong grasp of computer science fundamentals, algorithmic logic, frontend frameworks, database management, and more. I am an experienced, results-oriented leader in person, remote, and professional communities.',
     links: [
-      // {
-      //   name: 'LinkedIn',
-      //   link: 'https://www.linkedin.com/in/andrewriefenstahl'
-      // },
+      {
+        name: 'LinkedIn',
+        link: 'https://www.linkedin.com/in/andrewriefenstahl'
+      },
       { name: 'YouTube', link: 'https://youtu.be/erDW9qG8Vrs' },
       { name: 'GitHub', link: 'https://github.com/riefer02' },
       { name: 'Instagram', link: 'https://www.instagram.com/riefer02' },
@@ -148,11 +148,11 @@ export default {
         location: 'Austin, TX',
         description: [
           'Develops  JavaScript curriculum using Repl.it online classroom',
-          'Focuses learners on the fundamentals of computers - historically and current, Instructs from a debugging ideologic stand point',
-          'Engages students in hard and soft skill development for entering collaborative workforce.',
+          'Focuses learners on the fundamentals of computers - historically and current',
+          'Engages students in hard and soft skill development for entering collaborative workforce',
           'Emphasis on multiple language acquisition',
           'Offers practice with client ethics and real world situations',
-          'Poses question to learners regarding the role of technology in modern society.',
+          'Poses question to learners regarding the role of technology in modern society',
         ],
       },
       {
@@ -165,7 +165,7 @@ export default {
           'Managed regional team of web development curriculum writers/developers',
           'Wrote an interactive HTML/CSS/Javascript curriculum for web learners',
           'Oversaw the development and quality control for online educational resources',
-          'Created online video resources through screencasting, audio engineering, and video editing knowledge base.',
+          'Created online video resources through screencasting, audio engineering, and video editing knowledge base',
           'Taught remotely, in person, after school programs, and extracurricular settings',
           'Developed a curriculum for Sonic Pi, a Ruby on Rails programming environment taught in the form of music',
         ],
@@ -184,12 +184,6 @@ export default {
       },
     ],
     education: [
-      // {
-      //   date: '2009 - 2012',
-      //   institute: 'Texas State University',
-      //   location: 'San Marcos, TX',
-      //   degree: 'Bachelor of Science, Computer Science',
-      // },
       {
         date: 'July 2017 - May 2019',
         institute: 'Austin Community College',
