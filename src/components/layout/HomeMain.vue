@@ -11,11 +11,6 @@
         hobbies too, so if you want to learn more please, "stay awhile and
         listen".
       </p>
-      <!-- <img
-        class="full-bleed giraffe-banner"
-        alt="A Herd of Giraffe"
-        :src="require('../../assets/images/giraffeHerd.jpg')"
-      /> -->
       <div class="full-bleed giraffe-banner">
         <ImagePanel image="giraffeHerd" alt="a picture of giraffes" />
       </div>
@@ -31,12 +26,20 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue';
+import Loader from '@/components/utilily/Loader.vue';
+
+const ImagePanel = defineAsyncComponent(() =>
+  import('@/components/utility/ImagePanel.vue')
+);
+
 import ResponsiveCardList from '@/components/list/ResponsiveCardList.vue';
-import ImagePanel from '@/components/utility/ImagePanel.vue';
+
 export default {
   components: {
     ResponsiveCardList,
     ImagePanel,
+    Loading,
   },
   data: () => ({
     hobbies: [
@@ -100,7 +103,6 @@ export default {
   margin-top: 3rem;
   margin-bottom: 3.6rem;
   overflow: hidden;
-
 }
 
 .giraffe-banner {
@@ -112,7 +114,7 @@ export default {
 @media only screen and (max-width: 600px) {
   .giraffe-banner {
     object-position: -60px -50px;
-    overflow:hidden;
+    overflow: hidden;
   }
 
   .full-bleed {
