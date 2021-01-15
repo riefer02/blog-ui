@@ -25,7 +25,7 @@ import {
   faGithub,
   faInstagram,
   faWhatsapp,
-  faYoutube
+  faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import {
   faWrench,
@@ -38,7 +38,7 @@ import {
   faCaretRight,
   faArrowLeft,
   faHeart,
-  faComment
+  faComment,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Axios from 'axios';
@@ -68,28 +68,14 @@ export default {
     FontAwesomeIcon,
     Modal,
     SocialMedia,
-    Footer
+    Footer,
   },
-  // metaInfo: {
-  //   titleTemplate: '%s | riefer.io',
-  //   title: 'riefer.io',
-  //   meta: [
-  //     { charset: 'utf-8' },
-  //     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-  //     {
-  //       name: 'description',
-  //       content:
-  //         "Andrew Riefenstahl built riefer.io - a modern web application developer's portfolio site. This developer's playground includes: a resume, a community blog app built from express/mongoDB stack, an audio player interface using the Web Audio API, and a three dimensional webGL graphi built by three.js. Andrew Riefenstahl is a anthropologist, developer, musician, and teacher."
-  //     }
-  //   ],
-  //   link: [{ rel: 'canonical', href: 'https://riefer.io/' }]
-  // },
   data: () => ({}),
   methods: {},
   computed: {
     ...mapState({
-      modalConfig: state => state.modalConfig
-    })
+      modalConfig: (state) => state.modalConfig,
+    }),
   },
   created() {
     // store user data to bypass login...
@@ -99,26 +85,25 @@ export default {
       this.$store.commit('SET_USER_DATA', userData);
     }
     // if user data persists do not load initial login/register modal...
-    console.log(this.$store.state.user);
     if (this.$store.state.user) {
       let modalConfig = {
         modalType: 'disabled',
         modalActive: false,
-        modalData: {}
+        modalData: {},
       };
       this.$store.commit('SET_MODAL', modalConfig);
     }
     // Auto logout if hacker attempts to create fake user data...
     Axios.interceptors.response.use(
-      response => response,
-      error => {
+      (response) => response,
+      (error) => {
         if (error.response.status === 401) {
           this.$store.dispatch('logout');
         }
         return Promise.reject(error);
       }
     );
-  }
+  },
 };
 </script>
 
