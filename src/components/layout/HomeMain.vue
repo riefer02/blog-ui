@@ -17,7 +17,6 @@
           <p class="main-text">
             Please create a user account and leave me a message on the <router-link class="inline-text-link" to="/blogs">blog page</router-link> so I can meet you and hear your feedback.
       </p>
-
       <div class="full-bleed giraffe-banner">
         <ImagePanel image="giraffeHerd" alt="a picture of giraffes" />
       </div>
@@ -35,19 +34,15 @@
 
 <script>
 import { defineAsyncComponent } from 'vue';
-import Loader from '@/components/utilily/Loader.vue';
-
+import ResponsiveCardList from '@/components/list/ResponsiveCardList.vue';
 const ImagePanel = defineAsyncComponent(() =>
   import('@/components/utility/ImagePanel.vue')
 );
-
-import ResponsiveCardList from '@/components/list/ResponsiveCardList.vue';
 
 export default {
   components: {
     ResponsiveCardList,
     ImagePanel,
-    Loading,
   },
   data: () => ({
     hobbies: [

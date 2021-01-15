@@ -89,7 +89,7 @@
 export default {
   name: 'AudioPlayer',
   data: () => ({
-    audio: require('../../assets/audio/tlc-intro.wav'),
+    audio: require('../../assets/audio/professional.mp3'),
     AudioContext: undefined,
     audioBuffer: undefined,
     audioCtx: undefined,
@@ -117,18 +117,18 @@ export default {
       sampleRate: 44100
     });
     this.compressor = this.audioCtx.createDynamicsCompressor();
-    this.compressor.threshold.value = -50;
+    this.compressor.threshold.value = -20;
     this.compressor.knee.value = 40;
-    this.compressor.ratio.value = 12;
-    this.compressor.attack.value = 0;
-    this.compressor.release.value = 0.25;
+    this.compressor.ratio.value = 3;
+    this.compressor.attack.value = 20;
+    this.compressor.release.value = 0.75;
     this.compressorOn = true;
     const pannerOptions = { pan: 0 };
     this.panner = new StereoPannerNode(this.audioCtx, pannerOptions);
     this.inputGainNode = this.audioCtx.createGain();
     this.highPassFilter = new BiquadFilterNode(this.audioCtx);
     this.highPassFilter.type = 'highpass';
-    this.highPassFilter.frequency.value = 500;
+    this.highPassFilter.frequency.value = 200;
     this.highPassFilterOn = true;
     this.reverb = this.audioCtx.createConvolver();
     this.audioSource = this.$refs.audio;

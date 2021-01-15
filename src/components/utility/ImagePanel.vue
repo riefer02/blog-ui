@@ -36,6 +36,7 @@ export default {
 @media screen and (max-width: 600px) {
   .adjust-img-pos {
     top: 0%;
+    height:300px;
   }
 }
 </style>
