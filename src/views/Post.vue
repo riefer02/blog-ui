@@ -1,7 +1,9 @@
 <template>
   <div class="post-section">
     <div class="post-container">
-      <BlogSkeletonLoader v-if="loadState" width="300px" height="80px" />
+      <div v-if="loadState" class="loader-container">
+        <Loader />
+      </div>
       <div v-else class="post">
         <div class="post-detail-display">
           <div class="post-detail-display-item">
@@ -67,31 +69,32 @@ import CommentService from '../services/CommentService';
 import LikeService from '../services/LikeService';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import BlogService from '../services/BlogService';
-import BlogSkeletonLoader from '@/components/utility/BlogSkeletonLoader.vue';
+import Loader from '@/components/utility/Loader.vue';
 import CommentSection from '@/components/list/CommentSection.vue';
 
 export default {
   name: 'BlogPost',
   components: {
-    BlogSkeletonLoader,
+    Loader,
     FontAwesomeIcon,
-    CommentSection
+    CommentSection,
   },
   props: {
     id: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data: () => ({
     blog: {},
     loadState: true,
     createCommentState: false,
     comment: '',
-    curUserID: undefined
+    curUserID: undefined,
   }),
   mounted() {
-    BlogService.getBlog(this.id).then(response => {
+    this.scrollToTop();
+    BlogService.getBlog(this.id).then((response) => {
       this.blog = response.data.blog[0];
       this.loadState = !this.loadState;
     });
@@ -101,6 +104,9 @@ export default {
     }
   },
   methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
     toggleCreateComment() {
       this.createCommentState = !this.createCommentState;
       return;
@@ -109,14 +115,14 @@ export default {
       const commentData = {
         content: this.comment,
         author: this.$store.state.user.username,
-        authorID: this.$store.state.user.id
+        authorID: this.$store.state.user.id,
       };
-      CommentService.createComment(id, commentData).then(response => {
+      CommentService.createComment(id, commentData).then((response) => {
         console.log(response);
         this.comment = '';
         this.$store.commit('SET_SNACK', 'Thanks for commenting!');
         this.createCommentState = false;
-        BlogService.getBlog(this.id).then(response => {
+        BlogService.getBlog(this.id).then((response) => {
           this.blog = response.data.blog[0];
         });
       });
@@ -124,31 +130,38 @@ export default {
     likeBlogPost(id, userID) {
       const likeData = {
         blogID: id,
-        userID: userID
+        userID: userID,
       };
-      LikeService.likeBlogPost(id, likeData).then(response => {
+      LikeService.likeBlogPost(id, likeData).then((response) => {
         console.log(response.data.uniqueLike);
         if (response.data.uniqueLike) {
           this.$store.commit('SET_SNACK', 'You liked a post!');
-          BlogService.getBlog(this.id).then(response => {
+          BlogService.getBlog(this.id).then((response) => {
             this.blog = response.data.blog[0];
           });
         } else {
           this.$store.commit('SET_SNACK', 'You already liked this post!');
         }
       });
-    }
+    },
   },
   computed: {
     numberOfLikes() {
       return this.blog.likes.length;
     },
-    ...authComputed
-  }
+    ...authComputed,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.loader-container {
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .post {
   width: 60%;
   margin: 0 auto;
@@ -319,6 +332,7 @@ export default {
       width: 100%;
       margin: 0 auto;
       padding: 0;
+      height: 100vh;
     }
     &-title {
       padding: 2rem;
