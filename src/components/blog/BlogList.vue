@@ -9,9 +9,10 @@
           :value="option"
           :key="option"
           :selected="option === activeFilter"
-          >{{ option }}</option
-        ></select
-      >
+        >
+          {{ option }}
+        </option>
+      </select>
     </div>
     <div v-show="blogs.length === 0">
       Connecting to database...
@@ -41,12 +42,12 @@ export default {
   components: {
     BlogCard,
     Observer,
-    Loader
+    Loader,
   },
   props: {
     blogs: {
-      type: Array
-    }
+      type: Array,
+    },
   },
   created() {
     this.loadState = true;
@@ -59,14 +60,14 @@ export default {
   },
   data: () => ({
     activeFilter: '',
-    loadState: undefined
+    loadState: undefined,
     // page: 0,
     // blogList: [],
     // chunkSize: 6
   }),
   computed: {
     filteredBlogs() {
-      let blogList = this.blogs.filter(blog => {
+      let blogList = this.blogs.filter((blog) => {
         return blog.topic.match(this.activeFilter);
       });
       return blogList;
@@ -75,25 +76,26 @@ export default {
       let filterList = this.$store.state.blogTopics;
       filterList.unshift('');
       return filterList;
-    }
+    },
   },
   methods: {
     deleteBlog(id) {
       BlogService.deleteBlog(id).then(() => {
         let newBlogList = this.$store.state.blogs;
-        newBlogList = newBlogList.filter(blogs => blogs._id != id);
+        newBlogList = newBlogList.filter((blogs) => blogs._id != id);
         this.$store.commit('SET_BLOGS', newBlogList);
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .blog-list-container {
   margin-bottom: 5rem;
+  width: 80%;
+  margin: 0 auto;
 }
-
 
 .filter {
   &-label {
@@ -119,6 +121,12 @@ export default {
     -o-transition: 0.2s ease all;
     transition: 0.2s ease all;
     font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+ .blog-list-container {
+    width: 100%;
   }
 }
 </style>

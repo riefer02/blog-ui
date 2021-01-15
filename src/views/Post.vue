@@ -1,65 +1,67 @@
 <template>
   <div class="post-section">
-    <div class="post-container">
-      <div v-if="loadState" class="loader-container">
-        <Loader />
-      </div>
-      <div v-else class="post">
-        <div class="post-detail-display">
-          <div class="post-detail-display-item">
-            <FontAwesomeIcon icon="heart" class="post-detail-heart" />
-            <div class="post-likes">{{ numberOfLikes }}</div>
-          </div>
+    <transition name="slide-up" mode="out-in">
+      <div class="post-container">
+        <div v-if="loadState" class="loader-container">
+          <Loader />
         </div>
-        <h1 class="post-title">{{ blog.title }}</h1>
-        <h3 class="post-topic"><span>Topic:</span> {{ blog.topic }}</h3>
-        <h3 class="post-author"><span>Author:</span> @{{ blog.author }}</h3>
-        <p class="post-text">{{ blog.summary }}</p>
+        <div v-else class="post">
+          <div class="post-detail-display">
+            <div class="post-detail-display-item">
+              <FontAwesomeIcon icon="heart" class="post-detail-heart" />
+              <div class="post-likes">{{ numberOfLikes }}</div>
+            </div>
+          </div>
+          <h1 class="post-title">{{ blog.title }}</h1>
+          <h3 class="post-topic"><span>Topic:</span> {{ blog.topic }}</h3>
+          <h3 class="post-author"><span>Author:</span> @{{ blog.author }}</h3>
+          <p class="post-text">{{ blog.summary }}</p>
 
-        <div class="post-btns">
-          <router-link to="/blogs">
-            <button class="post-btns-return">
-              <FontAwesomeIcon icon="arrow-left" />
+          <div class="post-btns">
+            <router-link to="/blogs">
+              <button class="post-btns-return">
+                <FontAwesomeIcon icon="arrow-left" />
+              </button>
+            </router-link>
+            <button
+              class="post-btns-like"
+              @click.prevent="likeBlogPost($route.params.id, curUserID)"
+            >
+              <FontAwesomeIcon icon="heart" />
             </button>
-          </router-link>
-          <button
-            class="post-btns-like"
-            @click.prevent="likeBlogPost($route.params.id, curUserID)"
-          >
-            <FontAwesomeIcon icon="heart" />
-          </button>
-          <button
-            class="post-btns-comment"
-            @click="toggleCreateComment()"
-            v-if="loggedIn"
-          >
-            <FontAwesomeIcon icon="comment" />
-          </button>
-        </div>
-        <transition name="slide-up" mode="out-in">
-          <div class="post-create-comment" v-if="createCommentState">
-            <form>
-              <textarea
-                class="post-create-textarea"
-                name="content"
-                placeholder="Comment"
-                v-model="comment"
-              ></textarea>
-              <div class="text-right">
-                <button
-                  type="submit"
-                  class="post-create-comment-btn"
-                  @click.prevent="createComment(id)"
-                >
-                  Post
-                </button>
-              </div>
-            </form>
+            <button
+              class="post-btns-comment"
+              @click="toggleCreateComment()"
+              v-if="loggedIn"
+            >
+              <FontAwesomeIcon icon="comment" />
+            </button>
           </div>
-        </transition>
-        <CommentSection :comments="blog.comments" />
+          <transition name="slide-up" mode="out-in">
+            <div class="post-create-comment" v-if="createCommentState">
+              <form>
+                <textarea
+                  class="post-create-textarea"
+                  name="content"
+                  placeholder="Comment"
+                  v-model="comment"
+                ></textarea>
+                <div class="text-right">
+                  <button
+                    type="submit"
+                    class="post-create-comment-btn"
+                    @click.prevent="createComment(id)"
+                  >
+                    Post
+                  </button>
+                </div>
+              </form>
+            </div>
+          </transition>
+          <CommentSection :comments="blog.comments" />
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -92,10 +94,13 @@ export default {
     comment: '',
     curUserID: undefined,
   }),
-  mounted() {
+  created() {
     this.scrollToTop();
+  },
+  mounted() {
     BlogService.getBlog(this.id).then((response) => {
       this.blog = response.data.blog[0];
+
       this.loadState = !this.loadState;
     });
 
@@ -133,7 +138,7 @@ export default {
         userID: userID,
       };
 
-      LikeService.likeBlogPost(id, likeData).then(response => {
+      LikeService.likeBlogPost(id, likeData).then((response) => {
         if (response.data.uniqueLike) {
           this.$store.commit('SET_SNACK', 'You liked a post!');
           BlogService.getBlog(this.id).then((response) => {
@@ -200,13 +205,11 @@ export default {
   }
 
   &-section {
-    // background-color: pink;
     margin-bottom: 2.5rem;
   }
 
   &-container {
-    // background-color: orangered;
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
     padding-top: 2rem;
     display: flex;
@@ -292,10 +295,9 @@ export default {
       outline: none !important;
       box-shadow: none !important;
       transition: all 0.2s ease-in;
-      padding: 0.7rem;
       margin-left: 6px;
       color: #fff;
-      padding: 1rem;
+      padding: 1.2rem;
       transition: all 0.2s;
     }
     &-return:hover,

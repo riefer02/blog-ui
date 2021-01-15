@@ -4,10 +4,7 @@
     <div v-else-if="loadState === false" class="cards-item">
       <div class="card">
         <div class="card-content">
-          <router-link
-            :to="'/blog/' + blog._id"
-            class="card-link"
-          >
+          <router-link :to="'/blog/' + blog._id" class="card-link">
             <h3 class="card-title">{{ blog.title }}</h3>
 
             <h4 v-if="blog.author" class="card-author">
@@ -51,35 +48,32 @@ import BlogSkeletonLoader from '@/components/utility/BlogSkeletonLoader.vue';
 export default {
   components: {
     FontAwesomeIcon,
-    BlogSkeletonLoader
+    BlogSkeletonLoader,
   },
   props: {
     blog: {
-      type: Object
+      type: Object,
     },
     deleteBlog: {
-      type: Function
+      type: Function,
     },
     loadState: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   methods: {
     editBlog(blog) {
       let newModalConfig = {
         modalActive: true,
         modalData: blog,
-        modalType: 'editor'
+        modalType: 'editor',
       };
       this.$store.commit('SET_MODAL', newModalConfig);
     },
     truncatedText(str, num) {
-      // If the length of str is less than or equal to num
-      // just return str--don't truncate it.
       if (str.length <= num) {
         return str;
       }
-      // Return str truncated with '...' concatenated to the end of str.
       return str.slice(0, num) + '...';
     },
   },
@@ -91,7 +85,7 @@ export default {
     }
   },
   data: () => ({
-    curUserName: ''
+    curUserName: '',
   }),
   computed: {
     truncatedSummary() {
@@ -102,8 +96,8 @@ export default {
     },
     numberOfComments() {
       return this.blog.comments.length;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -177,7 +171,8 @@ a {
 }
 
 .card-title,
-.card-text, .card-topic {
+.card-text,
+.card-topic {
   text-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
   transition: all 0.1s ease-in;
 }
