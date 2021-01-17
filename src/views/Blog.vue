@@ -9,6 +9,20 @@
     </div>
     <button
       class="toggle-create-blog-btn"
+      @click="toggleLogin()"
+      v-if="!loggedIn"
+    >
+      Login
+    </button>
+    <button
+      class="toggle-create-blog-btn"
+      @click="toggleRegister()"
+      v-if="!loggedIn"
+    >
+      Register
+    </button>
+    <button
+      class="toggle-create-blog-btn"
       @click="toggleCreateBlog()"
       v-if="loggedIn"
     >
@@ -28,26 +42,45 @@ import BlogList from '@/components/blog/BlogList.vue';
 export default {
   components: {
     CreateBlogPost,
-    BlogList
+    BlogList,
   },
   data: () => ({
-    activeCreateBlog: false
+    activeCreateBlog: false,
   }),
   methods: {
     toggleCreateBlog() {
       this.activeCreateBlog = !this.activeCreateBlog;
-    }
+    },
+    toggleRegister() {
+      let modalConfig = {
+        modalType: 'register',
+        modalActive: true,
+        modalData: {},
+      };
+      this.$store.commit('SET_MODAL', modalConfig);
+    },
+    toggleLogin() {
+      let modalConfig = {
+        modalType: 'login',
+        modalActive: true,
+        modalData: {},
+      };
+      this.$store.commit('SET_MODAL', modalConfig);
+    },
   },
   computed: {
     blogs() {
       return this.$store.state.blogs;
     },
-    ...authComputed
-  }
+    ...authComputed,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.blog-container {
+  margin-bottom: 1rem;
+}
 .blog-view-text {
   font-size: 1.2rem;
   line-height: 1.7rem;
@@ -64,6 +97,7 @@ export default {
   border-radius: 10px 0 10px 0;
   outline: none !important;
   box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
+  margin-right: 0.4rem;
 }
 
 @media screen and (min-width: 1200px) {

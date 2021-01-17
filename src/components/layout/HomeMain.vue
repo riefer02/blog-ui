@@ -72,7 +72,7 @@ export default {
         id: 3,
         name: 'Database Engineer',
         summary:
-          'I maintain servers for database storage, write complex queries, develop server-side logic, and ensure high performance and responsiveness to requests from the front-end.',
+          'I work with servers for database storage, write complex queries, develop server-side logic, and ensure high performance and responsiveness to requests from the front-end.',
         icon: 'server', // fas
       },
       {
