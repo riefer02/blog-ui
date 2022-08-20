@@ -5,7 +5,7 @@
       <hr />
       <p class="main-text">
         Hi, and welcome to my portfolio website. My name is Andrew Riefenstahl
-        and I am a full stack developer. A few years ago I began studying
+        and I am a full stack developer. In 2016 I began studying
         computer science and I discovered a passion I never knew existed. I'm
         creative, love to learn, and enjoy solving puzzles. When I'm not coding,
         I have many other hobbies to explore, so if you want to learn more
